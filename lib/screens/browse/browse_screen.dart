@@ -22,11 +22,12 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen>
   late TabController _tabController;
 
   static const _suitIconSize = 24.0;
-  static const _suitAssets = [
-    'assets/symbols/suit_wands.svg',
-    'assets/symbols/suit_cups.svg',
-    'assets/symbols/suit_swords.svg',
-    'assets/symbols/suit_pentacles.svg',
+  static const _tabIconOpacity = 0.55;
+  static const _suitTabs = [
+    ('assets/symbols/suit_wands.svg', 'Wands'),
+    ('assets/symbols/suit_cups.svg', 'Cups'),
+    ('assets/symbols/suit_swords.svg', 'Swords'),
+    ('assets/symbols/suit_pentacles.svg', 'Pentacles'),
   ];
 
   @override
@@ -83,35 +84,56 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen>
                   final color = selected
                       ? AppColors.deepBurgundy
                       : AppColors.agedInkBlue;
-                  return ColorFiltered(
-                    colorFilter:
-                        ColorFilter.mode(color, BlendMode.srcIn),
-                    child: Image.asset(
-                      'assets/symbols/major_laurel.png',
-                      width: _suitIconSize,
-                      height: _suitIconSize,
-                    ),
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Opacity(
+                        opacity: 0.55,
+                        child: SvgPicture.asset(
+                          'assets/symbols/major_laurel.svg',
+                          width: _suitIconSize,
+                          height: _suitIconSize,
+                          colorFilter:
+                              ColorFilter.mode(color, BlendMode.srcIn),
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        'Major',
+                        style: TextStyle(fontSize: 10, color: color),
+                      ),
+                    ],
                   );
                 },
               ),
             ),
-            for (final asset in _suitAssets)
+            for (final (asset, label) in _suitTabs)
               Tab(
                 child: AnimatedBuilder(
                   animation: _tabController.animation!,
                   builder: (context, child) {
-                    final tabIndex = _suitAssets.indexOf(asset) + 1;
+                    final tabIndex = _suitTabs.indexWhere((t) => t.$1 == asset) + 1;
                     final animValue = _tabController.animation!.value;
                     final selected = (animValue - tabIndex).abs() < 0.5;
                     final color = selected
                         ? AppColors.deepBurgundy
                         : AppColors.agedInkBlue;
-                    return SvgPicture.asset(
-                      asset,
-                      width: _suitIconSize,
-                      height: _suitIconSize,
-                      colorFilter:
-                          ColorFilter.mode(color, BlendMode.srcIn),
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset(
+                          asset,
+                          width: _suitIconSize,
+                          height: _suitIconSize,
+                          colorFilter:
+                              ColorFilter.mode(color, BlendMode.srcIn),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          label,
+                          style: TextStyle(fontSize: 10, color: color),
+                        ),
+                      ],
                     );
                   },
                 ),
