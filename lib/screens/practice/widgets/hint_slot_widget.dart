@@ -160,8 +160,8 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
               ),
             ),
 
-            // Show correct answer when revealed and incorrect
-            if (widget.hint.isRevealed && !widget.hint.isCorrect)
+            // Show correct answer when revealed
+            if (widget.hint.isRevealed)
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
                 child: Text(
