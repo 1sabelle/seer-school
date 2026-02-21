@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../core/constants.dart';
 import '../../models/tarot_card.dart';
 import '../../providers/deck_providers.dart';
@@ -261,7 +262,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       label: const Text('Shuffle'),
                       style: TextButton.styleFrom(
                         foregroundColor: AppColors.mutedGold,
-                        textStyle: const TextStyle(
+                        textStyle: GoogleFonts.cormorantGaramond(
                           fontSize: 13,
                           letterSpacing: 0.5,
                         ),
