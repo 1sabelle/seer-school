@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../../../core/constants.dart';
 import '../../../models/hint_category.dart';
 import 'hint_picker_widget.dart';
@@ -9,14 +8,12 @@ class HintSlotWidget extends StatefulWidget {
   final HintSlot hint;
   final int index;
   final ValueChanged<String> onSelect;
-  final VoidCallback onReveal;
 
   const HintSlotWidget({
     super.key,
     required this.hint,
     required this.index,
     required this.onSelect,
-    required this.onReveal,
   });
 
   @override
@@ -105,26 +102,7 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
                     ),
                     const Spacer(),
                     if (widget.hint.isRevealed)
-                      ResultIndicator(isCorrect: widget.hint.isCorrect)
-                    else if (widget.hint.hasSelection) ...[
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: AppColors.mutedGold.withValues(alpha: 0.15),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text(
-                          'Selected',
-                          style: TextStyle(
-                            color: AppColors.mutedGold,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                    ],
+                      ResultIndicator(isCorrect: widget.hint.isCorrect),
                     if (!widget.hint.isRevealed)
                       AnimatedRotation(
                         turns: _isExpanded ? 0.5 : 0,
@@ -157,19 +135,6 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
                     correctAnswer: widget.hint.correctAnswer,
                     onSelect: widget.onSelect,
                   ),
-                  if (widget.hint.hasSelection && !widget.hint.isRevealed) ...[
-                    const SizedBox(height: 12),
-                    SizedBox(
-                      width: double.infinity,
-                      child: OutlinedButton(
-                        onPressed: () {
-                          HapticFeedback.lightImpact();
-                          widget.onReveal();
-                        },
-                        child: const Text('Reveal Answer'),
-                      ),
-                    ),
-                  ],
                 ],
               ),
             ),

@@ -94,6 +94,25 @@ class DrawSessionNotifier extends Notifier<DrawSession?> {
     state = state!.copyWith(hints: hints, allRevealed: allRevealed);
   }
 
+  /// Select an answer and immediately reveal the result.
+  void selectAndReveal(int hintIndex, String answerKey) {
+    if (state == null) return;
+    final hints = List<HintSlot>.from(state!.hints);
+    if (hints[hintIndex].isRevealed) return;
+
+    hints[hintIndex] = hints[hintIndex]
+        .copyWith(selectedAnswer: answerKey, isRevealed: true);
+
+    _statisticsService.recordAttempt(
+      state!.card.id,
+      hints[hintIndex].category,
+      hints[hintIndex].isCorrect,
+    );
+
+    final allRevealed = hints.every((h) => h.isRevealed);
+    state = state!.copyWith(hints: hints, allRevealed: allRevealed);
+  }
+
   void revealAll() {
     if (state == null) return;
     final hints = List<HintSlot>.from(state!.hints);
