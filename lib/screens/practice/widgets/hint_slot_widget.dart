@@ -87,51 +87,55 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Header
-          GestureDetector(
-            onTap: _toggleExpand,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-              child: Row(
-                children: [
-                  Text(
-                    widget.hint.category.displayLabel,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
+          Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              onTap: _toggleExpand,
+              borderRadius: BorderRadius.circular(12),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                child: Row(
+                  children: [
+                    Text(
+                      widget.hint.category.displayLabel,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.agedInkBlue,
+                          ),
+                    ),
+                    const Spacer(),
+                    if (widget.hint.isRevealed)
+                      ResultIndicator(isCorrect: widget.hint.isCorrect)
+                    else if (widget.hint.hasSelection) ...[
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: AppColors.mutedGold.withValues(alpha: 0.15),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          'Selected',
+                          style: TextStyle(
+                            color: AppColors.mutedGold,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                    ],
+                    if (!widget.hint.isRevealed)
+                      AnimatedRotation(
+                        turns: _isExpanded ? 0.5 : 0,
+                        duration: const Duration(milliseconds: 200),
+                        child: const Icon(
+                          Icons.expand_more,
                           color: AppColors.agedInkBlue,
                         ),
-                  ),
-                  const Spacer(),
-                  if (widget.hint.isRevealed)
-                    ResultIndicator(isCorrect: widget.hint.isCorrect)
-                  else if (widget.hint.hasSelection) ...[
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: AppColors.mutedGold.withValues(alpha: 0.15),
-                        borderRadius: BorderRadius.circular(6),
                       ),
-                      child: Text(
-                        'Selected',
-                        style: TextStyle(
-                          color: AppColors.mutedGold,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
                   ],
-                  if (!widget.hint.isRevealed)
-                    AnimatedRotation(
-                      turns: _isExpanded ? 0.5 : 0,
-                      duration: const Duration(milliseconds: 200),
-                      child: const Icon(
-                        Icons.expand_more,
-                        color: AppColors.agedInkBlue,
-                      ),
-                    ),
-                ],
+                ),
               ),
             ),
           ),
