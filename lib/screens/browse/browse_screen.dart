@@ -5,6 +5,7 @@ import '../../core/constants.dart';
 import '../../data/card_data.dart';
 import '../../models/card_enums.dart';
 import '../../models/tarot_card.dart';
+import '../../providers/deck_providers.dart';
 import '../../providers/statistics_providers.dart';
 import 'widgets/card_grid_tile.dart';
 
@@ -59,10 +60,11 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen>
   @override
   Widget build(BuildContext context) {
     final statsService = ref.watch(statisticsServiceProvider);
+    final unlockedCards = ref.watch(unlockedCardsProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Browse Deck'),
+        title: const Text('Deck'),
         bottom: TabBar(
           controller: _tabController,
           tabs: _tabs,
@@ -101,10 +103,15 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen>
                   }
                 }
 
+                final isUnlocked = unlockedCards.contains(card.id);
+
                 return CardGridTile(
                   card: card,
                   masteryScore: mastery,
-                  onTap: () => context.go('/browse/${card.id}'),
+                  isUnlocked: isUnlocked,
+                  onTap: isUnlocked
+                      ? () => context.go('/browse/${card.id}')
+                      : null,
                 );
               },
             ),

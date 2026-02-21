@@ -35,11 +35,11 @@ class AppShell extends StatelessWidget {
             label: 'Practice',
           ),
           NavigationDestination(
-            icon: Icon(Icons.grid_view,
+            icon: Icon(Icons.style,
                 color: AppColors.parchment.withValues(alpha: 0.6)),
             selectedIcon:
-                const Icon(Icons.grid_view, color: AppColors.mutedGold),
-            label: 'Browse',
+                const Icon(Icons.style, color: AppColors.mutedGold),
+            label: 'Deck',
           ),
           NavigationDestination(
             icon: Icon(Icons.insights,

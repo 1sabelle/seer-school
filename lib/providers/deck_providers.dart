@@ -68,3 +68,35 @@ final dailyDrawCardProvider = Provider<TarotCardDefinition?>((ref) {
   if (id == null) return null;
   return ref.read(cardServiceProvider).getById(id);
 });
+
+// ---------------------------------------------------------------------------
+// Unlocked cards – persisted set of card IDs the user has drawn
+// ---------------------------------------------------------------------------
+
+class UnlockedCardsNotifier extends Notifier<Set<String>> {
+  static const _key = 'unlocked_card_ids';
+
+  Box get _box => Hive.box('app_settings');
+
+  @override
+  Set<String> build() {
+    final stored = _box.get(_key) as List?;
+    if (stored != null) {
+      return stored.cast<String>().toSet();
+    }
+    return {};
+  }
+
+  void unlock(String cardId) {
+    if (state.contains(cardId)) return;
+    state = {...state, cardId};
+    _box.put(_key, state.toList());
+  }
+
+  bool isUnlocked(String cardId) => state.contains(cardId);
+}
+
+final unlockedCardsProvider =
+    NotifierProvider<UnlockedCardsNotifier, Set<String>>(
+  UnlockedCardsNotifier.new,
+);

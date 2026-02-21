@@ -152,6 +152,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
   void _persistDailyDraw() {
     if (_drawnCard != null) {
       ref.read(dailyDrawProvider.notifier).setDraw(_drawnCard!.id);
+      ref.read(unlockedCardsProvider.notifier).unlock(_drawnCard!.id);
     }
   }
 
