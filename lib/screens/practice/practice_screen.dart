@@ -167,7 +167,10 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
   Widget _buildPracticeScaffold(
       DrawSession session, PracticeQueueState queue) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Practice')),
+      appBar: AppBar(
+        title: const Text('Practice'),
+        scrolledUnderElevation: 0,
+      ),
       body: Column(
         children: [
           // Progress indicator (only when navigating the queue, not deep-link)
@@ -176,6 +179,15 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
           Expanded(
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 350),
+              layoutBuilder: (currentChild, previousChildren) {
+                return Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ...previousChildren,
+                    ?currentChild,
+                  ],
+                );
+              },
               child: _buildPracticeBody(session),
             ),
           ),
@@ -222,101 +234,129 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     );
   }
 
+  void _showCardPreview(DrawSession session) {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'Close card preview',
+      barrierColor: Colors.black.withValues(alpha: 0.75),
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return _CardPreviewOverlay(
+          assetPath: session.card.assetPath,
+          cardName: session.card.name,
+          heroTag: 'card_${session.card.id}',
+        );
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+    );
+  }
+
   Widget _buildPracticeBody(DrawSession session) {
-    return SingleChildScrollView(
+    final screenHeight = MediaQuery.of(context).size.height;
+    final cardMaxHeight = (screenHeight * 0.28).clamp(140.0, 260.0);
+
+    return Column(
       key: ValueKey(session.card.id),
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        children: [
-          // Card image with hero animation
-          Hero(
-            tag: 'card_${session.card.id}',
-            child: CardImageWidget(
-              assetPath: session.card.assetPath,
-              cardName: session.card.name,
+      children: [
+        // Fixed card image and name (compact, tappable)
+        GestureDetector(
+          onTap: () => _showCardPreview(session),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+            child: Column(
+              children: [
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: cardMaxHeight),
+                  child: Hero(
+                    tag: 'card_${session.card.id}',
+                    child: CardImageWidget(
+                      assetPath: session.card.assetPath,
+                      cardName: session.card.name,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  session.card.name,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 2),
+
+                // Keywords (reveal-only for Major Arcana)
+                if (session.card.isMajor && session.allRevealed)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 4),
+                    child: Wrap(
+                      spacing: 6,
+                      children: session.card.keywords
+                          .map((k) => Chip(
+                                label: Text(k),
+                                backgroundColor:
+                                    AppColors.mutedGold.withValues(alpha: 0.15),
+                                side: BorderSide.none,
+                                visualDensity: VisualDensity.compact,
+                                labelStyle: const TextStyle(
+                                  color: AppColors.darkBrown,
+                                  fontSize: 12,
+                                ),
+                              ))
+                          .toList(),
+                    ),
+                  ),
+              ],
             ),
           ),
-          const SizedBox(height: 8),
+        ),
 
-          // Card name
-          Text(
-            session.card.name,
-            style: Theme.of(context).textTheme.headlineMedium,
-            textAlign: TextAlign.center,
+        const SizedBox(height: 12),
+
+        // Scrollable hint slots
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            child: Column(
+              children: [
+                ...List.generate(session.hints.length, (i) {
+                  return HintSlotWidget(
+                    hint: session.hints[i],
+                    index: i,
+                    onSelect: (key) {
+                      HapticFeedback.mediumImpact();
+                      ref
+                          .read(drawSessionProvider.notifier)
+                          .selectAndReveal(i, key);
+                    },
+                  );
+                }),
+
+                const SizedBox(height: 16),
+
+                if (session.allRevealed) ...[
+                  const SizedBox(height: 8),
+                  _buildScoreRow(session),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: _nextCard,
+                      icon: const Icon(Icons.arrow_forward_rounded, size: 20),
+                      label: const Text('Next Card'),
+                    ),
+                  ),
+                ],
+
+                const SizedBox(height: 40),
+              ],
+            ),
           ),
-          const SizedBox(height: 4),
-
-          // Keywords (reveal-only for Major Arcana)
-          if (session.card.isMajor && session.allRevealed)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Wrap(
-                spacing: 8,
-                children: session.card.keywords
-                    .map((k) => Chip(
-                          label: Text(k),
-                          backgroundColor:
-                              AppColors.mutedGold.withValues(alpha: 0.15),
-                          side: BorderSide.none,
-                          labelStyle: const TextStyle(
-                            color: AppColors.darkBrown,
-                            fontSize: 13,
-                          ),
-                        ))
-                    .toList(),
-              ),
-            ),
-
-          const SizedBox(height: 16),
-
-          // Hint slots
-          ...List.generate(session.hints.length, (i) {
-            return HintSlotWidget(
-              hint: session.hints[i],
-              index: i,
-              onSelect: (key) {
-                ref.read(drawSessionProvider.notifier).selectAnswer(i, key);
-              },
-              onReveal: () {
-                HapticFeedback.mediumImpact();
-                ref.read(drawSessionProvider.notifier).revealHint(i);
-              },
-            );
-          }),
-
-          const SizedBox(height: 16),
-
-          // Reveal All button
-          if (!session.allRevealed &&
-              session.hints.any((h) => h.hasSelection && !h.isRevealed))
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  HapticFeedback.mediumImpact();
-                  ref.read(drawSessionProvider.notifier).revealAll();
-                },
-                child: const Text('Reveal All'),
-              ),
-            ),
-
-          if (session.allRevealed) ...[
-            const SizedBox(height: 8),
-            _buildScoreRow(session),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton.icon(
-                onPressed: _nextCard,
-                icon: const Icon(Icons.arrow_forward_rounded, size: 20),
-                label: const Text('Next Card'),
-              ),
-            ),
-          ],
-
-          const SizedBox(height: 40),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -346,6 +386,97 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                 ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Full-screen card preview overlay
+// ---------------------------------------------------------------------------
+
+class _CardPreviewOverlay extends StatelessWidget {
+  final String assetPath;
+  final String cardName;
+  final String heroTag;
+
+  const _CardPreviewOverlay({
+    required this.assetPath,
+    required this.cardName,
+    required this.heroTag,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    final padding = MediaQuery.of(context).padding;
+    final availableHeight =
+        screenSize.height - padding.top - padding.bottom - 120;
+    final availableWidth = (screenSize.width - 80).clamp(0.0, 360.0);
+    const aspectRatio = 384.0 / 240.0;
+
+    var cardWidth = availableWidth;
+    var cardHeight = cardWidth * aspectRatio;
+    if (cardHeight > availableHeight) {
+      cardHeight = availableHeight;
+      cardWidth = cardHeight / aspectRatio;
+    }
+
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pop(),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Hero(
+                tag: heroTag,
+                child: Container(
+                  width: cardWidth,
+                  height: cardHeight,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: AppColors.mutedGold,
+                      width: 2,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.darkBrown.withValues(alpha: 0.4),
+                        blurRadius: 16,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      assetPath,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                cardName,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: AppColors.mutedGold,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.5,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withValues(alpha: 0.5),
+                          blurRadius: 8,
+                        ),
+                      ],
+                    ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
