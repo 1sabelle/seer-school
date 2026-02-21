@@ -194,20 +194,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
               padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Column(
                 children: [
-                  const Spacer(flex: 1),
-
-                  // Title
-                  Text(
-                    'Seer School',
-                    style:
-                        Theme.of(context).textTheme.displayLarge?.copyWith(
-                              fontSize: 40,
-                              letterSpacing: 1.2,
-                            ),
-                    textAlign: TextAlign.center,
-                  ),
-
-                  const Spacer(flex: 1),
+                  const Spacer(flex: 2),
 
                   // Deck card visual
                   _DeckCardWidget(
@@ -334,8 +321,8 @@ class _FullScreenRevealOverlay extends StatelessWidget {
   final VoidCallback onCardTap;
   final VoidCallback onDismiss;
 
-  static const _deckCardWidth = 200.0;
-  static const _deckCardHeight = 320.0;
+  static const _deckCardWidth = 240.0;
+  static const _deckCardHeight = 384.0;
 
   const _FullScreenRevealOverlay({
     required this.expandController,
@@ -576,8 +563,8 @@ class _DeckCardWidget extends StatelessWidget {
   final TarotCardDefinition? dailyCard;
   final VoidCallback onTap;
 
-  static const _cardWidth = 200.0;
-  static const _cardHeight = 320.0;
+  static const _cardWidth = 240.0;
+  static const _cardHeight = 384.0;
 
   // Staggered timing windows for each card peeling from back to front.
   static const _shuffleCards = [
