@@ -46,7 +46,6 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
   }
 
   void _toggleExpand() {
-    if (widget.hint.isRevealed) return;
     setState(() {
       _isExpanded = !_isExpanded;
       if (_isExpanded) {
@@ -103,15 +102,15 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
                     const Spacer(),
                     if (widget.hint.isRevealed)
                       ResultIndicator(isCorrect: widget.hint.isCorrect),
-                    if (!widget.hint.isRevealed)
-                      AnimatedRotation(
-                        turns: _isExpanded ? 0.5 : 0,
-                        duration: const Duration(milliseconds: 200),
-                        child: const Icon(
-                          Icons.expand_more,
-                          color: AppColors.agedInkBlue,
-                        ),
+                    const SizedBox(width: 4),
+                    AnimatedRotation(
+                      turns: _isExpanded ? 0.5 : 0,
+                      duration: const Duration(milliseconds: 200),
+                      child: const Icon(
+                        Icons.expand_more,
+                        color: AppColors.agedInkBlue,
                       ),
+                    ),
                   ],
                 ),
               ),
