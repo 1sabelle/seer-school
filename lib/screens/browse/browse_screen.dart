@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants.dart';
 import '../../data/card_data.dart';
@@ -20,18 +21,18 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
-  final _tabs = const [
-    Tab(text: 'Major'),
-    Tab(text: 'Wands'),
-    Tab(text: 'Cups'),
-    Tab(text: 'Swords'),
-    Tab(text: 'Pentacles'),
+  static const _suitIconSize = 24.0;
+  static const _suitAssets = [
+    'assets/symbols/suit_wands.svg',
+    'assets/symbols/suit_cups.svg',
+    'assets/symbols/suit_swords.svg',
+    'assets/symbols/suit_pentacles.svg',
   ];
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: _tabs.length, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -67,12 +68,55 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen>
         title: const Text('Deck'),
         bottom: TabBar(
           controller: _tabController,
-          tabs: _tabs,
           labelColor: AppColors.deepBurgundy,
           unselectedLabelColor: AppColors.agedInkBlue,
           indicatorColor: AppColors.mutedGold,
           isScrollable: true,
           tabAlignment: TabAlignment.center,
+          tabs: [
+            Tab(
+              child: AnimatedBuilder(
+                animation: _tabController.animation!,
+                builder: (context, child) {
+                  final animValue = _tabController.animation!.value;
+                  final selected = animValue.abs() < 0.5;
+                  final color = selected
+                      ? AppColors.deepBurgundy
+                      : AppColors.agedInkBlue;
+                  return ColorFiltered(
+                    colorFilter:
+                        ColorFilter.mode(color, BlendMode.srcIn),
+                    child: Image.asset(
+                      'assets/symbols/major_laurel.png',
+                      width: _suitIconSize,
+                      height: _suitIconSize,
+                    ),
+                  );
+                },
+              ),
+            ),
+            for (final asset in _suitAssets)
+              Tab(
+                child: AnimatedBuilder(
+                  animation: _tabController.animation!,
+                  builder: (context, child) {
+                    final tabIndex = _suitAssets.indexOf(asset) + 1;
+                    final animValue = _tabController.animation!.value;
+                    final selected = (animValue - tabIndex).abs() < 0.5;
+                    final color = selected
+                        ? AppColors.deepBurgundy
+                        : AppColors.agedInkBlue;
+                    return SvgPicture.asset(
+                      asset,
+                      width: _suitIconSize,
+                      height: _suitIconSize,
+                      colorFilter:
+                          ColorFilter.mode(color, BlendMode.srcIn),
+                    );
+                  },
+                ),
+              ),
+          ],
         ),
       ),
       body: TabBarView(
