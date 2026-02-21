@@ -53,6 +53,8 @@ class DrawSessionNotifier extends Notifier<DrawSession?> {
   }
 
   void drawSpecificCard(String cardId) {
+    // Preserve existing session if it's the same card
+    if (state != null && state!.card.id == cardId) return;
     final card = _cardService.getById(cardId);
     if (card != null) {
       _startSession(card);
