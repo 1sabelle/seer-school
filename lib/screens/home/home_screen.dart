@@ -400,36 +400,39 @@ class _FullScreenRevealOverlay extends StatelessWidget {
                   // Card
                   GestureDetector(
                     onTap: deckState == _DeckState.revealed ? onCardTap : null,
-                    child: Container(
-                      width: cardWidth,
-                      height: cardHeight,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: AppColors.mutedGold,
-                          width: 2,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.mutedGold.withValues(alpha: 0.3 * t),
-                            blurRadius: 32 * t,
-                            spreadRadius: 8 * t,
-                          ),
-                          BoxShadow(
-                            color: AppColors.darkBrown.withValues(alpha: 0.4),
-                            blurRadius: 16,
-                            offset: const Offset(0, 8),
-                          ),
-                        ],
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: cardWidth,
+                        maxHeight: cardHeight,
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: drawnCard != null
-                            ? Image.asset(
-                                drawnCard!.assetPath,
-                                fit: BoxFit.cover,
-                              )
-                            : const SizedBox.shrink(),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: AppColors.mutedGold,
+                            width: 2,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.mutedGold.withValues(alpha: 0.3 * t),
+                              blurRadius: 32 * t,
+                              spreadRadius: 8 * t,
+                            ),
+                            BoxShadow(
+                              color: AppColors.darkBrown.withValues(alpha: 0.4),
+                              blurRadius: 16,
+                              offset: const Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: drawnCard != null
+                              ? Image.asset(
+                                  drawnCard!.assetPath,
+                                )
+                              : const SizedBox.shrink(),
+                        ),
                       ),
                     ),
                   ),
