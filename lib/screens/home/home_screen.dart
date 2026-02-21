@@ -187,12 +187,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
       body: Stack(
         children: [
           // Main content layer
-          SafeArea(
-            child: Padding(
+          Positioned.fill(
+            child: SafeArea(
+              child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Column(
                 children: [
-                  const Spacer(flex: 2),
+                  const Spacer(flex: 1),
 
                   // Title
                   Text(
@@ -283,26 +284,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
                   const Spacer(flex: 1),
 
-                  // Navigation row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _CompactNavButton(
-                        icon: Icons.grid_view_rounded,
-                        label: 'Browse',
-                        onTap: () => context.go('/browse'),
-                      ),
-                      const SizedBox(width: 32),
-                      _CompactNavButton(
-                        icon: Icons.insights_rounded,
-                        label: 'Statistics',
-                        onTap: () => context.go('/statistics'),
-                      ),
-                    ],
-                  ),
-
-                  const Spacer(flex: 1),
-
                   // Attribution footer
                   Text(
                     'Illustrations by Pamela Colman Smith, 1909',
@@ -317,6 +298,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                 ],
               ),
             ),
+          ),
           ),
 
           // Full-screen reveal overlay
@@ -787,39 +769,3 @@ class _DeckCardWidget extends StatelessWidget {
   }
 }
 
-class _CompactNavButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  const _CompactNavButton({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, color: AppColors.agedInkBlue, size: 24),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: AppColors.agedInkBlue,
-                    fontSize: 12,
-                  ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

@@ -100,10 +100,29 @@ class AppTheme {
           borderRadius: BorderRadius.circular(12),
         ),
       ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColors.parchment,
-        selectedItemColor: AppColors.deepBurgundy,
-        unselectedItemColor: AppColors.agedInkBlue,
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.deepBurgundy,
+        height: 72,
+        indicatorColor: AppColors.mutedGold.withValues(alpha: 0.25),
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          final base = GoogleFonts.cormorantGaramond(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+          );
+          if (states.contains(WidgetState.selected)) {
+            return base.copyWith(color: AppColors.mutedGold);
+          }
+          return base.copyWith(
+              color: AppColors.parchment.withValues(alpha: 0.6));
+        }),
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return const IconThemeData(color: AppColors.mutedGold, size: 24);
+          }
+          return IconThemeData(
+              color: AppColors.parchment.withValues(alpha: 0.6), size: 24);
+        }),
       ),
     );
   }

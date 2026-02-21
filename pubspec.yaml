@@ -64,6 +64,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/cards/back.jpg
     - assets/symbols/
     - assets/cards/major/
     - assets/cards/wands/
