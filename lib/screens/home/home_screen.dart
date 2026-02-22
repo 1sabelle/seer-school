@@ -180,8 +180,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    final deck = ref.watch(deckProvider);
-    final remaining = deck.length;
+    ref.watch(deckProvider);
     final dailyCard = ref.watch(dailyDrawCardProvider);
     final hasDailyDraw = dailyCard != null;
 
@@ -195,6 +194,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
               padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Column(
                 children: [
+                  const Spacer(flex: 1),
+
                   const Spacer(flex: 2),
 
                   // Deck card visual
@@ -208,54 +209,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                     onTap: _onDeckTap,
                   ),
 
-                  const SizedBox(height: 12),
-
-                  // Hint text
-                  if (_deckState == _DeckState.idle && !hasDailyDraw)
-                    FadeTransition(
-                      opacity: Tween<double>(begin: 0.3, end: 0.8)
-                          .animate(_hintPulseController),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 4),
-                        child: Text(
-                          'Tap to draw',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(
-                                color: AppColors.agedInkBlue,
-                                letterSpacing: 1,
-                              ),
-                        ),
-                      ),
-                    ),
-                  if (_deckState == _DeckState.idle && hasDailyDraw)
+                  // Card name beneath the card when drawn
+                  if (hasDailyDraw && dailyCard != null)
                     Padding(
-                      padding: const EdgeInsets.only(top: 4),
+                      padding: const EdgeInsets.only(top: 12),
                       child: Text(
-                        "Today's card",
-                        style:
-                            Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  color: AppColors.mutedGold,
-                                  letterSpacing: 1,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                        dailyCard.name,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              color: AppColors.mutedGold,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.5,
+                            ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
 
-                  const SizedBox(height: 8),
-
-                  // Card count & shuffle (hidden when daily draw exists)
-                  if (!hasDailyDraw) ...[
-                    Text(
-                      '$remaining cards',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color:
-                                AppColors.agedInkBlue.withValues(alpha: 0.6),
-                            fontSize: 12,
-                          ),
-                    ),
-                    const SizedBox(height: 4),
+                  // Shuffle directly beneath the card
+                  if (!hasDailyDraw)
                     TextButton.icon(
                       onPressed: _onShuffle,
                       icon: const Icon(Icons.shuffle_rounded, size: 18),
@@ -268,8 +238,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                         ),
                       ),
                     ),
-                  ],
-                  if (hasDailyDraw) const SizedBox(height: 30),
 
                   const Spacer(flex: 1),
 

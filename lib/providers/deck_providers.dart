@@ -17,16 +17,12 @@ class DeckNotifier extends Notifier<List<String>> {
     state = _freshDeck();
   }
 
-  /// Draw the top card. Returns the card definition, removes it from deck.
-  /// Auto-resets deck if empty.
+  /// Draw the top card. The deck always keeps all 78 cards.
   TarotCardDefinition? drawTop() {
     if (state.isEmpty) state = _freshDeck();
     final topId = state.first;
-    state = state.sublist(1);
     return ref.read(cardServiceProvider).getById(topId);
   }
-
-  int get remaining => state.length;
 }
 
 final deckProvider = NotifierProvider<DeckNotifier, List<String>>(

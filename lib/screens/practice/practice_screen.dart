@@ -105,12 +105,11 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32),
-              ElevatedButton.icon(
+              ElevatedButton(
                 onPressed: () {
                   StatefulNavigationShell.of(context).goBranch(0);
                 },
-                icon: const Icon(Icons.style, size: 20),
-                label: const Text('Go to Deck'),
+                child: const Text('Go to Deck'),
               ),
             ],
           ),
