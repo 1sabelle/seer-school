@@ -53,31 +53,49 @@ class HintPickerWidget extends StatelessWidget {
           bgColor = AppColors.mutedGold.withValues(alpha: 0.1);
         }
 
+        final iconColor = isRevealed && isCorrectAnswer
+            ? AppColors.sageGreen
+            : isRevealed && isSelected
+                ? AppColors.dustyRose
+                : isSelected
+                    ? AppColors.mutedGold
+                    : AppColors.agedInkBlue;
+
         return GestureDetector(
           onTap: isRevealed ? null : () => onSelect(option.key),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             width: 72,
-            height: 72,
+            height: 88,
             decoration: BoxDecoration(
               color: bgColor,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: borderColor, width: 2),
             ),
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 6),
             child: option.assetPath != null
-                ? SvgPicture.asset(
-                    option.assetPath!,
-                    colorFilter: ColorFilter.mode(
-                      isRevealed && isCorrectAnswer
-                          ? AppColors.sageGreen
-                          : isRevealed && isSelected
-                              ? AppColors.dustyRose
-                              : isSelected
-                                  ? AppColors.mutedGold
-                                  : AppColors.agedInkBlue,
-                      BlendMode.srcIn,
-                    ),
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: SvgPicture.asset(
+                          option.assetPath!,
+                          colorFilter: ColorFilter.mode(
+                            iconColor,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        option.displayLabel,
+                        style: TextStyle(
+                          color: iconColor,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   )
                 : Center(
                     child: Text(
