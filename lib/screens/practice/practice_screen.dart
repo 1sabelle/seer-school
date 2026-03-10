@@ -343,11 +343,14 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
 
         // Current hint prompt or score
         Expanded(
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            child: session.allRevealed
-                ? _buildCompletedView(session)
-                : _buildHintPrompt(session, hint),
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: session.allRevealed
+                  ? _buildCompletedView(session)
+                  : _buildHintPrompt(session, hint),
+            ),
           ),
         ),
       ],
