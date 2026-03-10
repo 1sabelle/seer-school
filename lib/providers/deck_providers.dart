@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../models/tarot_card.dart';
@@ -76,6 +77,12 @@ class UnlockedCardsNotifier extends Notifier<Set<String>> {
 
   @override
   Set<String> build() {
+    // In debug mode (local development), unlock all cards automatically.
+    if (kDebugMode) {
+      final allIds =
+          ref.read(cardServiceProvider).cards.map((c) => c.id).toSet();
+      return allIds;
+    }
     final stored = _box.get(_key) as List?;
     if (stored != null) {
       return stored.cast<String>().toSet();
