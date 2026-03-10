@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants.dart';
+import '../../core/widgets/card_preview_overlay.dart';
 import '../../models/hint_category.dart';
+import '../../providers/guide_providers.dart';
 import '../../providers/practice_providers.dart';
 import 'widgets/card_image_widget.dart';
 import 'widgets/free_text_hint_widget.dart';
@@ -283,22 +285,11 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
   }
 
   void _showCardPreview(DrawSession session) {
-    showGeneralDialog(
-      context: context,
-      barrierDismissible: true,
-      barrierLabel: 'Close card preview',
-      barrierColor: Colors.black.withValues(alpha: 0.75),
-      transitionDuration: const Duration(milliseconds: 300),
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return _CardPreviewOverlay(
-          assetPath: session.card.assetPath,
-          cardName: session.card.name,
-          heroTag: 'card_${session.card.id}',
-        );
-      },
-      transitionBuilder: (context, animation, secondaryAnimation, child) {
-        return FadeTransition(opacity: animation, child: child);
-      },
+    showCardPreview(
+      context,
+      assetPath: session.card.assetPath,
+      cardName: session.card.name,
+      heroTag: 'card_${session.card.id}',
     );
   }
 
@@ -672,6 +663,18 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
           }),
 
           const SizedBox(height: 16),
+          if (ref.watch(cardGuideProvider(session.card.id)) != null) ...[
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: () =>
+                    context.go('/browse/${session.card.id}/guide'),
+                icon: const Icon(Icons.menu_book_rounded, size: 20),
+                label: const Text('Read Full Guide'),
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
@@ -717,93 +720,3 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Full-screen card preview overlay
-// ---------------------------------------------------------------------------
-
-class _CardPreviewOverlay extends StatelessWidget {
-  final String assetPath;
-  final String cardName;
-  final String heroTag;
-
-  const _CardPreviewOverlay({
-    required this.assetPath,
-    required this.cardName,
-    required this.heroTag,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final padding = MediaQuery.of(context).padding;
-    final availableHeight =
-        screenSize.height - padding.top - padding.bottom - 120;
-    final availableWidth = (screenSize.width - 80).clamp(0.0, 360.0);
-    const aspectRatio = 384.0 / 240.0;
-
-    var cardWidth = availableWidth;
-    var cardHeight = cardWidth * aspectRatio;
-    if (cardHeight > availableHeight) {
-      cardHeight = availableHeight;
-      cardWidth = cardHeight / aspectRatio;
-    }
-
-    return GestureDetector(
-      onTap: () => Navigator.of(context).pop(),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Hero(
-                tag: heroTag,
-                child: Container(
-                  width: cardWidth,
-                  height: cardHeight,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: AppColors.mutedGold,
-                      width: 2,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.darkBrown.withValues(alpha: 0.4),
-                        blurRadius: 16,
-                        offset: const Offset(0, 8),
-                      ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      assetPath,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                cardName,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: AppColors.mutedGold,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.5,
-                      shadows: [
-                        Shadow(
-                          color: Colors.black.withValues(alpha: 0.5),
-                          blurRadius: 8,
-                        ),
-                      ],
-                    ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}

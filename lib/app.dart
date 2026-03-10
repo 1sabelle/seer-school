@@ -6,6 +6,7 @@ import 'screens/home/home_screen.dart';
 import 'screens/practice/practice_screen.dart';
 import 'screens/browse/browse_screen.dart';
 import 'screens/browse/card_detail_screen.dart';
+import 'screens/browse/card_guide_screen.dart';
 import 'screens/statistics/statistics_screen.dart';
 import 'screens/onboarding/onboarding_screen.dart';
 import 'screens/shell/app_shell.dart';
@@ -80,6 +81,15 @@ final GoRouter _router = GoRouter(
                     final cardId = state.pathParameters['cardId']!;
                     return CardDetailScreen(cardId: cardId);
                   },
+                  routes: [
+                    GoRoute(
+                      path: 'guide',
+                      builder: (context, state) {
+                        final cardId = state.pathParameters['cardId']!;
+                        return CardGuideScreen(cardId: cardId);
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),

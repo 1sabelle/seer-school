@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants.dart';
+import '../../core/widgets/card_preview_overlay.dart';
 import '../../models/hint_category.dart';
 import '../../providers/card_providers.dart';
 import '../../providers/deck_providers.dart';
+import '../../providers/guide_providers.dart';
 import '../../providers/statistics_providers.dart';
 import '../practice/widgets/card_image_widget.dart';
 
@@ -38,9 +40,16 @@ class CardDetailScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (isUnlocked)
-              CardImageWidget(
-                assetPath: card.assetPath,
-                cardName: card.name,
+              GestureDetector(
+                onTap: () => showCardPreview(
+                  context,
+                  assetPath: card.assetPath,
+                  cardName: card.name,
+                ),
+                child: CardImageWidget(
+                  assetPath: card.assetPath,
+                  cardName: card.name,
+                ),
               )
             else
               CardImageWidget(
@@ -132,6 +141,19 @@ class CardDetailScreen extends ConsumerWidget {
               ],
 
               const SizedBox(height: 24),
+
+              // Card guide button
+              if (ref.watch(cardGuideProvider(cardId)) != null) ...[
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton.icon(
+                    onPressed: () => context.go('/browse/$cardId/guide'),
+                    icon: const Icon(Icons.menu_book_rounded, size: 20),
+                    label: const Text('Read Full Guide'),
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
 
               // Practice this card button
               SizedBox(
