@@ -56,3 +56,10 @@ final List<HintOption> courtPersonaOptions = CourtPersona.values
           displayLabel: p.displayLabel,
         ))
     .toList();
+
+final List<HintOption> journeyStageOptions = JourneyStage.values
+    .map((s) => HintOption(
+          key: s.name,
+          displayLabel: s.displayLabel,
+        ))
+    .toList();

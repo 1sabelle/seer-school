@@ -6,7 +6,9 @@ import '../../core/constants.dart';
 import '../../models/hint_category.dart';
 import '../../providers/practice_providers.dart';
 import 'widgets/card_image_widget.dart';
+import 'widgets/free_text_hint_widget.dart';
 import 'widgets/hint_picker_widget.dart';
+import 'widgets/multi_select_hint_widget.dart';
 
 class PracticeScreen extends ConsumerStatefulWidget {
   final String? cardId;
@@ -23,6 +25,9 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
 
   /// Track the current card to detect session changes.
   String? _lastCardId;
+
+  /// Tracks which hint indices the user has peeked at the answer for.
+  final Set<int> _peekedHints = {};
 
   @override
   void initState() {
@@ -112,6 +117,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     if (session.card.id != _lastCardId) {
       _lastCardId = session.card.id;
       _currentHintIndex = 0;
+      _peekedHints.clear();
     }
 
     return _buildPracticeScaffold(session, queue);
@@ -357,6 +363,30 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     );
   }
 
+  String _getAnswerSummary(HintSlot hint) {
+    final label = hint.category.displayLabel;
+    switch (hint.hintType) {
+      case HintType.singleSelect:
+        if (hint.selectedAnswer == null) return '$label: —';
+        final match = hint.options
+            .where((o) => o.key == hint.selectedAnswer)
+            .toList();
+        final picked = match.isNotEmpty ? match.first.displayLabel : hint.selectedAnswer!;
+        return '$label: $picked';
+      case HintType.freeText:
+        return '$label: ${hint.selectedAnswer ?? '—'}';
+      case HintType.multiSelect:
+        if (hint.selectedAnswers.isEmpty) return '$label: —';
+        final labels = hint.selectedAnswers
+            .map((k) {
+              final match = hint.options.where((o) => o.key == k).toList();
+              return match.isNotEmpty ? match.first.displayLabel : k;
+            })
+            .join(', ');
+        return '$label: $labels';
+    }
+  }
+
   Widget _buildResultCircles(DrawSession session) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -373,7 +403,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                 ? fillColor
                 : AppColors.warmBeige;
 
-        return AnimatedContainer(
+        final circle = AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           margin: const EdgeInsets.symmetric(horizontal: 5),
           width: 14,
@@ -393,8 +423,99 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                 )
               : null,
         );
+
+        if (!isFilled) return circle;
+
+        return Tooltip(
+          message: _getAnswerSummary(h),
+          preferBelow: true,
+          triggerMode: TooltipTriggerMode.tap,
+          textStyle: const TextStyle(
+            color: AppColors.parchment,
+            fontSize: 12,
+          ),
+          decoration: BoxDecoration(
+            color: AppColors.darkBrown.withValues(alpha: 0.9),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: circle,
+        );
       }),
     );
+  }
+
+  String _promptText(HintSlot hint) {
+    switch (hint.category) {
+      case HintCategory.arcanaNumber:
+        return 'What number is this card?';
+      case HintCategory.journeyStage:
+        return 'Which stage of the Fool\'s Journey?';
+      case HintCategory.keywords:
+        return 'Select all keywords for this card';
+      default:
+        return 'What is the ${hint.category.displayLabel.toLowerCase()}?';
+    }
+  }
+
+  Widget _buildHintPicker(DrawSession session, HintSlot hint) {
+    switch (hint.hintType) {
+      case HintType.freeText:
+        return FreeTextHintWidget(
+          isRevealed: hint.isRevealed,
+          isCorrect: hint.isCorrect,
+          correctDisplay: hint.correctAnswer,
+          onSubmit: (answer) {
+            HapticFeedback.mediumImpact();
+            ref
+                .read(drawSessionProvider.notifier)
+                .submitFreeText(_currentHintIndex, answer);
+            Future.delayed(const Duration(milliseconds: 400), () {
+              if (!mounted) return;
+              setState(() {
+                if (_currentHintIndex < session.hints.length - 1) {
+                  _currentHintIndex++;
+                }
+              });
+            });
+          },
+        );
+      case HintType.multiSelect:
+        return MultiSelectHintWidget(
+          options: hint.options,
+          selectedKeys: hint.selectedAnswers,
+          correctKeys: hint.correctAnswers ?? const {},
+          isRevealed: hint.isRevealed,
+          onToggle: (key) {
+            HapticFeedback.selectionClick();
+            ref
+                .read(drawSessionProvider.notifier)
+                .toggleMultiSelect(_currentHintIndex, key);
+          },
+          onConfirm: () {
+            HapticFeedback.mediumImpact();
+            ref
+                .read(drawSessionProvider.notifier)
+                .confirmMultiSelect(_currentHintIndex);
+            Future.delayed(const Duration(milliseconds: 400), () {
+              if (!mounted) return;
+              setState(() {
+                if (_currentHintIndex < session.hints.length - 1) {
+                  _currentHintIndex++;
+                }
+              });
+            });
+          },
+        );
+      case HintType.singleSelect:
+        return HintPickerWidget(
+          options: hint.options,
+          selectedKey: hint.selectedAnswer,
+          isRevealed: hint.isRevealed,
+          correctAnswer: hint.correctAnswer,
+          onSelect: (key) =>
+              _onAnswerSelected(session, _currentHintIndex, key),
+        );
+    }
   }
 
   Widget _buildHintPrompt(DrawSession session, HintSlot hint) {
@@ -403,9 +524,8 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
       padding: EdgeInsets.fromLTRB(20, 0, 20, MediaQuery.of(context).padding.bottom + 96),
       child: Column(
         children: [
-          // Category label as prompt
           Text(
-            'What is the ${hint.category.displayLabel.toLowerCase()}?',
+            _promptText(hint),
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.w600,
                   color: AppColors.agedInkBlue,
@@ -414,18 +534,62 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 24),
-
-          // Picker — stays visible in revealed state (green/red highlights)
-          // during the feedback pause before auto-advancing
-          HintPickerWidget(
-            options: hint.options,
-            selectedKey: hint.selectedAnswer,
-            isRevealed: hint.isRevealed,
-            correctAnswer: hint.correctAnswer,
-            onSelect: (key) =>
-                _onAnswerSelected(session, _currentHintIndex, key),
-          ),
+          _buildHintPicker(session, hint),
         ],
+      ),
+    );
+  }
+
+  void _retryHint(int hintIndex) {
+    HapticFeedback.mediumImpact();
+    ref.read(drawSessionProvider.notifier).resetHint(hintIndex);
+    setState(() {
+      _currentHintIndex = hintIndex;
+    });
+  }
+
+  String _getCorrectDisplay(HintSlot hint) {
+    switch (hint.hintType) {
+      case HintType.singleSelect:
+        final match = hint.options
+            .where((o) => o.key == hint.correctAnswer)
+            .toList();
+        return match.isNotEmpty ? match.first.displayLabel : hint.correctAnswer;
+      case HintType.freeText:
+        return hint.correctAnswer;
+      case HintType.multiSelect:
+        if (hint.correctAnswers == null) return hint.correctAnswer;
+        return hint.correctAnswers!
+            .map((k) {
+              final match = hint.options.where((o) => o.key == k).toList();
+              return match.isNotEmpty ? match.first.displayLabel : k;
+            })
+            .join(', ');
+    }
+  }
+
+  Widget _buildSummaryAction({
+    required String label,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: color.withValues(alpha: 0.3)),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: color,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ),
     );
   }
@@ -435,30 +599,79 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
       padding: EdgeInsets.fromLTRB(20, 0, 20, MediaQuery.of(context).padding.bottom + 96),
       child: Column(
         children: [
-          // Keywords (reveal-only for Major Arcana)
-          if (session.card.isMajor)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: Wrap(
-                spacing: 6,
-                children: session.card.keywords
-                    .map((k) => Chip(
-                          label: Text(k),
-                          backgroundColor:
-                              AppColors.mutedGold.withValues(alpha: 0.15),
-                          side: BorderSide.none,
-                          visualDensity: VisualDensity.compact,
-                          labelStyle: const TextStyle(
-                            color: AppColors.darkBrown,
-                            fontSize: 12,
-                          ),
-                        ))
-                    .toList(),
-              ),
-            ),
-
           _buildScoreRow(session),
-          const SizedBox(height: 24),
+          const SizedBox(height: 20),
+
+          // Answer summary
+          ...List.generate(session.hints.length, (i) {
+            final hint = session.hints[i];
+            final isCorrect = hint.isCorrect;
+            final hasPeeked = _peekedHints.contains(i);
+            final color = isCorrect ? AppColors.sageGreen : AppColors.dustyRose;
+
+            return Container(
+              margin: const EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.06),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: color.withValues(alpha: 0.3),
+                  width: 1,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    isCorrect ? Icons.check_rounded : Icons.close_rounded,
+                    color: color,
+                    size: 18,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          hint.category.displayLabel,
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: AppColors.agedInkBlue,
+                                fontWeight: FontWeight.w600,
+                              ),
+                        ),
+                        if (!isCorrect && hasPeeked)
+                          Text(
+                            _getCorrectDisplay(hint),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(
+                                  color: AppColors.sageGreen,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  if (!isCorrect && !hasPeeked) ...[
+                    _buildSummaryAction(
+                      label: 'Reveal',
+                      color: AppColors.mutedGold,
+                      onTap: () => setState(() => _peekedHints.add(i)),
+                    ),
+                    const SizedBox(width: 6),
+                    _buildSummaryAction(
+                      label: 'Retry',
+                      color: AppColors.deepBurgundy,
+                      onTap: () => _retryHint(i),
+                    ),
+                  ],
+                ],
+              ),
+            );
+          }),
+
+          const SizedBox(height: 16),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(

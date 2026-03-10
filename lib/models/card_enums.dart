@@ -138,3 +138,26 @@ enum CourtPersona {
     return name[0].toUpperCase() + name.substring(1);
   }
 }
+
+enum JourneyStage {
+  conscious,
+  subconscious,
+  superconscious;
+
+  String get displayLabel {
+    switch (this) {
+      case JourneyStage.conscious:
+        return 'The Conscious — worldly lessons and external figures';
+      case JourneyStage.subconscious:
+        return 'The Subconscious — inner growth and self-reflection';
+      case JourneyStage.superconscious:
+        return 'The Superconscious — spiritual transformation and transcendence';
+    }
+  }
+
+  static JourneyStage fromMajorIndex(int index) {
+    if (index <= 7) return JourneyStage.conscious;
+    if (index <= 14) return JourneyStage.subconscious;
+    return JourneyStage.superconscious;
+  }
+}

@@ -113,6 +113,74 @@ class DrawSessionNotifier extends Notifier<DrawSession?> {
     state = state!.copyWith(hints: hints, allRevealed: allRevealed);
   }
 
+  /// Toggle a multi-select option (for keywords hint).
+  void toggleMultiSelect(int hintIndex, String key) {
+    if (state == null) return;
+    final hints = List<HintSlot>.from(state!.hints);
+    if (hints[hintIndex].isRevealed) return;
+
+    final current = Set<String>.from(hints[hintIndex].selectedAnswers);
+    if (current.contains(key)) {
+      current.remove(key);
+    } else {
+      current.add(key);
+    }
+    hints[hintIndex] = hints[hintIndex].copyWith(selectedAnswers: current);
+    state = state!.copyWith(hints: hints);
+  }
+
+  /// Confirm and reveal a multi-select hint.
+  void confirmMultiSelect(int hintIndex) {
+    if (state == null) return;
+    final hints = List<HintSlot>.from(state!.hints);
+    if (hints[hintIndex].isRevealed) return;
+
+    hints[hintIndex] = hints[hintIndex].copyWith(isRevealed: true);
+
+    _statisticsService.recordAttempt(
+      state!.card.id,
+      hints[hintIndex].category,
+      hints[hintIndex].isCorrect,
+    );
+
+    final allRevealed = hints.every((h) => h.isRevealed);
+    state = state!.copyWith(hints: hints, allRevealed: allRevealed);
+  }
+
+  /// Reset a hint for retry (clears selection, un-reveals).
+  void resetHint(int hintIndex) {
+    if (state == null) return;
+    final hints = List<HintSlot>.from(state!.hints);
+    hints[hintIndex] = HintSlot(
+      category: hints[hintIndex].category,
+      hintType: hints[hintIndex].hintType,
+      correctAnswer: hints[hintIndex].correctAnswer,
+      options: hints[hintIndex].options,
+      acceptedAnswers: hints[hintIndex].acceptedAnswers,
+      correctAnswers: hints[hintIndex].correctAnswers,
+    );
+    state = state!.copyWith(hints: hints, allRevealed: false);
+  }
+
+  /// Submit a free text answer and reveal.
+  void submitFreeText(int hintIndex, String answer) {
+    if (state == null) return;
+    final hints = List<HintSlot>.from(state!.hints);
+    if (hints[hintIndex].isRevealed) return;
+
+    hints[hintIndex] = hints[hintIndex]
+        .copyWith(selectedAnswer: answer, isRevealed: true);
+
+    _statisticsService.recordAttempt(
+      state!.card.id,
+      hints[hintIndex].category,
+      hints[hintIndex].isCorrect,
+    );
+
+    final allRevealed = hints.every((h) => h.isRevealed);
+    state = state!.copyWith(hints: hints, allRevealed: allRevealed);
+  }
+
   void revealAll() {
     if (state == null) return;
     final hints = List<HintSlot>.from(state!.hints);
