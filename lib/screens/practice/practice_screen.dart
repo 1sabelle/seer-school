@@ -397,7 +397,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
   Widget _buildHintPrompt(DrawSession session, HintSlot hint) {
     return SingleChildScrollView(
       key: ValueKey('hint_$_currentHintIndex'),
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      padding: EdgeInsets.fromLTRB(20, 0, 20, MediaQuery.of(context).padding.bottom + 96),
       child: Column(
         children: [
           // Category label as prompt
@@ -429,7 +429,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
 
   Widget _buildCompletedView(DrawSession session) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      padding: EdgeInsets.fromLTRB(20, 0, 20, MediaQuery.of(context).padding.bottom + 96),
       child: Column(
         children: [
           // Keywords (reveal-only for Major Arcana)
