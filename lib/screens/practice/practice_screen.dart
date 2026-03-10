@@ -3,9 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants.dart';
+import '../../models/hint_category.dart';
 import '../../providers/practice_providers.dart';
 import 'widgets/card_image_widget.dart';
-import 'widgets/hint_slot_widget.dart';
+import 'widgets/hint_picker_widget.dart';
 
 class PracticeScreen extends ConsumerStatefulWidget {
   final String? cardId;
@@ -17,6 +18,12 @@ class PracticeScreen extends ConsumerStatefulWidget {
 }
 
 class _PracticeScreenState extends ConsumerState<PracticeScreen> {
+  /// Index of the hint currently being shown.
+  int _currentHintIndex = 0;
+
+  /// Track the current card to detect session changes.
+  String? _lastCardId;
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +42,20 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     });
   }
 
+  @override
+  void didUpdateWidget(covariant PracticeScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.cardId != oldWidget.cardId) {
+      _resetHintIndex();
+    }
+  }
+
+  void _resetHintIndex() {
+    setState(() {
+      _currentHintIndex = 0;
+    });
+  }
+
   void _nextCard() {
     final session = ref.read(drawSessionProvider);
     if (session != null) {
@@ -45,7 +66,23 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     final queue = ref.read(practiceQueueProvider);
     if (queue.status == PracticeQueueStatus.active) {
       ref.read(practiceQueueProvider.notifier).startNext();
+      _resetHintIndex();
     }
+  }
+
+  void _onAnswerSelected(DrawSession session, int hintIndex, String key) {
+    HapticFeedback.mediumImpact();
+    ref.read(drawSessionProvider.notifier).selectAndReveal(hintIndex, key);
+
+    // Keep the revealed picker visible briefly (green/red highlight), then advance
+    Future.delayed(const Duration(milliseconds: 400), () {
+      if (!mounted) return;
+      setState(() {
+        if (_currentHintIndex < session.hints.length - 1) {
+          _currentHintIndex++;
+        }
+      });
+    });
   }
 
   @override
@@ -69,6 +106,12 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
         appBar: AppBar(title: const Text('Practice')),
         body: const Center(child: CircularProgressIndicator()),
       );
+    }
+
+    // Reset hint index when the card changes (e.g. queue navigation)
+    if (session.card.id != _lastCardId) {
+      _lastCardId = session.card.id;
+      _currentHintIndex = 0;
     }
 
     return _buildPracticeScaffold(session, queue);
@@ -255,12 +298,13 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
 
   Widget _buildPracticeBody(DrawSession session) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final cardMaxHeight = (screenHeight * 0.28).clamp(140.0, 260.0);
+    final cardMaxHeight = (screenHeight * 0.22).clamp(120.0, 200.0);
+    final hint = session.hints[_currentHintIndex];
 
     return Column(
       key: ValueKey(session.card.id),
       children: [
-        // Fixed card image and name (compact, tappable)
+        // Card image and name (compact, tappable)
         GestureDetector(
           onTap: () => _showCardPreview(session),
           child: Padding(
@@ -285,77 +329,144 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                       ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 2),
-
-                // Keywords (reveal-only for Major Arcana)
-                if (session.card.isMajor && session.allRevealed)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 4),
-                    child: Wrap(
-                      spacing: 6,
-                      children: session.card.keywords
-                          .map((k) => Chip(
-                                label: Text(k),
-                                backgroundColor:
-                                    AppColors.mutedGold.withValues(alpha: 0.15),
-                                side: BorderSide.none,
-                                visualDensity: VisualDensity.compact,
-                                labelStyle: const TextStyle(
-                                  color: AppColors.darkBrown,
-                                  fontSize: 12,
-                                ),
-                              ))
-                          .toList(),
-                    ),
-                  ),
               ],
             ),
           ),
         ),
 
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
 
-        // Scrollable hint slots
+        // Step dots
+        _buildResultCircles(session),
+
+        const SizedBox(height: 20),
+
+        // Current hint prompt or score
         Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-            child: Column(
-              children: [
-                ...List.generate(session.hints.length, (i) {
-                  return HintSlotWidget(
-                    hint: session.hints[i],
-                    index: i,
-                    onSelect: (key) {
-                      HapticFeedback.mediumImpact();
-                      ref
-                          .read(drawSessionProvider.notifier)
-                          .selectAndReveal(i, key);
-                    },
-                  );
-                }),
-
-                const SizedBox(height: 16),
-
-                if (session.allRevealed) ...[
-                  const SizedBox(height: 8),
-                  _buildScoreRow(session),
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                      onPressed: _nextCard,
-                      icon: const Icon(Icons.arrow_forward_rounded, size: 20),
-                      label: const Text('Next Card'),
-                    ),
-                  ),
-                ],
-
-                const SizedBox(height: 40),
-              ],
-            ),
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            child: session.allRevealed
+                ? _buildCompletedView(session)
+                : _buildHintPrompt(session, hint),
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildResultCircles(DrawSession session) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(session.hints.length, (i) {
+        final h = session.hints[i];
+        final isCurrent = i == _currentHintIndex && !session.allRevealed;
+
+        final bool isFilled = h.isRevealed;
+        final Color fillColor =
+            h.isRevealed ? (h.isCorrect ? AppColors.sageGreen : AppColors.dustyRose) : Colors.transparent;
+        final Color borderColor = isCurrent
+            ? AppColors.mutedGold
+            : isFilled
+                ? fillColor
+                : AppColors.warmBeige;
+
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          margin: const EdgeInsets.symmetric(horizontal: 5),
+          width: 14,
+          height: 14,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: fillColor,
+            border: Border.all(color: borderColor, width: 2),
+          ),
+          child: isFilled
+              ? Center(
+                  child: Icon(
+                    h.isCorrect ? Icons.check_rounded : Icons.close_rounded,
+                    size: 9,
+                    color: Colors.white,
+                  ),
+                )
+              : null,
+        );
+      }),
+    );
+  }
+
+  Widget _buildHintPrompt(DrawSession session, HintSlot hint) {
+    return SingleChildScrollView(
+      key: ValueKey('hint_$_currentHintIndex'),
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      child: Column(
+        children: [
+          // Category label as prompt
+          Text(
+            'What is the ${hint.category.displayLabel.toLowerCase()}?',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.agedInkBlue,
+                  letterSpacing: 0.5,
+                ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 24),
+
+          // Picker — stays visible in revealed state (green/red highlights)
+          // during the feedback pause before auto-advancing
+          HintPickerWidget(
+            options: hint.options,
+            selectedKey: hint.selectedAnswer,
+            isRevealed: hint.isRevealed,
+            correctAnswer: hint.correctAnswer,
+            onSelect: (key) =>
+                _onAnswerSelected(session, _currentHintIndex, key),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCompletedView(DrawSession session) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      child: Column(
+        children: [
+          // Keywords (reveal-only for Major Arcana)
+          if (session.card.isMajor)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Wrap(
+                spacing: 6,
+                children: session.card.keywords
+                    .map((k) => Chip(
+                          label: Text(k),
+                          backgroundColor:
+                              AppColors.mutedGold.withValues(alpha: 0.15),
+                          side: BorderSide.none,
+                          visualDensity: VisualDensity.compact,
+                          labelStyle: const TextStyle(
+                            color: AppColors.darkBrown,
+                            fontSize: 12,
+                          ),
+                        ))
+                    .toList(),
+              ),
+            ),
+
+          _buildScoreRow(session),
+          const SizedBox(height: 24),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: _nextCard,
+              icon: const Icon(Icons.arrow_forward_rounded, size: 20),
+              label: const Text('Next Card'),
+            ),
+          ),
+          const SizedBox(height: 40),
+        ],
+      ),
     );
   }
 
