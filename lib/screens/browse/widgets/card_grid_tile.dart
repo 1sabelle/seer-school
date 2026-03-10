@@ -123,7 +123,7 @@ class _CardGridTileState extends State<CardGridTile>
             ),
             const SizedBox(height: 4),
             Text(
-              widget.isUnlocked ? widget.card.name : '????',
+              widget.card.name,
               textAlign: TextAlign.center,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,

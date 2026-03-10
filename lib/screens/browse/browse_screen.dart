@@ -20,6 +20,10 @@ class BrowseScreen extends ConsumerStatefulWidget {
 class _BrowseScreenState extends ConsumerState<BrowseScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  final _searchController = TextEditingController();
+  final _searchFocusNode = FocusNode();
+  bool _isSearching = false;
+  String _searchQuery = '';
 
   static const _suitIconSize = 24.0;
   static const _tabIconOpacity = 0.55;
@@ -39,7 +43,28 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen>
   @override
   void dispose() {
     _tabController.dispose();
+    _searchController.dispose();
+    _searchFocusNode.dispose();
     super.dispose();
+  }
+
+  void _openSearch() {
+    setState(() => _isSearching = true);
+    _searchFocusNode.requestFocus();
+  }
+
+  void _closeSearch() {
+    setState(() {
+      _isSearching = false;
+      _searchQuery = '';
+      _searchController.clear();
+    });
+    _searchFocusNode.unfocus();
+  }
+
+  List<TarotCardDefinition> _getFilteredCards() {
+    final query = _searchQuery.toLowerCase();
+    return allCards.where((c) => c.name.toLowerCase().contains(query)).toList();
   }
 
   List<TarotCardDefinition> _getCardsForTab(int index) {
@@ -66,8 +91,41 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Deck'),
-        bottom: TabBar(
+        title: _isSearching
+            ? TextField(
+                controller: _searchController,
+                focusNode: _searchFocusNode,
+                onChanged: (value) => setState(() => _searchQuery = value),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: AppColors.darkBrown,
+                    ),
+                decoration: InputDecoration(
+                  hintText: 'Search cards...',
+                  hintStyle: TextStyle(
+                    color: AppColors.agedInkBlue.withValues(alpha: 0.5),
+                  ),
+                  border: InputBorder.none,
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.close, size: 20),
+                    color: AppColors.agedInkBlue,
+                    onPressed: _closeSearch,
+                  ),
+                ),
+                cursorColor: AppColors.deepBurgundy,
+              )
+            : const Text('Deck'),
+        actions: _isSearching
+            ? null
+            : [
+                IconButton(
+                  icon: const Icon(Icons.search, size: 22),
+                  color: AppColors.agedInkBlue,
+                  onPressed: _openSearch,
+                ),
+              ],
+        bottom: _isSearching
+            ? null
+            : TabBar(
           controller: _tabController,
           labelColor: AppColors.deepBurgundy,
           unselectedLabelColor: AppColors.agedInkBlue,
@@ -141,48 +199,84 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen>
           ],
         ),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: List.generate(5, (tabIndex) {
-          final cards = _getCardsForTab(tabIndex);
-          return Padding(
-            padding: const EdgeInsets.all(12),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                childAspectRatio: 0.55,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-              ),
-              itemCount: cards.length,
-              itemBuilder: (context, index) {
-                final card = cards[index];
-                final cardStats = statsService.getStatsForCard(card.id);
-                double? mastery;
-                if (cardStats.isNotEmpty) {
-                  final total =
-                      cardStats.fold(0, (sum, s) => sum + s.totalAttempts);
-                  if (total > 0) {
-                    final correct =
-                        cardStats.fold(0, (sum, s) => sum + s.correctCount);
-                    mastery = correct / total;
-                  }
-                }
-
-                final isUnlocked = unlockedCards.contains(card.id);
-
-                return CardGridTile(
-                  card: card,
-                  masteryScore: mastery,
-                  isUnlocked: isUnlocked,
-                  onTap: isUnlocked
-                      ? () => context.go('/browse/${card.id}')
-                      : null,
-                );
-              },
+      body: _isSearching
+          ? _buildSearchResults(statsService, unlockedCards)
+          : TabBarView(
+              controller: _tabController,
+              children: List.generate(5, (tabIndex) {
+                final cards = _getCardsForTab(tabIndex);
+                return _buildCardGrid(cards, statsService, unlockedCards);
+              }),
             ),
+    );
+  }
+
+  Widget _buildSearchResults(dynamic statsService, Set<String> unlockedCards) {
+    final cards = _getFilteredCards();
+    if (cards.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.search_off,
+              size: 48,
+              color: AppColors.agedInkBlue.withValues(alpha: 0.3),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              'No cards found',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: AppColors.agedInkBlue.withValues(alpha: 0.6),
+                  ),
+            ),
+          ],
+        ),
+      );
+    }
+    return _buildCardGrid(cards, statsService, unlockedCards);
+  }
+
+  Widget _buildCardGrid(
+    List<TarotCardDefinition> cards,
+    dynamic statsService,
+    Set<String> unlockedCards,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 0.55,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: cards.length,
+        itemBuilder: (context, index) {
+          final card = cards[index];
+          final cardStats = statsService.getStatsForCard(card.id);
+          double? mastery;
+          if (cardStats.isNotEmpty) {
+            final total =
+                cardStats.fold(0, (sum, s) => sum + s.totalAttempts);
+            if (total > 0) {
+              final correct =
+                  cardStats.fold(0, (sum, s) => sum + s.correctCount);
+              mastery = correct / total;
+            }
+          }
+
+          final isUnlocked = unlockedCards.contains(card.id);
+
+          return CardGridTile(
+            card: card,
+            masteryScore: mastery,
+            isUnlocked: isUnlocked,
+            onTap: isUnlocked
+                ? () => context.go('/browse/${card.id}')
+                : null,
           );
-        }),
+        },
       ),
     );
   }
