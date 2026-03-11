@@ -141,7 +141,7 @@ const majorArcanaGuides = <CardGuide>[
     elementMeaning:
         'Water is the element of emotion, intuition, and the unseen '
         'currents beneath the surface. Here it represents the deep well '
-        'of inner knowing that The High Priestess invites you to draw from.',
+        'of inner knowing that The High Priestess guards.',
     uprightMeaning:
         'Secrets, mystery, the future as yet unrevealed; the woman who '
         'interests the Querent, if male; the Querent herself, if female; '
@@ -937,7 +937,7 @@ const majorArcanaGuides = <CardGuide>[
         'may be compared with that which passes under the name of '
         'Temperance.',
     elementMeaning:
-        'Fire here is the transformative fire of rebirth — the phoenix '
+        'Fire here is the purifying fire of rebirth — the phoenix '
         'flame that calls the dead to rise. Judgement\'s fire purifies '
         'and renews, burning away the last vestiges of the old self.',
     uprightMeaning:

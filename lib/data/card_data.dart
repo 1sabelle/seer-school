@@ -141,7 +141,7 @@ final List<TarotCardDefinition> allCards = [
     arcana: Arcana.major,
     majorArcanaIndex: 13,
     element: Element.water,
-    theme: 'Endings and profound transformation',
+    theme: 'Endings and deep transformation',
     keywords: ['transformation', 'endings', 'transition', 'release'],
     assetPath: 'assets/cards/major/13_death.jpg',
   ),

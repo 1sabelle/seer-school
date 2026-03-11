@@ -80,7 +80,7 @@ const pentaclesGuides = <CardGuide>[
         'therein has received his reward and is now at work in earnest.',
     elementMeaning:
         'Earth takes the form of stone, mortar, and the physical act of '
-        'building. Here the element speaks to craftsmanship — the patient '
+        'building. Here the element is craftsmanship — the patient '
         'shaping of raw material into enduring structure through practiced '
         'skill.',
     suitMeaning:
@@ -182,7 +182,7 @@ const pentaclesGuides = <CardGuide>[
         'of heart.',
     elementMeaning:
         'Earth circulates like currency changing hands. The element '
-        'reminds us that material resources are not meant to stagnate; '
+        'shows that material resources are not meant to stagnate; '
         'they gain meaning and vitality through the act of sharing and '
         'fair exchange.',
     suitMeaning:
@@ -326,7 +326,7 @@ const pentaclesGuides = <CardGuide>[
         'measured across lifetimes, not moments.',
     suitMeaning:
         'Pentacles\' highest expression appears as wealth that transcends '
-        'the individual. This card speaks to estates, inheritance, family '
+        'the individual. This card concerns estates, inheritance, family '
         'businesses, and the material structures that provide lasting '
         'security for those who come after you.',
     numerologyMeaning:
