@@ -5,31 +5,47 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_00',
     description:
-        'The Fool stands at the edge of a cliff, gazing upward with '
-        'complete trust in the journey ahead. A small white dog leaps beside '
-        'him — instinct and loyalty — while a single white rose symbolises '
-        'purity of intention. He carries only a small knapsack: everything '
-        'he needs, nothing he doesn\'t.\n\n'
-        'Numbered zero, The Fool exists outside the ordinary sequence. He '
-        'is both the beginning and the end of the Major Arcana, the eternal '
-        'traveller whose story is the Fool\'s Journey itself. In the '
-        'Rider-Waite-Smith tradition, this card is an invitation to leap '
-        'before you look — not from recklessness, but from a deep faith '
-        'that the universe will catch you.',
+        'With light step, as if earth and its trammels had little power to '
+        'restrain him, a young man in gorgeous vestments pauses at the brink '
+        'of a precipice among the great heights of the world; he surveys the '
+        'blue distance before him-its expanse of sky rather than the prospect '
+        'below. His act of eager walking is still indicated, though he is '
+        'stationary at the given moment; his dog is still bounding. The edge '
+        'which opens on the depth has no terror; it is as if angels were '
+        'waiting to uphold him, if it came about that he leaped from the '
+        'height. His countenance is full of intelligence and expectant dream. '
+        'He has a rose in one hand and in the other a costly wand, from which '
+        'depends over his right shoulder a wallet curiously embroidered. He '
+        'is a prince of the other world on his travels through this one-all '
+        'amidst the morning glory, in the keen air. The sun, which shines '
+        'behind him, knows whence he came, whither he is going, and how he '
+        'will return by another path after many days. He is the spirit in '
+        'search of experience. Many symbols of the Instituted Mysteries are '
+        'summarized in this card, which reverses, under high warrants, all '
+        'the confusions that have preceded it.\n\n'
+        'In his Manual of Cartomancy, Grand Orient has a curious suggestion '
+        'of the office of Mystic Fool, as apart of his process in higher '
+        'divination; but it might call for more than ordinary gifts to put '
+        'it into operation. We shall see how the card fares according to the '
+        'common arts of fortune-telling, and it will be an example, to those '
+        'who can discern, of the fact, otherwise so evident, that the Trumps '
+        'Major had no place originally in the arts of psychic gambling, when '
+        'cards are used as the counters and pretexts. Of the circumstances '
+        'under which this art arose we know, however, very little. The '
+        'conventional explanations say that the Fool signifies the flesh, '
+        'the sensitive life, and by a peculiar satire its subsidiary name '
+        'was at one time the alchemist, as depicting folly at the most '
+        'insensate stage.',
     elementMeaning:
         'Air here represents the realm of pure thought and infinite '
         'possibility. Like a breath before the first word, The Fool\'s air '
         'is potential that has not yet been shaped into form.',
     uprightMeaning:
-        'New beginnings, spontaneity, and a leap of faith. The Fool '
-        'encourages you to trust the process and embrace the unknown with '
-        'an open heart. This is a time to start fresh, free from the weight '
-        'of past experience or future worry.',
+        'Folly, mania, extravagance, intoxication, delirium, frenzy, '
+        'bewrayment.',
     reversedMeaning:
-        'Recklessness, naivety, or hesitation that holds you back. '
-        'Reversed, The Fool may warn that you are acting without thought, '
-        'or conversely, that fear is stopping you from taking a necessary '
-        'risk.',
+        'Negligence, absence, distribution, carelessness, apathy, nullity, '
+        'vanity.',
     reflectionQuestions: [
       'Where in your life are you being called to take a leap of faith?',
       'What would you do if you weren\'t afraid of looking foolish?',
@@ -41,28 +57,45 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_01',
     description:
-        'The Magician stands before a table bearing all four suit symbols '
-        '— wand, cup, sword, and pentacle — representing mastery over '
-        'every element. One hand points skyward, the other toward the '
-        'earth: "as above, so below." An infinity symbol floats above his '
-        'head, and a garden of roses and lilies blooms at his feet.\n\n'
-        'Card I of the Major Arcana, The Magician is the first conscious '
-        'act of creation. Where The Fool carries raw potential, The '
-        'Magician channels it. He is the bridge between intention and '
-        'manifestation, reminding you that you already have every tool '
-        'you need.',
+        'A youthful figure in the robe of a magician, having the countenance '
+        'of divine Apollo, with smile of confidence and shining eyes. Above '
+        'his head is the mysterious sign of the Holy Spirit, the sign of '
+        'life, like an endless cord, forming the figure 8 in a horizontal '
+        'position. About his waist is a serpent-cincture, the serpent '
+        'appearing to devour its own tail. This is familiar to most as a '
+        'conventional symbol of eternity, but here it indicates more '
+        'especially the eternity of attainment in the spirit. In the '
+        'Magician\'s right hand is a wand raised towards heaven, while the '
+        'left hand is pointing to the earth. This dual sign is known in '
+        'very high grades of the Instituted Mysteries; it shews the descent '
+        'of grace, virtue and light, drawn from things above and derived to '
+        'things below. The suggestion throughout is therefore the possession '
+        'and communication of the Powers and Gifts of the Spirit. On the '
+        'table in front of the Magician are the symbols of the four Tarot '
+        'suits, signifying the elements of natural life, which lie like '
+        'counters before the adept, and he adapts them as he wills. Beneath '
+        'are roses and lilies, the flos campi and lilium convallium, changed '
+        'into garden flowers, to shew the culture of aspiration. This card '
+        'signifies the divine motive in man, reflecting God, the will in '
+        'the liberation of its union with that which is above. It is also '
+        'the unity of individual being on all planes, and in a very high '
+        'sense it is thought, in the fixation thereof. With further '
+        'reference to what I have called the sign of life and its connexion '
+        'with the number 8, it may be remembered that Christian Gnosticism '
+        'speaks of rebirth in Christ as a change "unto the Ogdoad." The '
+        'mystic number is termed Jerusalem above, the Land flowing with '
+        'Milk and Honey, the Holy Spirit and the Land of the Lord. '
+        'According to Martinism, 8 is the number of Christ.',
     elementMeaning:
         'Air governs communication and intellect. The Magician\'s air is '
         'focused thought — the mental clarity required to turn an idea '
         'into reality.',
     uprightMeaning:
-        'Willpower, resourcefulness, and inspired action. You have the '
-        'skills, knowledge, and energy to manifest what you desire. Now is '
-        'the time to act with confidence and focus.',
+        'Skill, diplomacy, address, subtlety; sickness, pain, loss, '
+        'disaster, snares of enemies; self-confidence, will; the Querent, '
+        'if male.',
     reversedMeaning:
-        'Manipulation, untapped potential, or trickery. Reversed, The '
-        'Magician may indicate that you are not using your abilities '
-        'honestly, or that you doubt your own power.',
+        'Physician, Magus, mental disease, disgrace, disquiet.',
     reflectionQuestions: [
       'What resources do you already have that you\'ve been overlooking?',
       'Where could you channel your energy more intentionally?',
@@ -74,27 +107,47 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_02',
     description:
-        'Seated between two pillars — one black (Boaz, severity) and one '
-        'white (Jachin, mercy) — The High Priestess guards the threshold '
-        'between the seen and unseen worlds. A crescent moon rests at her '
-        'feet, and a veil decorated with pomegranates hangs behind her, '
-        'concealing the mysteries that lie beyond conscious reach.\n\n'
-        'She holds a scroll labelled TORA, only partially visible: full '
-        'knowledge is never given freely but must be earned through '
-        'patience and inner listening. The High Priestess is the keeper '
-        'of intuition, dreams, and the deep subconscious.',
+        'She has the lunar crescent at her feet, a horned diadem on her '
+        'head, with a globe in the middle place, and a large solar cross on '
+        'her breast. The scroll in her hands is inscribed with the word '
+        'Tora, signifying the Greater Law, the Secret Law and the second '
+        'sense of the Word. It is partly covered by her mantle, to shew '
+        'that some things are implied and some spoken. She is seated between '
+        'the white and black pillars--J. and B.--of the mystic Temple, and '
+        'the veil of the Temple is behind her: it is embroidered with palms '
+        'and pomegranates. The vestments are flowing and gauzy, and the '
+        'mantle suggests light--a shimmering radiance. She has been called '
+        'occult Science on the threshold of the Sanctuary of Isis, but she '
+        'is really the Secret Church, the House which is of God and man. '
+        'She represents also the Second Marriage of the Prince who is no '
+        'longer of this world; she is the spiritual Bride and Mother, the '
+        'daughter of the stars and the Higher Garden of Eden. She is, in '
+        'fine, the Queen of the borrowed light, but this is the light of '
+        'all. She is the Moon nourished by the milk of the Supernal '
+        'Mother.\n\n'
+        'In a manner, she is also the Supernal Mother herself--that is to '
+        'say, she is the bright reflection. It is in this sense of '
+        'reflection that her truest and highest name in bolism is '
+        'Shekinah--the co-habiting glory. According to Kabalism, there is '
+        'a Shekinah both above and below. In the superior world it is '
+        'called Binah, the Supernal Understanding which reflects to the '
+        'emanations that are beneath. In the lower world it is '
+        'MaIkuth--that world being, for this purpose, understood as a '
+        'blessed Kingdom that with which it is made blessed being the '
+        'Indwelling Glory. Mystically speaking, the Shekinah is the '
+        'Spiritual Bride of the just man, and when he reads the Law she '
+        'gives the Divine meaning. There are some respects in which this '
+        'card is the highest and holiest of the Greater Arcana.',
     elementMeaning:
         'Water is the element of emotion, intuition, and the unseen '
         'currents beneath the surface. Here it represents the deep well '
         'of inner knowing that The High Priestess invites you to draw from.',
     uprightMeaning:
-        'Intuition, sacred knowledge, and the subconscious mind. Trust '
-        'what you feel rather than what you can prove. Stillness and '
-        'receptivity will reveal more than action right now.',
+        'Secrets, mystery, the future as yet unrevealed; the woman who '
+        'interests the Querent, if male; the Querent herself, if female; '
+        'silence, tenacity; mystery, wisdom, science.',
     reversedMeaning:
-        'Secrets, disconnection from intuition, or information withheld. '
-        'You may be ignoring your inner voice or struggling to access your '
-        'deeper knowing.',
+        'Passion, moral or physical ardour, conceit, surface knowledge.',
     reflectionQuestions: [
       'What is your intuition quietly telling you right now?',
       'Are you making enough space for stillness and reflection?',
@@ -106,26 +159,42 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_03',
     description:
-        'The Empress reclines on luxurious cushions in a lush, abundant '
-        'garden. A field of golden wheat ripens before her, a waterfall '
-        'flows nearby, and her robe is patterned with pomegranates — '
-        'symbols of fertility. The Venus symbol on her heart-shaped shield '
-        'connects her to love, beauty, and the creative force of nature.\n\n'
-        'She is the great Mother archetype: sensual, generous, and deeply '
-        'connected to the rhythms of the earth. Where The High Priestess '
-        'holds hidden knowledge, The Empress brings it into bloom.',
+        'A stately figure, seated, having rich vestments and royal aspect, '
+        'as of a daughter of heaven and earth. Her diadem is of twelve '
+        'stars, gathered in a cluster. The symbol of Venus is on the shield '
+        'which rests near her. A field of corn is ripening in front of her, '
+        'and beyond there is a fall of water. The sceptre which she bears '
+        'is surmounted by the globe of this world. She is the inferior '
+        'Garden of Eden, the Earthly Paradise, all that is symbolized by '
+        'the visible house of man. She is not Regina coeli, but she is '
+        'still refugium peccatorum, the fruitful mother of thousands. There '
+        'are also certain aspects in which she has been correctly described '
+        'as desire and the wings thereof, as the woman clothed with the '
+        'sun, as Gloria Mundi and the veil of the Sanctum Sanctorum; but '
+        'she is not, I may add, the soul that has attained wings, unless '
+        'all the symbolism is counted up another and unusual way. She is '
+        'above all things universal fecundity and the outer sense of the '
+        'Word. This is obvious, because there is no direct message which '
+        'has been given to man like that which is borne by woman; but she '
+        'does not herself carry its interpretation.\n\n'
+        'In another order of ideas, the card of the Empress signifies the '
+        'door or gate by which an entrance is obtained into this life, as '
+        'into the Garden of Venus; and then the way which leads out '
+        'therefrom, into that which is beyond, is the secret known to the '
+        'High Priestess: it is communicated by her to the elect. Most old '
+        'attributions of this card are completely wrong on the '
+        'symbolism--as, for example, its identification with the Word, '
+        'Divine Nature, the Triad, and so forth.',
     elementMeaning:
         'Earth grounds The Empress in the physical, sensory world. Her '
         'earth energy is fertile and generative — the soil in which seeds '
         'of intention take root and grow into tangible abundance.',
     uprightMeaning:
-        'Abundance, fertility, nurturing, and sensual pleasure. This is a '
-        'time of growth and creative fruition. Nourish your body, your '
-        'relationships, and your projects with patient, loving care.',
+        'Fruitfulness, action, initiative, length of days; the unknown, '
+        'clandestine; also difficulty, doubt, ignorance.',
     reversedMeaning:
-        'Creative block, dependence, or neglect of self-care. Reversed, '
-        'The Empress may suggest smothering love, difficulty receiving, or '
-        'disconnection from your body and the natural world.',
+        'Light, truth, the unravelling of involved matters, public '
+        'rejoicings; according to another reading, vacillation.',
     reflectionQuestions: [
       'How are you nurturing your creative projects and relationships?',
       'Where might you need to slow down and enjoy the sensory world?',
@@ -137,27 +206,38 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_04',
     description:
-        'The Emperor sits on a stone throne carved with four rams\' heads, '
-        'symbols of Aries and assertive energy. Clad in red robes and '
-        'armour, he holds an ankh sceptre in one hand and an orb in the '
-        'other — authority over both life and dominion. Behind him rise '
-        'barren mountains: his kingdom is built on unyielding rock.\n\n'
-        'He is the Father archetype: structured, protective, and decisive. '
-        'Where The Empress creates through nurturing, The Emperor creates '
-        'through order. He establishes the rules, boundaries, and systems '
-        'that allow civilisation to function.',
+        'He has a form of the Crux ansata for his sceptre and a globe in '
+        'his left hand. He is a crowned monarch--commanding, stately, '
+        'seated on a throne, the arms of which axe fronted by rams\' heads. '
+        'He is executive and realization, the power of this world, here '
+        'clothed with the highest of its natural attributes. He is '
+        'occasionally represented as seated on a cubic stone, which, '
+        'however, confuses some of the issues. He is the virile power, to '
+        'which the Empress responds, and in this sense is he who seeks to '
+        'remove the Veil of Isis; yet she remains virgo intacta.\n\n'
+        'It should be understood that this card and that of the Empress do '
+        'not precisely represent the condition of married life, though this '
+        'state is implied. On the surface, as I have indicated, they stand '
+        'for mundane royalty, uplifted on the seats of the mighty; but '
+        'above this there is the suggestion of another presence. They '
+        'signify also--and the male figure especially--the higher kingship, '
+        'occupying the intellectual throne. Hereof is the lordship of '
+        'thought rather than of the animal world. Both personalities, after '
+        'their own manner, are "full of strange experience," but theirs is '
+        'not consciously the wisdom which draws from a higher world. The '
+        'Emperor has been described as (a) will in its embodied form, but '
+        'this is only one of its applications, and (b) as an expression of '
+        'virtualities contained in the Absolute Being--but this is fantasy.',
     elementMeaning:
         'Fire here represents the driving will to build and protect. The '
         'Emperor\'s fire is not wild but controlled — a forge that shapes '
         'raw ambition into lasting structure.',
     uprightMeaning:
-        'Authority, structure, stability, and fatherly protection. '
-        'Establish clear boundaries, take responsibility, and lead with '
-        'discipline. A solid foundation is being built or needed.',
+        'Stability, power, protection, realization; a great person; aid, '
+        'reason, conviction; also authority and will.',
     reversedMeaning:
-        'Rigidity, domination, or lack of discipline. Reversed, The '
-        'Emperor warns of tyranny, excessive control, or an inability to '
-        'adapt when structure becomes a cage.',
+        'Benevolence, compassion, credit; also confusion to enemies, '
+        'obstruction, immaturity.',
     reflectionQuestions: [
       'Where do you need more structure or discipline in your life?',
       'Are your boundaries protecting you or isolating you?',
@@ -169,30 +249,48 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_05',
     description:
-        'The Hierophant sits between two grey pillars in a formal '
-        'religious setting, wearing a triple crown and robes of red, '
-        'white, and blue. He raises his right hand in a gesture of '
-        'blessing — two fingers pointing skyward, two toward earth — '
-        'while two acolytes kneel before him. At his feet lie two '
-        'crossed keys: the keys to heaven and the conscious and '
-        'subconscious mind.\n\n'
-        'He is the spiritual teacher, the bridge between the divine and '
-        'the congregation. The Hierophant represents tradition, shared '
-        'beliefs, and the institutions that preserve collective wisdom '
-        'across generations.',
+        'He wears the triple crown and is seated between two pillars, but '
+        'they are not those of the Temple which is guarded by the High '
+        'Priestess. In his left hand he holds a sceptre terminating in the '
+        'triple cross, and with his right hand he gives the well-known '
+        'ecclesiastical sign which is called that of esotericism, '
+        'distinguishing between the manifest and concealed part of '
+        'doctrine. It is noticeable in this connexion that the High '
+        'Priestess makes no sign. At his feet are the crossed keys, and '
+        'two priestly ministers in albs kneel before him. He has been '
+        'usually called the Pope, which is a particular application of the '
+        'more general office that he symbolizes. He is the ruling power of '
+        'external religion, as the High Priestess is the prevailing genius '
+        'of the esoteric, withdrawn power. The proper meanings of this card '
+        'have suffered woeful admixture from nearly all hands. Grand Orient '
+        'says truly that the Hierophant is the power of the keys, exoteric '
+        'orthodox doctrine, and the outer side of the life which leads to '
+        'the doctrine; but he is certainly not the prince of occult '
+        'doctrine, as another commentator has suggested.\n\n'
+        'He is rather the summa totius theologiae, when it has passed into '
+        'the utmost rigidity of expression; but he symbolizes also all '
+        'things that are righteous and sacred on the manifest side. As '
+        'such, he is the channel of grace belonging to the world of '
+        'institution as distinct from that of Nature, and he is the leader '
+        'of salvation for the human race at large. He is the order and the '
+        'head of the recognized hierarchy, which is the reflection of '
+        'another and greater hierarchic order; but it may so happen that '
+        'the pontiff forgets the significance of this his symbolic state '
+        'and acts as if he contained within his proper measures all that '
+        'his sign signifies or his symbol seeks to shew forth. He is not, '
+        'as it has been thought, philosophy-except on the theological side; '
+        'he is not inspiration; and he is not religion, although he is a '
+        'mode of its expression.',
     elementMeaning:
         'Earth gives The Hierophant practical rootedness. His spiritual '
         'wisdom is not abstract but embodied in ritual, institution, and '
         'the tangible structures of faith and education.',
     uprightMeaning:
-        'Tradition, spiritual guidance, conformity, and shared belief '
-        'systems. Seek wisdom through established teachings, mentors, or '
-        'institutions. There is value in following a well-worn path.',
+        'Marriage, alliance, captivity, servitude; by another account, '
+        'mercy and goodness; inspiration; the man to whom the Querent has '
+        'recourse.',
     reversedMeaning:
-        'Dogma, rebellion against convention, or unconventional '
-        'spirituality. Reversed, The Hierophant suggests it may be time '
-        'to question traditions that no longer serve you or forge your own '
-        'spiritual path.',
+        'Society, good understanding, concord, overkindness, weakness.',
     reflectionQuestions: [
       'Which traditions or belief systems still nourish you?',
       'Is there a teacher or mentor whose guidance you need right now?',
@@ -204,29 +302,39 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_06',
     description:
-        'Beneath the radiant angel Raphael, a naked man and woman stand '
-        'in a garden reminiscent of Eden. Behind the woman grows the Tree '
-        'of Knowledge with a serpent coiled around it; behind the man '
-        'stands the Tree of Life bearing twelve flames. The angel\'s '
-        'purple cloak represents royalty of spirit, and the sun blazes '
-        'overhead.\n\n'
-        'Despite its name, The Lovers is fundamentally a card about '
-        'choice — the conscious alignment of values that transforms a '
-        'relationship from mere attraction into sacred union. It speaks '
-        'to every meaningful decision where head and heart must agree.',
+        'The sun shines in the zenith, and beneath is a great winged figure '
+        'with arms extended, pouring down influences. In the foreground are '
+        'two human figures, male and female, unveiled before each other, as '
+        'if Adam and Eve when they first occupied the paradise of the '
+        'earthly body. Behind the man is the Tree of Life, bearing twelve '
+        'fruits, and the Tree of the Knowledge of Good and Evil is behind '
+        'the woman; the serpent is twining round it. The figures suggest '
+        'youth, virginity, innocence and love before it is contaminated by '
+        'gross material desire. This is in all simplicity the card of human '
+        'love, here exhibited as part of the way, the truth and the life. '
+        'It replaces, by recourse to first principles, the old card of '
+        'marriage, which I have described previously, and the later follies '
+        'which depicted man between vice and virtue. In a very high sense, '
+        'the card is a mystery of the Covenant and Sabbath.\n\n'
+        'The suggestion in respect of the woman is that she signifies that '
+        'attraction towards the sensitive life which carries within it the '
+        'idea of the Fall of Man, but she is rather the working of a Secret '
+        'Law of Providence than a willing and conscious temptress. It is '
+        'through her imputed lapse that man shall arise ultimately, and '
+        'only by her can he complete himself. The card is therefore in its '
+        'way another intimation concerning the great mystery of womanhood. '
+        'The old meanings fall to pieces of necessity with the old pictures, '
+        'but even as interpretations of the latter, some of them were of '
+        'the order of commonplace and others were false in symbolism.',
     elementMeaning:
         'Air brings the mental clarity needed to make a true choice. Love '
         'alone is not enough; The Lovers asks you to understand what you '
         'value and choose accordingly.',
     uprightMeaning:
-        'Love, harmony, deep connection, and values-driven choices. A '
-        'meaningful relationship or partnership is forming. Align your '
-        'actions with your deepest values and choose with both heart and '
-        'mind.',
+        'Attraction, love, beauty, trials overcome.',
     reversedMeaning:
-        'Disharmony, misalignment, or avoidance of a difficult choice. '
-        'Reversed, The Lovers may point to a relationship out of balance, '
-        'a values conflict, or self-deception about what you truly want.',
+        'Failure, foolish designs. Another account speaks of marriage '
+        'frustrated and contrarieties of all kinds.',
     reflectionQuestions: [
       'What is the most important choice facing you right now?',
       'Are your relationships reflecting your deepest values?',
@@ -238,27 +346,36 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_07',
     description:
-        'A young warrior stands in a stone chariot drawn by two sphinxes '
-        '— one black, one white — representing opposing forces that must '
-        'be harnessed, not destroyed. He wears a breastplate with a '
-        'square (willpower) and carries no reins; he steers by sheer '
-        'force of will. Stars crown his canopy, and a city recedes behind '
-        'him — he has left the safety of the known world.\n\n'
-        'The Chariot marks the moment you take the lessons of cards 0-VI '
-        'and ride forth into the world. It is willful triumph through '
-        'determination, not brute force.',
+        'An erect and princely figure carrying a drawn sword and '
+        'corresponding, broadly speaking, to the traditional description '
+        'which I have given in the first part. On the shoulders of the '
+        'victorious hero are supposed to be the Urim and Thummim. He has '
+        'led captivity captive; he is conquest on all planes--in the mind, '
+        'in science, in progress, in certain trials of initiation. He has '
+        'thus replied to the sphinx, and it is on this account that I have '
+        'accepted the variation of Eliphas Levi; two sphinxes thus draw '
+        'his chariot. He is above all things triumph in the mind.\n\n'
+        'It is to be understood for this reason (a) that the question of '
+        'the sphinx is concerned with a Mystery of Nature and not of the '
+        'world of Grace, to which the charioteer could offer no answer; '
+        '(b) that the planes of his conquest are manifest or external and '
+        'not within himself; (c) that the liberation which he effects may '
+        'leave himself in the bondage of the logical understanding; (d) '
+        'that the tests of initiation through which he has passed in '
+        'triumph are to be understood physically or rationally; and (e) '
+        'that if he came to the pillars of that Temple between which the '
+        'High Priestess is seated, he could not open the scroll called '
+        'Tora, nor if she questioned him could he answer. He is not '
+        'hereditary royalty and he is not priesthood.',
     elementMeaning:
         'Water here is surprising — it reveals that The Chariot\'s '
         'victory is emotional as much as physical. True determination '
         'requires mastering your inner tides: fear, doubt, and desire.',
     uprightMeaning:
-        'Determination, willpower, victory, and focused ambition. You '
-        'have the drive to overcome obstacles. Harness opposing forces '
-        'within you and charge forward with confidence.',
+        'Succour, providence also war, triumph, presumption, vengeance, '
+        'trouble.',
     reversedMeaning:
-        'Lack of direction, aggression, or loss of control. Reversed, '
-        'The Chariot warns that willpower without wisdom becomes '
-        'recklessness, or that you\'ve lost your sense of purpose.',
+        'Riot, quarrel, dispute, litigation, defeat.',
     reflectionQuestions: [
       'What opposing forces within you need to be unified right now?',
       'Are you steering your life with intention or being carried along?',
@@ -270,27 +387,42 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_08',
     description:
-        'A woman gently holds open the jaws of a lion — not through '
-        'force, but through calm, patient love. An infinity symbol '
-        'mirrors The Magician\'s, suggesting a deeper, more mature form '
-        'of power. She wears a white robe adorned with flowers, and a '
-        'garland of roses drapes both her and the lion.\n\n'
-        'Strength is the first card of the subconscious realm in many '
-        'numbering systems. It teaches that true power comes not from '
-        'dominating our animal nature, but from befriending it. Courage '
-        'here is quiet, sustained, and compassionate.',
+        'A woman, over whose head there broods the same symbol of life '
+        'which we have seen in the card of the Magician, is closing the '
+        'jaws of a lion. The only point in which this design differs from '
+        'the conventional presentations is that her beneficent fortitude '
+        'has already subdued the lion, which is being led by a chain of '
+        'flowers. For reasons which satisfy myself, this card has been '
+        'interchanged with that of justice, which is usually numbered '
+        'eight. As the variation carries nothing with it which will signify '
+        'to the reader, there is no cause for explanation. Fortitude, in '
+        'one of its most exalted aspects, is connected with the Divine '
+        'Mystery of Union; the virtue, of course, operates in all planes, '
+        'and hence draws on all in its symbolism. It connects also with '
+        'innocentia inviolata, and with the strength which resides in '
+        'contemplation.\n\n'
+        'These higher meanings are, however, matters of inference, and I do '
+        'not suggest that they are transparent on the surface of the card. '
+        'They are intimated in a concealed manner by the chain of flowers, '
+        'which signifies, among many other things, the sweet yoke and the '
+        'light burden of Divine Law, when it has been taken into the heart '
+        'of hearts. The card has nothing to do with self-confidence in the '
+        'ordinary sense, though this has been suggested--but it concerns '
+        'the confidence of those whose strength is God, who have found '
+        'their refuge in Him. There is one aspect in which the lion '
+        'signifies the passions, and she who is called Strength is the '
+        'higher nature in its liberation. It has walked upon the asp and '
+        'the basilisk and has trodden down the lion and the dragon.',
     elementMeaning:
         'Fire represents the raw passion and primal energy of the lion. '
         'Strength\'s lesson is that fire need not be extinguished — it '
         'can be gently channelled through patience and inner fortitude.',
     uprightMeaning:
-        'Inner strength, courage, patience, and compassion. Face your '
-        'challenges with grace rather than force. Gentle persistence '
-        'will achieve what aggression cannot.',
+        'Power, energy, action, courage, magnanimity; also complete '
+        'success and honours.',
     reversedMeaning:
-        'Self-doubt, weakness, or raw uncontrolled emotion. Reversed, '
-        'Strength may indicate that you are either suppressing your '
-        'instincts entirely or being overwhelmed by them.',
+        'Despotism, abuse if power, weakness, discord, sometimes even '
+        'disgrace.',
     reflectionQuestions: [
       'Where do you need to show yourself more compassion?',
       'What "inner lion" are you struggling to tame right now?',
@@ -302,28 +434,38 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_09',
     description:
-        'An old man stands alone on a snowy mountain peak, holding a '
-        'lantern containing a six-pointed star — the Seal of Solomon, '
-        'symbolising wisdom. He leans on a staff, grounded by experience. '
-        'The grey landscape stretches below him, but his gaze is turned '
-        'inward.\n\n'
-        'The Hermit withdraws from the world not to escape it, but to '
-        'find the light within. His solitude is purposeful: only in '
-        'silence can certain truths be heard. He is the wise guide who '
-        'lights the path for those who seek him — but first, he sought '
-        'that light for himself.',
+        'The variation from the conventional models in this card is only '
+        'that the lamp is not enveloped partially in the mantle of its '
+        'bearer, who blends the idea of the Ancient of Days with the Light '
+        'of the World It is a star which shines in the lantern. I have '
+        'said that this is a card of attainment, and to extend this '
+        'conception the figure is seen holding up his beacon on an '
+        'eminence. Therefore the Hermit is not, as Court de Gebelin '
+        'explained, a wise man in search of truth and justice; nor is he, '
+        'as a later explanation proposes, an especial example of '
+        'experience. His beacon intimates that "where I am, you also may '
+        'be."\n\n'
+        'It is further a card which is understood quite incorrectly when '
+        'it is connected with the idea of occult isolation, as the '
+        'protection of personal magnetism against admixture. This is one '
+        'of the frivolous renderings which we owe to Eliphas Levi. It has '
+        'been adopted by the French Order of Martinism and some of us have '
+        'heard a great deal of the Silent and Unknown Philosophy enveloped '
+        'by his mantle from the knowledge of the profane. In true '
+        'Martinism, the significance of the term Philosophe inconnu was of '
+        'another order. It did not refer to the intended concealment of '
+        'the Instituted Mysteries, much less of their substitutes, '
+        'but--like the card itself--to the truth that the Divine Mysteries '
+        'secure their own protection from those who are unprepared.',
     elementMeaning:
         'Earth gives The Hermit his grounded, practical wisdom. His '
         'spiritual seeking is not airy abstraction but hard-won knowledge '
         'rooted in lived experience and patient self-examination.',
     uprightMeaning:
-        'Solitude, introspection, inner guidance, and soul-searching. '
-        'Withdraw from noise and distraction to find your own truth. '
-        'A period of quiet reflection will illuminate your next steps.',
+        'Prudence, circumspection; also and especially treason, '
+        'dissimulation, roguery, corruption.',
     reversedMeaning:
-        'Isolation, loneliness, or withdrawal taken too far. Reversed, '
-        'The Hermit may warn that solitude has become avoidance, or that '
-        'you are refusing wisdom that others have to offer.',
+        'Concealment, disguise, policy, fear, unreasoned caution.',
     reflectionQuestions: [
       'What truth can only be found in silence?',
       'Are you withdrawing for wisdom or running from connection?',
@@ -335,28 +477,41 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_10',
     description:
-        'A great wheel turns in the sky, inscribed with the letters '
-        'T-A-R-O (and the Hebrew letters of the divine name). Four '
-        'winged creatures sit in the corners — the lion, eagle, ox, and '
-        'angel — representing the fixed signs of the zodiac and the four '
-        'evangelists. A sphinx sits atop the wheel holding a sword of '
-        'discernment, while Typhon (the serpent) descends on the left '
-        'and Anubis rises on the right.\n\n'
-        'The Wheel of Fortune is the great turning point of the Major '
-        'Arcana. It reminds us that change is the only constant, and '
-        'that fortune — good or ill — is always in motion.',
+        'In this symbol I have again followed the reconstruction of '
+        'Eliphas Levi, who has furnished several variants. It is '
+        'legitimate--as I have intimated--to use Egyptian symbolism when '
+        'this serves our purpose, provided that no theory of origin is '
+        'implied therein. I have, however, presented Typhon in his serpent '
+        'form. The symbolism is, of course, not exclusively Egyptian, as '
+        'the four Living Creatures of Ezekiel occupy the angles of the '
+        'card, and the wheel itself follows other indications of Levi in '
+        'respect of Ezekiel\'s vision, as illustrative of the particular '
+        'Tarot Key. With the French occultist, and in the design itself, '
+        'the symbolic picture stands for the perpetual motion of a fluidic '
+        'universe and for the flux of human life. The Sphinx is the '
+        'equilibrium therein. The transliteration of Taro as Rota is '
+        'inscribed on the wheel, counterchanged with the letters of the '
+        'Divine Name--to shew that Providence is imphed through all. But '
+        'this is the Divine intention within, and the similar intention '
+        'without is exemplified by the four Living Creatures. Sometimes '
+        'the sphinx is represented couchant on a pedestal above, which '
+        'defrauds the symbolism by stultifying the essential idea of '
+        'stability amidst movement.\n\n'
+        'Behind the general notion expressed in the symbol there lies the '
+        'denial of chance and the fatality which is implied therein. It '
+        'may be added that, from the days of Levi onward, the occult '
+        'explanations of this card are--even for occultism itself--of a '
+        'singularly fatuous kind. It has been said to mean principle, '
+        'fecundity, virile honour, ruling authority, etc. The findings of '
+        'common fortune-telling are better than this on their own plane.',
     elementMeaning:
         'Fire here represents the dynamic, ever-turning energy of fate. '
         'The Wheel\'s fire is not something you control but something you '
         'ride — the spark of destiny that ignites change.',
     uprightMeaning:
-        'Cycles, fate, turning points, and good fortune. A significant '
-        'change is coming — or has arrived. Trust the cycle. What goes '
-        'down must come up, and this may be your moment of ascent.',
+        'Destiny, fortune, success, elevation, luck, felicity.',
     reversedMeaning:
-        'Bad luck, resistance to change, or feeling stuck in a negative '
-        'cycle. Reversed, the Wheel suggests you are fighting against a '
-        'natural turning or repeating patterns that need to be broken.',
+        'Increase, abundance, superfluity.',
     reflectionQuestions: [
       'What cycle in your life is asking to turn right now?',
       'How do you respond when things feel out of your control?',
@@ -368,29 +523,37 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_11',
     description:
-        'Justice sits on a stone throne between two grey pillars, '
-        'holding a double-edged sword in her right hand and balanced '
-        'scales in her left. Her red robe speaks of passion tempered by '
-        'the green cloak of compassion beneath. A small crown with a '
-        'square jewel adorns her head — clarity of thought and '
-        'impartial judgement.\n\n'
-        'Justice is not blind in the tarot; her eyes are open, seeing '
-        'all with clarity and fairness. She represents the universal law '
-        'of cause and effect — every action has a consequence, and truth '
-        'cannot be hidden forever.',
+        'As this card follows the traditional symbolism and carries above '
+        'all its obvious meanings, there is little to say regarding it '
+        'outside the few considerations collected in the first part, to '
+        'which the reader is referred.\n\n'
+        'It will be seen, however, that the figure is seated between '
+        'pillars, like the High Priestess, and on this account it seems '
+        'desirable to indicate that the moral principle which deals unto '
+        'every man according to his works--while, of course, it is in '
+        'strict analogy with higher things;--differs in its essence from '
+        'the spiritual justice which is involved in the idea of election. '
+        'The latter belongs to a mysterious order of Providence, in virtue '
+        'of which it is possible for certain men to conceive the idea of '
+        'dedication to the highest things. The operation of this is like '
+        'the breathing of the Spirit where it wills, and we have no canon '
+        'of criticism or ground of explanation concerning it. It is '
+        'analogous to the possession of the fairy gifts and the high gifts '
+        'and the gracious gifts of the poet: we have them or have not, and '
+        'their presence is as much a mystery as their absence. The law of '
+        'Justice is not however involved by either alternative. In '
+        'conclusion, the pillars of Justice open into one world and the '
+        'pillars of the High Priestess into another.',
     elementMeaning:
         'Air brings the sharp clarity of thought and impartial reasoning. '
         'Justice\'s air is the clean edge of truth — it cuts through '
         'rationalisation and self-deception to reveal what is fair.',
     uprightMeaning:
-        'Fairness, truth, accountability, and karmic balance. Accept '
-        'responsibility for your actions and their consequences. A fair '
-        'outcome is approaching — it may require honesty you\'d rather '
-        'avoid.',
+        'Equity, rightness, probity, executive; triumph of the deserving '
+        'side in law.',
     reversedMeaning:
-        'Injustice, dishonesty, or refusal to accept accountability. '
-        'Reversed, Justice warns of unfair treatment, legal complications, '
-        'or a truth you are hiding from yourself or others.',
+        'Law in all its departments, legal complications, bigotry, bias, '
+        'excessive severity.',
     reflectionQuestions: [
       'Where in your life do you need to take honest accountability?',
       'Is there a situation where you\'re not being completely truthful?',
@@ -402,29 +565,35 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_12',
     description:
-        'A man hangs upside down from a living T-shaped tree, his right '
-        'foot bound and his left leg crossed behind, forming a figure-4. '
-        'Rather than struggling, his expression is serene — even '
-        'illuminated, with a golden halo around his head. His arms are '
-        'folded behind his back in quiet acceptance.\n\n'
-        'The Hanged Man is one of the most misunderstood cards. He does '
-        'not suffer; he surrenders. By voluntarily inverting his '
-        'perspective, he sees the world in an entirely new way. '
-        'Sacrifice here is not loss but a willing exchange of one '
-        'viewpoint for a deeper one.',
+        'The gallows from which he is suspended forms a Tau cross, while '
+        'the figure--from the position of the legs--forms a fylfot cross. '
+        'There is a nimbus about the head of the seeming martyr. It should '
+        'be noted (1) that the tree of sacrifice is living wood, with '
+        'leaves thereon; (2) that the face expresses deep entrancement, not '
+        'suffering; (3) that the figure, as a whole, suggests life in '
+        'suspension, but life and not death. It is a card of profound '
+        'significance, but all the significance is veiled. One of his '
+        'editors suggests that Eliphas Levi did not know the meaning, '
+        'which is unquestionable nor did the editor himself. It has been '
+        'called falsely a card of martyrdom, a card a of prudence, a card '
+        'of the Great Work, a card of duty; but we may exhaust all '
+        'published interpretations and find only vanity. I will say very '
+        'simply on my own part that it expresses the relation, in one of '
+        'its aspects, between the Divine and the Universe.\n\n'
+        'He who can understand that the story of his higher nature is '
+        'imbedded in this symbolism will receive intimations concerning a '
+        'great awakening that is possible, and will know that after the '
+        'sacred Mystery of Death there is a glorious Mystery of '
+        'Resurrection.',
     elementMeaning:
         'Water represents the flowing, surrendering quality of this card. '
         'Like water finding its way around obstacles, The Hanged Man '
         'teaches that yielding can be more powerful than resisting.',
     uprightMeaning:
-        'Surrender, new perspective, pause, and willing sacrifice. Let '
-        'go of control and see the situation from an entirely different '
-        'angle. What feels like a delay may be the most productive '
-        'thing you can do.',
+        'Wisdom, circumspection, discernment, trials, sacrifice, '
+        'intuition, divination, prophecy.',
     reversedMeaning:
-        'Stalling, resistance, or martyrdom. Reversed, The Hanged Man '
-        'may indicate that you are stuck in a holding pattern without '
-        'purpose, or making sacrifices that serve no one.',
+        'Selfishness, the crowd, body politic.',
     reflectionQuestions: [
       'What might you see differently if you stopped resisting?',
       'Where are you being asked to pause rather than push?',
@@ -436,30 +605,39 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_13',
     description:
-        'A skeleton in black armour rides a white horse through a '
-        'landscape of fallen figures — a king, a child, a maiden, and a '
-        'bishop — showing that transformation spares no one. He carries '
-        'a black flag emblazoned with a white mystic rose: the promise '
-        'of rebirth. In the distance, the sun rises between two towers, '
-        'and a river flows toward the horizon.\n\n'
-        'Death is rarely about physical death. It is the necessary '
-        'ending that clears the way for new life. The old must fall so '
-        'the new can rise. This card asks you to grieve what is passing '
-        'and trust what is coming.',
+        'The veil or mask of life is perpetuated in change, transformation '
+        'and passage from lower to higher, and this is more fitly '
+        'represented in the rectified Tarot by one of the apocalyptic '
+        'visions than by the crude notion of the reaping skeleton. Behind '
+        'it lies the whole world of ascent in the spirit. The mysterious '
+        'horseman moves slowly, bearing a black banner emblazoned with the '
+        'Mystic Rose, which signifies life. Between two pillars on the '
+        'verge of the horizon there shines the sun of immortality. The '
+        'horseman carries no visible weapon, but king and child and maiden '
+        'fall before him, while a prelate with clasped hands awaits his '
+        'end.\n\n'
+        'There should be no need to point out that the suggestion of death '
+        'which I have made in connection with the previous card is, of '
+        'course, to be understood mystically, but this is not the case in '
+        'the present instance. The natural transit of man to the next '
+        'stage of his being either is or may be one form of his progress, '
+        'but the exotic and almost unknown entrance, while still in this '
+        'life, into the state of mystical death is a change in the form of '
+        'consciousness and the passage into a state to which ordinary '
+        'death is neither the path nor gate. The existing occult '
+        'explanations of the 13th card are, on the whole, better than '
+        'usual, rebirth, creation, destination, renewal, and the rest.',
     elementMeaning:
         'Water represents the emotional depth of this transition. '
         'Death\'s water is the river of grief and release — the tears '
         'that cleanse and the current that carries you to a new shore.',
     uprightMeaning:
-        'Endings, transformation, transition, and release. Something in '
-        'your life is coming to a natural close. Do not cling to what '
-        'is dying; honour it, release it, and make room for what wants '
-        'to be born.',
+        'End, mortality, destruction, corruption also, for a man, the loss '
+        'of a benefactor for a woman, many contrarieties; for a maid, '
+        'failure of marriage projects.',
     reversedMeaning:
-        'Resistance to change, stagnation, or fear of endings. '
-        'Reversed, Death suggests you are holding on to something past '
-        'its time — a relationship, identity, or belief that no longer '
-        'serves your growth.',
+        'Inertia, sleep, lethargy, petrifaction, somnambulism; hope '
+        'destroyed.',
     reflectionQuestions: [
       'What in your life has already ended that you haven\'t released?',
       'What needs to die so something new can be born?',
@@ -471,29 +649,37 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_14',
     description:
-        'A great winged angel stands with one foot on land and one in '
-        'water, pouring liquid between two cups in a continuous, '
-        'impossible flow. A golden triangle enclosed in a square adorns '
-        'the angel\'s chest — spirit contained within matter. A winding '
-        'path leads to a glowing golden crown on the horizon, promising '
-        'a destination reached through patience.\n\n'
-        'Temperance is the art of balance and alchemy. It follows Death '
-        'as the healing integration that comes after loss. The angel '
-        'blends opposites — conscious and unconscious, fire and water — '
-        'into a harmonious new whole.',
+        'A winged angel, with the sign of the sun upon his forehead and on '
+        'his breast the square and triangle of the septenary. I speak of '
+        'him in the masculine sense, but the figure is neither male nor '
+        'female. It is held to be pouring the essences of life from '
+        'chalice to chalice. It has one foot upon the earth and one upon '
+        'waters, thus illustrating the nature of the essences. A direct '
+        'path goes up to certain heights on the verge of the horizon, and '
+        'above there is a great light, through which a crown is seen '
+        'vaguely. Hereof is some part of the Secret of Eternal Life, as '
+        'it is possible to man in his incarnation. All the conventional '
+        'emblems are renounced herein.\n\n'
+        'So also are the conventional meanings, which refer to changes in '
+        'the seasons, perpetual movement of life and even the combination '
+        'of ideas. It is, moreover, untrue to say that the figure '
+        'symbolizes the genius of the sun, though it is the analogy of '
+        'solar light, realized in the third part of our human triplicity. '
+        'It is called Temperance fantastically, because, when the rule of '
+        'it obtains in our consciousness, it tempers, combines and '
+        'harmonises the psychic and material natures. Under that rule we '
+        'know in our rational part something of whence we came and whither '
+        'we are going.',
     elementMeaning:
         'Fire here is transmutative — the alchemical fire that refines '
         'without destroying. Temperance\'s fire gently heats and blends '
         'disparate elements into gold.',
     uprightMeaning:
-        'Balance, moderation, patience, and purposeful blending. Find '
-        'the middle way. Combine different aspects of your life with '
-        'care, and trust that slow, steady integration will lead to a '
-        'greater whole.',
+        'Economy, moderation, frugality, management, accommodation.',
     reversedMeaning:
-        'Imbalance, excess, or lack of long-term vision. Reversed, '
-        'Temperance warns of extremes — overindulgence, burnout, or a '
-        'refusal to find compromise in a situation that demands it.',
+        'Things connected with churches, religions, sects, the '
+        'priesthood, sometimes even the priest who will marry the Querent; '
+        'also disunion, unfortunate combinations, competing interests.',
     reflectionQuestions: [
       'Where in your life is the balance between effort and rest off?',
       'What opposing forces within you are asking to be blended?',
@@ -505,28 +691,41 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_15',
     description:
-        'A horned, bat-winged figure crouches on a half-cube pedestal, '
-        'holding a downward-facing torch. Below him, a naked man and '
-        'woman are chained — but look closely: the chains around their '
-        'necks are loose enough to lift off. Their tails of fire and '
-        'grapes echo The Lovers, now distorted by obsession and excess.\n\n'
-        'The Devil is not evil incarnate but rather the shadow we refuse '
-        'to face. He represents bondage that is largely self-imposed — '
-        'the addictions, attachments, and fears we could release if we '
-        'chose to. His gift, paradoxically, is awareness: once you see '
-        'the chains, you can remove them.',
+        'The design is an accommodation, mean or harmony, between several '
+        'motives mentioned in the first part. The Horned Goat of Mendes, '
+        'with wings like those of a bat, is standing on an altar. At the '
+        'pit of the stomach there is the sign of Mercury. The right hand '
+        'is upraised and extended, being the reverse of that benediction '
+        'which is given by the Hierophant in the fifth card. In the left '
+        'hand there is a great flaming torch, inverted towards the earth. '
+        'A reversed pentagram is on the forehead. There is a ring in front '
+        'of the altar, from which two chains are carried to the necks of '
+        'two figures, male and female. These are analogous with those of '
+        'the fifth card, as if Adam and Eve after the Fall. Hereof is the '
+        'chain and fatality of the material life.\n\n'
+        'The figures are tailed, to signify the animal nature, but there '
+        'is human intelligence in the faces, and he who is exalted above '
+        'them is not to be their master for ever. Even now, he is also a '
+        'bondsman, sustained by the evil that is in him and blind to the '
+        'liberty of service. With more than his usual derision for the '
+        'arts which he pretended to respect and interpret as a master '
+        'therein, Eliphas Levi affirms that the Baphometic figure is '
+        'occult science and magic. Another commentator says that in the '
+        'Divine world it signifies predestination, but there is no '
+        'correspondence in that world with the things which below are of '
+        'the brute. What it does signify is the Dweller on the Threshold '
+        'without the Mystical Garden when those are driven forth therefrom '
+        'who have eaten the forbidden fruit.',
     elementMeaning:
         'Earth in its shadow aspect: materialism, sensory excess, and '
         'the gravity of attachment. The Devil\'s earth is the weight '
         'that keeps you bound to patterns that no longer serve you.',
     uprightMeaning:
-        'Bondage, materialism, shadow self, and unhealthy attachments. '
-        'Examine what holds you captive — addiction, toxic relationships, '
-        'limiting beliefs. Acknowledge the shadow to reclaim your freedom.',
+        'Ravage, violence, vehemence, extraordinary efforts, force, '
+        'fatality; that which is predestined but is not for this reason '
+        'evil.',
     reversedMeaning:
-        'Release, breaking free, or reclaiming power. Reversed, The '
-        'Devil can be profoundly liberating — it signals that you are '
-        'ready to shed the chains and step out of a self-imposed prison.',
+        'Evil fatality, weakness, pettiness, blindness.',
     reflectionQuestions: [
       'What pattern or attachment are you pretending you can\'t change?',
       'Where in your life have you traded freedom for comfort?',
@@ -538,30 +737,47 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_16',
     description:
-        'Lightning strikes the crown of a tall stone tower, splitting it '
-        'open. Flames pour from the windows as two figures plummet '
-        'headfirst toward the rocky ground. Twenty-two sparks of light — '
-        'one for each path on the Tree of Life — scatter across the dark '
-        'sky.\n\n'
-        'The Tower is the most dramatic card in the deck. It shatters '
-        'what was built on false foundations. The destruction feels '
-        'catastrophic in the moment, but it is ultimately liberating: '
-        'truth cannot live in a structure built on lies. After The '
-        'Tower falls, only what is real remains.',
+        'Occult explanations attached to this card are meagre and mostly '
+        'disconcerting. It is idle to indicate that it depicts min in all '
+        'its aspects, because it bears this evidence on the surface. It is '
+        'said further that it contains the first allusion to a material '
+        'building, but I do not conceive that the Tower is more or less '
+        'material than the pillars which we have met with in three '
+        'previous cases. I see nothing to warrant Papus in supposing that '
+        'it is literally the fall of Adam, but there is more in favour of '
+        'his alternative--that it signifies the materialization of the '
+        'spiritual word. The bibliographer Christian imagines that it is '
+        'the downfall of the mind, seeking to penetrate the mystery of '
+        'God. I agree rather with Grand Orient that it is the ruin of the '
+        'House of We, when evil has prevailed therein, and above all that '
+        'it is the rending of a House of Doctrine. I understand that the '
+        'reference is, however, to a House of Falsehood. It illustrates '
+        'also in the most comprehensive way the old truth that "except the '
+        'Lord build the house, they labour in vain that build it."\n\n'
+        'There is a sense in which the catastrophe is a reflection from '
+        'the previous card, but not on the side of the symbolism which I '
+        'have tried to indicate therein. It is more correctly a question '
+        'of analogy; one is concerned with the fall into the material and '
+        'animal state, while the other signifies destruction on the '
+        'intellectual side. The Tower has been spoken of as the '
+        'chastisement of pride and the intellect overwhelmed in the '
+        'attempt to penetrate the Mystery of God; but in neither case do '
+        'these explanations account for the two persons who are the living '
+        'sufferers. The one is the literal word made void and the other '
+        'its false interpretation. In yet a deeper sense, it may signify '
+        'also the end of a dispensation, but there is no possibility here '
+        'for the consideration of this involved question.',
     elementMeaning:
         'Fire is the bolt of lightning itself — sudden, illuminating, '
         'and impossible to ignore. The Tower\'s fire is the kind of '
         'truth that burns away everything false.',
     uprightMeaning:
-        'Sudden upheaval, revelation, and liberation through '
-        'destruction. A false structure in your life is collapsing — and '
-        'though it is painful, this clearing is necessary. Truth is '
-        'replacing illusion.',
+        'Misery, distress, indigence, adversity, calamity, disgrace, '
+        'deception, ruin. It is a card in particular of unforeseen '
+        'catastrophe.',
     reversedMeaning:
-        'Fear of change, averting disaster, or delayed upheaval. '
-        'Reversed, The Tower may mean you are clinging to a crumbling '
-        'structure, or that you narrowly avoided a breakdown by making '
-        'changes just in time.',
+        'According to one account, the same in a lesser degree also '
+        'oppression, imprisonment, tyranny.',
     reflectionQuestions: [
       'What structure in your life is built on a shaky foundation?',
       'How do you typically respond to sudden, unexpected change?',
@@ -573,28 +789,36 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_17',
     description:
-        'A naked woman kneels at the edge of a pool, pouring water from '
-        'two pitchers — one onto the land, one into the water — '
-        'nourishing both the conscious and subconscious realms. Above '
-        'her shines one great eight-pointed star surrounded by seven '
-        'smaller ones. A bird perches in a tree behind her — the ibis '
-        'of thought, calm and watchful.\n\n'
-        'The Star arrives after The Tower\'s devastation as a balm of '
-        'hope and renewal. She is vulnerable, open, and unashamed. With '
-        'nothing left to hide behind, she pours herself freely into the '
-        'world, trusting that the universe will replenish her.',
+        'A great, radiant star of eight rays, surrounded by seven lesser '
+        'stars--also of eight rays. The female figure in the foreground is '
+        'entirely naked. Her left knee is on the land and her right foot '
+        'upon the water. She pours Water of Life from two great ewers, '
+        'irrigating sea and land. Behind her is rising ground and on the '
+        'right a shrub or tree, whereon a bird alights. The figure '
+        'expresses eternal youth and beauty. The star is l\'etoile '
+        'flamboyante, which appears in Masonic symbolism, but has been '
+        'confused therein. That which the figure communicates to the '
+        'living scene is the substance of the heavens and the elements. It '
+        'has been said truly that the mottoes of this card are "Waters of '
+        'Life freely" and "Gifts of the Spirit."\n\n'
+        'The summary of several tawdry explanations says that it is a card '
+        'of hope. On other planes it has been certified as immortality and '
+        'interior light. For the majority of prepared minds, the figure '
+        'will appear as the type of Truth unveiled, glorious in undying '
+        'beauty, pouring on the waters of the soul some part and measure '
+        'of her priceless possession. But she is in reality the Great '
+        'Mother in the Kabalistic Sephira Binah, which is supernal '
+        'Understanding, who communicates to the Sephiroth that are below '
+        'in the measure that they can receive her influx.',
     elementMeaning:
         'Air here is expansive and clarifying — the first clear breath '
         'after a storm. The Star\'s air carries hope, vision, and the '
         'quiet certainty that the worst has passed.',
     uprightMeaning:
-        'Hope, inspiration, serenity, and spiritual renewal. After '
-        'hardship, healing is coming. Trust in the future, reconnect '
-        'with your sense of purpose, and allow yourself to be vulnerable.',
+        'Loss, theft, privation, abandonment; another reading '
+        'says-hope and bright prospects.',
     reversedMeaning:
-        'Despair, disconnection, or loss of faith. Reversed, The Star '
-        'may indicate that you have lost hope or are struggling to see '
-        'a way forward after a difficult period.',
+        'Arrogance, haughtiness, impotence.',
     reflectionQuestions: [
       'Where in your life is hope quietly returning?',
       'What inspires you when everything else feels stripped away?',
@@ -606,29 +830,37 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_18',
     description:
-        'A full moon hangs in the night sky, its face in profile, '
-        'radiating droplets of light. Below, a narrow path winds between '
-        'two towers and disappears into distant mountains. A dog and a '
-        'wolf howl at the moon — the tame and wild aspects of the psyche '
-        '— while a crayfish emerges from the pool of the unconscious.\n\n'
-        'The Moon illuminates, but only partially; shadows and '
-        'reflections can deceive. This card represents the journey '
-        'through the dark night of the soul — a necessary passage '
-        'through fear, illusion, and uncertainty before the dawn.',
+        'The distinction between this card and some of the conventional '
+        'types is that the moon is increasing on what is called the side '
+        'of mercy, to the right of the observer. It has sixteen chief and '
+        'sixteen secondary rays. The card represents life of the '
+        'imagination apart from life of the spirit. The path between the '
+        'towers is the issue into the unknown. The dog and wolf are the '
+        'fears of the natural mind in the presence of that place of exit, '
+        'when there is only reflected light to guide it.\n\n'
+        'The last reference is a key to another form of symbolism. The '
+        'intellectual light is a reflection and beyond it is the unknown '
+        'mystery which it cannot shew forth. It illuminates our animal '
+        'nature, types of which are represented below--the dog, the wolf '
+        'and that which comes up out of the deeps, the nameless and '
+        'hideous tendency which is lower than the savage beast. It strives '
+        'to attain manifestation, symbolized by crawling from the abyss '
+        'of water to the land, but as a rule it sinks back whence it '
+        'came. The face of the mind directs a calm gaze upon the unrest '
+        'below; the dew of thought falls; the message is: Peace, be '
+        'still; and it may be that there shall come a calm upon the animal '
+        'nature, while the abyss beneath shall cease from giving up a '
+        'form.',
     elementMeaning:
         'Water is at its deepest and most mysterious here. The Moon\'s '
         'water is the ocean of the unconscious — teeming with life, '
         'dreams, and fears that surface only at night.',
     uprightMeaning:
-        'Illusion, fear, anxiety, and the subconscious. Things are not '
-        'as they seem. Navigate carefully through uncertainty, pay '
-        'attention to dreams and intuition, and know that the path '
-        'through the darkness does lead somewhere.',
+        'Hidden enemies, danger, calumny, darkness, terror, deception, '
+        'occult forces, error.',
     reversedMeaning:
-        'Release of fear, clarity emerging, or repressed emotions '
-        'surfacing. Reversed, The Moon suggests that confusion is '
-        'lifting, or that fears you\'ve been avoiding are finally '
-        'demanding to be faced.',
+        'Instability, inconstancy, silence, lesser degrees of deception '
+        'and error.',
     reflectionQuestions: [
       'What fears are you projecting onto an uncertain situation?',
       'What messages are your dreams or anxieties trying to send?',
@@ -640,28 +872,34 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_19',
     description:
-        'A radiant sun with a human face beams down on a joyful naked '
-        'child riding a white horse. Sunflowers bloom over a stone wall '
-        'behind them, turning toward the light. A red banner flutters '
-        'from the child\'s hand — vitality, life force, and celebration.\n\n'
-        'The Sun is the most unambiguously positive card in the Major '
-        'Arcana. After the darkness of The Moon, light returns in full '
-        'glory. The child\'s nakedness represents innocence regained — '
-        'not the naive innocence of The Fool, but the hard-won joy of '
-        'someone who has walked through darkness and emerged whole.',
+        'The naked child mounted on a white horse and displaying a red '
+        'standard has been mentioned already as the better symbolism '
+        'connected with this card. It is the destiny of the Supernatural '
+        'East and the great and holy light which goes before the endless '
+        'procession of humanity, coming out from the walled garden of the '
+        'sensitive life and passing on the journey home. The card '
+        'signifies, therefore, the transit from the manifest light of this '
+        'world, represented by the glorious sun of earth, to the light of '
+        'the world to come, which goes before aspiration and is typified '
+        'by the heart of a child.\n\n'
+        'But the last allusion is again the key to a different form or '
+        'aspect of the symbolism. The sun is that of consciousness in the '
+        'spirit - the direct as the antithesis of the reflected light. '
+        'The characteristic type of humanity has become a little child '
+        'therein--a child in the sense of simplicity and innocence in the '
+        'sense of wisdom. In that simplicity, he bears the seal of Nature '
+        'and of Art; in that innocence, he signifies the restored world. '
+        'When the self-knowing spirit has dawned in the consciousness '
+        'above the natural mind, that mind in its renewal leads forth the '
+        'animal nature in a state of perfect conformity.',
     elementMeaning:
         'Fire is at its most generous and life-giving here. The Sun\'s '
         'fire does not burn — it warms, illuminates, and makes things '
         'grow. It is the creative spark expressed as pure joy.',
     uprightMeaning:
-        'Joy, success, vitality, and positivity. Everything is coming '
-        'together. Celebrate your wins, bask in clarity, and share your '
-        'warmth with others. This is a time of abundance and confidence.',
+        'Material happiness, fortunate marriage, contentment.',
     reversedMeaning:
-        'Temporary setbacks, dampened enthusiasm, or inner child wounds. '
-        'Reversed, The Sun\'s light is dimmed but not extinguished — '
-        'happiness is still available, but something is blocking your '
-        'access to it.',
+        'The same in a lesser sense.',
     reflectionQuestions: [
       'What in your life right now deserves celebration?',
       'Where have you been dimming your own light?',
@@ -673,28 +911,41 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_20',
     description:
-        'The archangel Gabriel blows a great trumpet from the clouds, '
-        'bearing a flag with a red cross. Below, grey-skinned figures '
-        'rise from their coffins — a man, woman, and child — arms '
-        'outstretched toward the call. Mountains of ice frame the '
-        'background, suggesting the final frontier before transcendence.\n\n'
-        'Judgement is the great awakening: a call to rise above the '
-        'person you were and become the person you are meant to be. It '
-        'is not judgement as condemnation, but as honest reckoning — a '
-        'life reviewed and an inner calling answered.',
+        'I have said that this symbol is essentially invariable in all '
+        'Tarot sets, or at least the variations do not alter its character. '
+        'The great angel is here encompassed by clouds, but he blows his '
+        'bannered trumpet, and the cross as usual is displayed on the '
+        'banner. The dead are rising from their tombs--a woman on the '
+        'right, a man on the left hand, and between them their child, '
+        'whose back is turned. But in this card there are more than three '
+        'who are restored, and it has been thought worth while to make '
+        'this variation as illustrating the insufficiency of current '
+        'explanations. It should be noted that all the figures are as one '
+        'in the wonder, adoration and ecstacy expressed by their '
+        'attitudes. It is the card which registers the accomplishment of '
+        'the great work of transformation in answer to the summons of the '
+        'Supernal--which summons is heard and answered from within.\n\n'
+        'Herein is the intimation of a significance which cannot well be '
+        'carried further in the present place. What is that within us '
+        'which does sound a trumpet and all that is lower in our nature '
+        'rises in response--almost in a moment, almost in the twinkling '
+        'of an eye? Let the card continue to depict, for those who can '
+        'see no further, the Last judgment and the resurrection in the '
+        'natural body; but let those who have inward eyes look and '
+        'discover therewith. They will understand that it has been called '
+        'truly in the past a card of eternal life, and for this reason it '
+        'may be compared with that which passes under the name of '
+        'Temperance.',
     elementMeaning:
         'Fire here is the transformative fire of rebirth — the phoenix '
         'flame that calls the dead to rise. Judgement\'s fire purifies '
         'and renews, burning away the last vestiges of the old self.',
     uprightMeaning:
-        'Rebirth, inner calling, reflection, and absolution. You are '
-        'being called to a higher version of yourself. Reflect honestly '
-        'on your past, forgive what needs forgiving, and answer the call.',
+        'Change of position, renewal, outcome. Another account specifies '
+        'total loss though lawsuit.',
     reversedMeaning:
-        'Self-doubt, refusal of the call, or harsh self-judgement. '
-        'Reversed, Judgement may indicate that you are ignoring an '
-        'important inner calling, or that guilt and regret are preventing '
-        'you from moving forward.',
+        'Weakness, pusillanimity, simplicity; also deliberation, '
+        'decision, sentence.',
     reflectionQuestions: [
       'What is calling you to rise to a higher version of yourself?',
       'What past actions or choices need honest reflection and release?',
@@ -706,31 +957,37 @@ const majorArcanaGuides = <CardGuide>[
   CardGuide(
     cardId: 'major_21',
     description:
-        'A dancing figure is suspended within a great laurel wreath, '
-        'holding two wands — echoing The Magician but now in perfect '
-        'balance. The four fixed-sign creatures return from The Wheel '
-        'of Fortune: lion, eagle, ox, and angel — all integrated, all '
-        'at peace. A red ribbon ties the wreath in the shape of an '
-        'infinity symbol at top and bottom.\n\n'
-        'The World is the final card of the Major Arcana and the '
-        'completion of the Fool\'s Journey. It represents wholeness, '
-        'accomplishment, and the integration of every lesson learned '
-        'along the way. The dance is not static — it carries the seed '
-        'of the next cycle, for The Fool will soon step out again.',
+        'As this final message of the Major Trumps is unchanged--and '
+        'indeed unchangeable--in respect of its design, it has been partly '
+        'described already regarding its deeper sense. It represents also '
+        'the perfection and end of the Cosmos, the secret which is within '
+        'it, the rapture of the universe when it understands itself in '
+        'God. It is further the state of the soul in the consciousness of '
+        'Divine Vision, reflected from the self-knowing spirit. But these '
+        'meanings are without prejudice to that which I have said '
+        'concerning it on the material side.\n\n'
+        'It has more than one message on the macrocosmic side and is, for '
+        'example, the state of the restored world when the law of '
+        'manifestation shall have been carried to the highest degree of '
+        'natural perfection. But it is perhaps more especially a story of '
+        'the past, referring to that day when all was declared to be good, '
+        'when the morning stars sang together and all the Sons of God '
+        'shouted for joy. One of the worst explanations concerning it is '
+        'that the figure symbolizes the Magus when he has reached the '
+        'highest degree of initiation; another account says that it '
+        'represents the absolute, which is ridiculous. The figure has been '
+        'said to stand for Truth, which is, however, more properly '
+        'allocated to the seventeenth card. Lastly, it has been called '
+        'the Crown of the Magi.',
     elementMeaning:
         'Earth brings The World to its fullest expression: the tangible '
         'completion of a long journey. Every lesson has been grounded in '
         'real experience, and the result is a life fully lived.',
     uprightMeaning:
-        'Completion, integration, accomplishment, and wholeness. A major '
-        'cycle is complete. Celebrate what you have achieved and the '
-        'person you have become. You have arrived — and a new journey '
-        'awaits.',
+        'Assured success, recompense, voyage, route, emigration, flight, '
+        'change of place.',
     reversedMeaning:
-        'Incompletion, shortcuts, or lack of closure. Reversed, The '
-        'World suggests that a chapter is not yet truly finished. '
-        'Something still needs to be integrated or honoured before you '
-        'can move on.',
+        'Inertia, fixity, stagnation, permanence.',
     reflectionQuestions: [
       'What cycle in your life is reaching its natural completion?',
       'Have you fully integrated the lessons of your recent journey?',

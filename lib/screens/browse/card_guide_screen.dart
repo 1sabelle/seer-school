@@ -131,11 +131,12 @@ class CardGuideScreen extends ConsumerWidget {
             const SizedBox(height: 16),
 
             // Reversed
-            _InterpretationSection(
-              title: 'Reversed',
-              text: guide.reversedMeaning,
-              color: AppColors.dustyRose,
-            ),
+            if (guide.reversedMeaning.isNotEmpty)
+              _InterpretationSection(
+                title: 'Reversed',
+                text: guide.reversedMeaning,
+                color: AppColors.dustyRose,
+              ),
             const SizedBox(height: 24),
 
             // Reflection questions

@@ -5,18 +5,8 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_ace',
     description:
-        'A single hand emerges from a heavy cloud, gripping a great sword '
-        'that pierces a crown wreathed in laurel and palm. The crown floats '
-        'at the blade\'s tip — victory earned through the mind\'s sharpest '
-        'edge. Below, a barren mountainous landscape stretches out, '
-        'suggesting that this breakthrough arrives before the terrain of '
-        'life has had time to soften.\n\n'
-        'The Ace of Swords is the seed of all mental power in the tarot. '
-        'Like a lightning bolt of understanding, it represents the single '
-        'moment when confusion parts and truth stands revealed. In the '
-        'Rider-Waite-Smith tradition, this card is the divine gift of '
-        'clarity — raw intellectual force that can cut through any veil of '
-        'illusion, if wielded with courage and integrity.',
+        'A hand issues from a cloud, grasping a sword, the point of which '
+        'is encircled by a crown.',
     elementMeaning:
         'Air in the Ace is at its purest and most concentrated — a single, '
         'decisive gust that clears the fog. It is the first breath of '
@@ -33,15 +23,13 @@ const swordsGuides = <CardGuide>[
         'thought, a new perspective, or a commitment to truth that has '
         'not yet been tested by experience.',
     uprightMeaning:
-        'Mental clarity, breakthrough, and a triumph of truth. The Ace of '
-        'Swords announces a powerful moment of insight — a new idea, a '
-        'just decision, or the courage to speak plainly. Seize this '
-        'clarity before the moment passes.',
+        'Triumph, the excessive degree in everything, conquest, triumph of '
+        'force. It is a card of great force, in love as well as in hatred. '
+        'The crown may carry a much higher significance than comes usually '
+        'within the sphere of fortune-telling.',
     reversedMeaning:
-        'Confusion, misinformation, or a truth used as a weapon. Reversed, '
-        'the Ace warns that the sword of intellect can cut its wielder. '
-        'You may be forcing a conclusion, thinking in circles, or using '
-        'sharp words without care for the wounds they leave.',
+        'The same, but the results are disastrous; another account '
+        'says--conception, childbirth, augmentation, multiplicity.',
     reflectionQuestions: [
       'What truth is trying to break through in your life right now?',
       'Are you ready to act on a new insight, even if it disrupts the familiar?',
@@ -53,17 +41,8 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_02',
     description:
-        'A blindfolded woman sits before a calm sea, holding two crossed '
-        'swords in perfect balance over her heart. The moon hangs as a '
-        'thin crescent behind her, offering only faint light. Rocky '
-        'islands jut from the water — obstacles she cannot yet see but '
-        'senses all the same.\n\n'
-        'The Two of Swords depicts a stalemate born of avoidance. The '
-        'blindfold is self-imposed: she could remove it at any time, but '
-        'the truth that waits beneath may be more painful than the '
-        'paralysis of not choosing. In the Rider-Waite-Smith tradition, '
-        'this card asks whether the peace you cling to is genuine serenity '
-        'or merely the refusal to look.',
+        'A hoodwinked female figure balances two swords upon her '
+        'shoulders.',
     elementMeaning:
         'Air here is still and stagnant — thought suspended in a holding '
         'pattern. The mind circles the same question endlessly, generating '
@@ -79,15 +58,14 @@ const swordsGuides = <CardGuide>[
         'truths, two paths, two loyalties that seem impossible to '
         'reconcile without loss.',
     uprightMeaning:
-        'Indecision, avoidance, and a difficult choice ahead. The Two of '
-        'Swords suggests you are protecting yourself from a painful truth '
-        'by refusing to engage with it. The stalemate will hold only so '
-        'long — eventually the blindfold must come off.',
+        'Conformity and the equipoise which it suggests, courage, '
+        'friendship, concord in a state of arms; another reading gives '
+        'tenderness, affection, intimacy. The suggestion of harmony and '
+        'other favourable readings must be considered in a qualified '
+        'manner, as Swords generally are not symbolical of beneficent '
+        'forces in human affairs.',
     reversedMeaning:
-        'Information overload, anxiety from seeing too much, or a sudden '
-        'forced decision. Reversed, the blindfold slips and everything '
-        'floods in at once. You may feel overwhelmed by conflicting facts '
-        'or pressured to choose before you feel ready.',
+        'Imposture, falsehood, duplicity, disloyalty.',
     reflectionQuestions: [
       'What decision have you been avoiding, and what are you afraid of seeing?',
       'Is your current sense of peace genuine, or are you simply refusing to look?',
@@ -99,17 +77,7 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_03',
     description:
-        'Three swords pierce a vivid red heart that hovers against a sky '
-        'of grey rain. There is no figure, no landscape — only the heart, '
-        'the blades, and the storm. It is one of the most direct images '
-        'in the entire tarot, needing no allegory to deliver its message: '
-        'this is grief, plain and undeniable.\n\n'
-        'The Three of Swords does not soften its blow. In the '
-        'Rider-Waite-Smith tradition, the rain represents cleansing tears '
-        'and the release that follows honest sorrow. The swords are not '
-        'random cruelties; they are truths that had to be spoken, '
-        'illusions that had to shatter. Painful as they are, they clear '
-        'the way for genuine healing.',
+        'Three swords piercing a heart; cloud and rain behind.',
     elementMeaning:
         'Air becomes the cold wind that carries hard truths. Here, the '
         'element of intellect intersects with raw emotion — the mind '
@@ -126,15 +94,12 @@ const swordsGuides = <CardGuide>[
         'what takes form is sorrow: the moment when an intellectual '
         'understanding of loss becomes a felt, embodied experience.',
     uprightMeaning:
-        'Heartbreak, painful truth, and necessary grief. The Three of '
-        'Swords signals a period of sorrow that cannot be bypassed. '
-        'Whether through betrayal, loss, or a hard conversation, you are '
-        'being asked to feel the wound fully so it can begin to heal.',
+        'Removal, absence, delay, division, rupture, dispersion, and all '
+        'that the design signifies naturally, being too simple and obvious '
+        'to call for specific enumeration.',
     reversedMeaning:
-        'Lingering pain, repressed grief, or the slow work of recovery. '
-        'Reversed, this card suggests the worst may have passed, but the '
-        'heart has not yet finished processing. You may be holding onto '
-        'old hurt or finding it difficult to forgive.',
+        'Mental alienation, error, loss, distraction, disorder, '
+        'confusion.',
     reflectionQuestions: [
       'What grief or loss have you been carrying that still needs to be fully felt?',
       'Is there a painful truth you need to accept before you can move forward?',
@@ -146,18 +111,8 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_04',
     description:
-        'A knight lies in perfect stillness upon a stone tomb inside a '
-        'quiet chapel. Three swords hang on the wall above him while a '
-        'fourth lies beneath the effigy, pointing downward. A stained-glass '
-        'window depicts a figure offering blessing to a kneeling '
-        'supplicant — a scene of grace and sanctuary.\n\n'
-        'The Four of Swords is the tarot\'s prescription for rest. Unlike '
-        'death, this stillness is temporary and intentional — a warrior '
-        'who has chosen to lay down his blade, not because the fight is '
-        'over, but because he knows that exhaustion is a more dangerous '
-        'enemy than any foe. In the Rider-Waite-Smith tradition, this '
-        'card is a sacred pause, a retreat into silence so the mind can '
-        'mend.',
+        'The effigy of a knight in the attitude of prayer, at full length '
+        'upon his tomb.',
     elementMeaning:
         'Air grows quiet here, like the hush inside a cathedral. The '
         'restless mind is finally granted permission to be still, and in '
@@ -173,15 +128,11 @@ const swordsGuides = <CardGuide>[
         'necessary pause — a firm foundation of rest upon which the '
         'mind can rebuild its strength.',
     uprightMeaning:
-        'Rest, recuperation, and contemplative withdrawal. The Four of '
-        'Swords urges you to step back from conflict and mental strain. '
-        'This is not avoidance — it is a strategic retreat that will '
-        'leave you sharper and stronger when you return.',
+        'Vigilance, retreat, solitude, hermit\'s repose, exile, tomb and '
+        'coffin. It is these last that have suggested the design.',
     reversedMeaning:
-        'Restlessness, burnout, or a premature return to action. Reversed, '
-        'this card warns that you are pushing through exhaustion or that '
-        'anxiety is preventing the rest you desperately need. The mind '
-        'that refuses to pause will eventually break.',
+        'Wise administration, circumspection, economy, avarice, '
+        'precaution, testament.',
     reflectionQuestions: [
       'Where in your life is your mind begging for a genuine rest?',
       'What would it take for you to give yourself permission to pause?',
@@ -193,17 +144,10 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_05',
     description:
-        'A smirking figure gathers three swords from the ground while two '
-        'defeated opponents walk away toward a turbulent sea beneath a '
-        'stormy sky. He has won — but the victory feels hollow. The '
-        'retreating figures carry the posture of shame, and the '
-        'sky offers no celebration.\n\n'
-        'The Five of Swords is the card of pyrrhic victory and '
-        'dishonourable conquest. In the Rider-Waite-Smith tradition, it '
-        'asks a discomforting question: what did you sacrifice to win? '
-        'Whether you identify with the victor or the vanquished, this '
-        'card exposes the hidden cost of conflict driven by ego rather '
-        'than principle.',
+        'A disdainful man looks after two retreating and dejected figures. '
+        'Their swords lie upon the ground. He carries two others on his '
+        'left shoulder, and a third sword is in his right hand, point to '
+        'earth. He is the master in possession of the field.',
     elementMeaning:
         'Air here is cutting and bitter — the sharp wind after a storm '
         'that stings rather than refreshes. Intellect has been used not '
@@ -220,15 +164,10 @@ const swordsGuides = <CardGuide>[
         'you will use your mental power with integrity or weaponise it '
         'for personal gain.',
     uprightMeaning:
-        'Conflict, defeat, and hollow victory. The Five of Swords warns '
-        'that winning this battle may cost you something more valuable '
-        'than the prize. Consider whether the fight is truly worth it, '
-        'and whether your methods will leave your conscience clear.',
+        'Degradation, destruction, revocation, infamy, dishonour, loss, '
+        'with the variants and analogues of these.',
     reversedMeaning:
-        'Reconciliation, moving past conflict, or lingering resentment. '
-        'Reversed, this card may signal a willingness to make peace after '
-        'a painful dispute, or it may indicate that old grievances '
-        'continue to poison your thinking.',
+        'The same; burial and obsequies.',
     reflectionQuestions: [
       'Have you recently won an argument but lost something more important?',
       'Is your desire to be right overshadowing your desire to be kind?',
@@ -240,17 +179,9 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_06',
     description:
-        'A cloaked figure and a small child sit huddled in a boat while a '
-        'ferryman guides them across calm water. Six swords stand upright '
-        'in the bow, carried along as cargo. The water on one side is '
-        'choppy and rough; on the other, it smooths into glass — they are '
-        'crossing from turbulence into peace.\n\n'
-        'The Six of Swords is the quiet card of necessary departure. There '
-        'is no fanfare, no joy — only the solemn recognition that what '
-        'lies behind is no longer liveable. In the Rider-Waite-Smith '
-        'tradition, the swords in the boat remind us that we carry our '
-        'sorrows with us, but the journey itself is the beginning of '
-        'healing.',
+        'A ferryman carrying passengers in his punt to the further shore. '
+        'The course is smooth, and seeing that the freight is light, it '
+        'may be noted that the work is not beyond his strength.',
     elementMeaning:
         'Air becomes a steady, guiding wind that fills the sail of '
         'transition. The mind has made its painful calculation and chosen '
@@ -267,15 +198,10 @@ const swordsGuides = <CardGuide>[
         'tentative peace — not yet arrival, but the crucial turning point '
         'where healing becomes possible.',
     uprightMeaning:
-        'Transition, recovery, and moving toward calmer ground. The Six '
-        'of Swords signals a necessary departure from a painful '
-        'situation. The journey may be sombre, but it carries you toward '
-        'relief. Trust that the worst is behind you.',
+        'journey by water, route, way, envoy, commissionary, expedient.',
     reversedMeaning:
-        'Resistance to change, unresolved baggage, or a return to '
-        'turbulent waters. Reversed, this card suggests you are unable or '
-        'unwilling to leave a situation that has run its course. Old '
-        'mental patterns may be pulling you back to familiar suffering.',
+        'Declaration, confession, publicity; one account says that it is '
+        'a proposal of love.',
     reflectionQuestions: [
       'What situation in your life requires a quiet, deliberate departure?',
       'What sorrows are you carrying with you, and which can you set down?',
@@ -287,17 +213,9 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_07',
     description:
-        'A figure tiptoes away from a military encampment, arms loaded '
-        'with five swords while two remain planted in the ground behind '
-        'him. He glances back over his shoulder with a sly, self-satisfied '
-        'expression. In the distance, a cluster of tents and a few '
-        'figures suggest that he is not yet safe from discovery.\n\n'
-        'The Seven of Swords is the trickster card of the tarot — part '
-        'cunning strategy, part moral warning. In the Rider-Waite-Smith '
-        'tradition, the image is deliberately ambiguous: is this figure '
-        'a thief, a spy on a righteous mission, or someone reclaiming '
-        'what was stolen from them? The answer depends on the context '
-        'you bring to the reading.',
+        'A man in the act of carrying away five swords rapidly; the two '
+        'others of the card remain stuck in the ground. A camp is close '
+        'at hand.',
     elementMeaning:
         'Air is sly and shifting here — the kind of breeze that changes '
         'direction without warning. The intellect is being used for '
@@ -314,15 +232,12 @@ const swordsGuides = <CardGuide>[
         'dimension of strategy — the private moment when you must decide '
         'whether the clever plan is also the right one.',
     uprightMeaning:
-        'Deception, strategy, and getting away with something. The Seven '
-        'of Swords suggests a situation involving cunning, shortcuts, or '
-        'half-truths. You may need to be strategic, but be honest about '
-        'whether your approach is clever or simply dishonest.',
+        'Design, attempt, wish, hope, confidence; also quarrelling, a '
+        'plan that may fail, annoyance. The design is uncertain in its '
+        'import, because the significations are widely at variance with '
+        'each other.',
     reversedMeaning:
-        'Getting caught, coming clean, or the return of a guilty '
-        'conscience. Reversed, this card often signals that a deception '
-        'is about to unravel. It can also indicate a desire to drop the '
-        'act and choose transparency over cunning.',
+        'Good advice, counsel, instruction, slander, babbling.',
     reflectionQuestions: [
       'Where in your life are you relying on cleverness instead of honesty?',
       'Is there something you are trying to get away with — and at what cost?',
@@ -334,17 +249,9 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_08',
     description:
-        'A blindfolded and loosely bound woman stands surrounded by eight '
-        'swords planted in the muddy ground. Water pools at her feet, and '
-        'a castle or cliff looms in the distance. Despite the appearance '
-        'of imprisonment, her bindings are not tight — she could free '
-        'herself if she chose to try.\n\n'
-        'The Eight of Swords is one of the most psychologically rich cards '
-        'in the tarot. In the Rider-Waite-Smith tradition, the prison is '
-        'almost entirely mental. The swords form a fence but not a cage; '
-        'the blindfold obscures but does not seal. This card reveals how '
-        'powerfully our own thoughts can trap us — and how liberation '
-        'begins the moment we question the beliefs that bind us.',
+        'A woman, bound and hoodwinked, with the swords of the card about '
+        'her. Yet it is rather a card of temporary durance than of '
+        'irretrievable bondage.',
     elementMeaning:
         'Air has turned against its owner here, becoming the swirling '
         'thoughts that confuse rather than clarify. The mind that should '
@@ -361,16 +268,11 @@ const swordsGuides = <CardGuide>[
         'recognising that the restrictions you face are largely of your '
         'own making, and that the power to dissolve them lies within.',
     uprightMeaning:
-        'Self-imposed restriction, feeling trapped, and mental paralysis. '
-        'The Eight of Swords suggests you feel powerless, but the bars of '
-        'your cage are made of thought, not steel. The first step toward '
-        'freedom is recognising that your prison is not as solid as it '
-        'seems.',
+        'Bad news, violent chagrin, crisis, censure, power in trammels, '
+        'conflict, calumny; also sickness.',
     reversedMeaning:
-        'Self-liberation, new perspective, and release from mental '
-        'bondage. Reversed, the blindfold comes off. You begin to see '
-        'that the constraints you accepted were never as absolute as you '
-        'believed, and you take your first steps toward freedom.',
+        'Disquiet, difficulty, opposition, accident, treachery; what is '
+        'unforeseen; fatality.',
     reflectionQuestions: [
       'Where do you feel trapped, and how much of that trap exists only in your mind?',
       'What belief about yourself would you need to release in order to feel free?',
@@ -382,18 +284,9 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_09',
     description:
-        'A figure sits bolt upright in bed, face buried in hands, as nine '
-        'swords hang in perfect horizontal rows on the black wall behind '
-        'them. The quilt is decorated with roses and astrological symbols, '
-        'and a carving on the bed frame shows one figure defeating '
-        'another — a scene of conflict embedded in the place meant for '
-        'rest.\n\n'
-        'The Nine of Swords is the dark night of the mind — the 3 a.m. '
-        'spiral of worry, guilt, and dread. In the Rider-Waite-Smith '
-        'tradition, the darkness is notably interior: the room may be '
-        'safe, the danger may have passed, but the mind replays its '
-        'terrors on an endless loop. This card does not depict an actual '
-        'catastrophe — it depicts the agony of imagining one.',
+        'One seated on her couch in lamentation, with the swords over '
+        'her. She is as one who knows no sorrow which is like unto hers. '
+        'It is a card of utter desolation.',
     elementMeaning:
         'Air is turbulent and relentless here — a howling wind inside the '
         'skull that will not quiet. The mind\'s capacity for thought has '
@@ -410,15 +303,10 @@ const swordsGuides = <CardGuide>[
         'weight of every worry, regret, and fear brought to a breaking '
         'point just before dawn.',
     uprightMeaning:
-        'Anxiety, nightmares, and overwhelming worry. The Nine of Swords '
-        'signals a period of intense mental anguish — often worse in '
-        'imagination than in reality. Acknowledge the pain, but remember '
-        'that the mind at 3 a.m. is not a reliable narrator.',
+        'Death, failure, miscarriage, delay, deception, disappointment, '
+        'despair.',
     reversedMeaning:
-        'Hope after despair, releasing anxiety, or inner work beginning '
-        'to pay off. Reversed, the Nine suggests the worst of the mental '
-        'storm is passing. You may be finding ways to quiet the spiral '
-        'through support, therapy, or simple self-compassion.',
+        'Imprisonment, suspicion, doubt, reasonable fear, shame.',
     reflectionQuestions: [
       'What fears are loudest in the middle of the night, and how real are they by daylight?',
       'Are you carrying guilt or worry that belongs to the past rather than the present?',
@@ -430,18 +318,8 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_10',
     description:
-        'A figure lies face down on barren ground, ten swords driven into '
-        'their back. A black sky presses down from above, but along the '
-        'distant horizon a band of golden light is beginning to glow. '
-        'Still water reflects the scene, calm and impassive — nature '
-        'carries on regardless.\n\n'
-        'The Ten of Swords is dramatic, almost theatrical in its imagery '
-        'of total defeat. In the Rider-Waite-Smith tradition, the '
-        'exaggeration is intentional: ten swords are far more than '
-        'necessary, suggesting that the situation feels worse than it '
-        'truly is, or that the mind has amplified the blow beyond '
-        'proportion. And yet — the golden dawn on the horizon promises '
-        'that this ending is also a beginning.',
+        'A prostrate figure, pierced by all the swords belonging to the '
+        'card.',
     elementMeaning:
         'Air has exhausted itself entirely. Every thought, every mental '
         'struggle, every argument has been spent. In this total depletion '
@@ -459,16 +337,12 @@ const swordsGuides = <CardGuide>[
         'suit, this completion is a total mental reckoning: rock bottom, '
         'yes, but also the solid ground from which you can only rise.',
     uprightMeaning:
-        'Rock bottom, painful ending, and the dawn after the darkest '
-        'night. The Ten of Swords marks the conclusion of a difficult '
-        'mental cycle. There is no further to fall. Allow the ending '
-        'its full weight, then turn your eyes toward the new light '
-        'breaking on the horizon.',
+        'Whatsoever is intimated by the design; also pain, affliction, '
+        'tears, sadness, desolation. It is not especially a card of '
+        'violent death.',
     reversedMeaning:
-        'Resistance to an inevitable ending, or recovery already '
-        'underway. Reversed, the Ten may indicate that you are clinging '
-        'to a situation that has already ended, or that you are beginning '
-        'to pull the swords from your back and rise again.',
+        'Advantage, profit, success, favour, but none of these are '
+        'permanent; also power and authority.',
     reflectionQuestions: [
       'What chapter in your life has definitively ended, whether you accept it or not?',
       'Can you see the first light of dawn behind the pain of this ending?',
@@ -480,17 +354,11 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_page',
     description:
-        'A young figure stands on uneven ground, holding a sword upright '
-        'with both hands as wind whips through the sky, driving clouds '
-        'and bending distant trees. Their stance is alert, weight on the '
-        'balls of the feet, head turned as though tracking something just '
-        'out of frame. Birds wheel in the restless air behind them.\n\n'
-        'The Page of Swords is the scout of the mind — endlessly curious, '
-        'always watching, quick to question. In the Rider-Waite-Smith '
-        'tradition, this figure embodies the early stages of intellectual '
-        'development: sharp enough to notice everything, but not yet '
-        'experienced enough to know which observations matter most. Their '
-        'energy is electric, vigilant, and sometimes exhausting.',
+        'A lithe, active figure holds a sword upright in both hands, '
+        'while in the act of swift walking. He is passing over rugged '
+        'land, and about his way the clouds are collocated wildly. He is '
+        'alert and lithe, looking this way and that, as if an expected '
+        'enemy might appear at any moment.',
     elementMeaning:
         'Air is gusty and unpredictable here — the restless breeze of a '
         'mind that wants to know everything at once. Thoughts come fast '
@@ -507,15 +375,11 @@ const swordsGuides = <CardGuide>[
         'intellectual discoveries, sharp observations, and sometimes '
         'uncomfortable truths that others have missed or avoided.',
     uprightMeaning:
-        'Curiosity, vigilance, and mental agility. The Page of Swords '
-        'signals a time of active learning, investigation, and sharp '
-        'observation. Stay alert for new information and be willing to '
-        'ask the questions others are too polite to raise.',
+        'Authority, overseeing, secret service, vigilance, spying, '
+        'examination, and the qualities thereto belonging.',
     reversedMeaning:
-        'Gossip, mental scattered energy, or all talk and no action. '
-        'Reversed, the Page\'s curiosity may devolve into nosiness, or '
-        'their quick mind may race without producing anything of '
-        'substance. Be wary of speaking before thinking.',
+        'More evil side of these qualities; what is unforeseen, unprepared '
+        'state; sickness is also intimated.',
     reflectionQuestions: [
       'What are you genuinely curious about right now, and are you pursuing it?',
       'Is your mind gathering information to understand, or to judge?',
@@ -527,18 +391,10 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_knight',
     description:
-        'A knight charges forward on a white horse at full gallop, sword '
-        'raised high, cape streaming behind. Storm clouds churn overhead '
-        'and the trees in the distance bend under fierce winds. The '
-        'horse\'s legs are a blur of motion — there is nothing tentative '
-        'about this advance.\n\n'
-        'The Knight of Swords is pure intellectual ambition in motion — '
-        'brilliant, fearless, and sometimes dangerously single-minded. In '
-        'the Rider-Waite-Smith tradition, this knight does not pause to '
-        'negotiate or reconsider. He has identified his target and rides '
-        'toward it with absolute conviction. His strength is his speed '
-        'and decisiveness; his weakness is that he may cut down allies '
-        'and nuance alike in his headlong rush.',
+        'He is riding in full course, as if scattering his enemies. In '
+        'the design he is really a prototypical hero of romantic chivalry. '
+        'He might almost be Galahad, whose sword is swift and sure '
+        'because he is clean of heart.',
     elementMeaning:
         'Air is a gale-force wind here — powerful, directed, and '
         'impossible to ignore. The mind is fully committed to its course, '
@@ -555,15 +411,12 @@ const swordsGuides = <CardGuide>[
         'intellectual battles and ideological crusades, driven by the '
         'belief that the truth must be defended at any speed.',
     uprightMeaning:
-        'Ambition, swift action, and sharp intellect in pursuit of a '
-        'goal. The Knight of Swords signals a time to move decisively '
-        'and speak boldly. Channel this fierce energy with care — '
-        'brilliance without empathy can leave wreckage in its wake.',
+        'Skill, bravery, capacity, defence, address, enmity, wrath, war, '
+        'destruction, opposition, resistance, ruin. There is therefore a '
+        'sense in which the card signifies death, but it carries this '
+        'meaning only in its proximity to other cards of fatality.',
     reversedMeaning:
-        'Impulsiveness, scattered focus, or aggression disguised as '
-        'honesty. Reversed, the Knight\'s charge becomes reckless. You '
-        'may be rushing to conclusions, bulldozing through conversations, '
-        'or mistaking bluntness for bravery.',
+        'Imprudence, incapacity, extravagance.',
     reflectionQuestions: [
       'Are you charging toward your goal with clarity, or just with speed?',
       'Whose perspectives might you be trampling in your rush to be right?',
@@ -575,18 +428,11 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_queen',
     description:
-        'A queen sits upon a stone throne carved with clouds, butterflies, '
-        'and a single cherub. She holds her sword upright in her right '
-        'hand and extends her left as though beckoning or setting a '
-        'boundary. Her crown rises into the sky, and her expression is '
-        'calm but penetrating — she sees through pretence as easily as '
-        'glass.\n\n'
-        'The Queen of Swords has earned her clarity through experience, '
-        'often through grief. In the Rider-Waite-Smith tradition, the '
-        'clouds gather at her feet but her head is clear above them — she '
-        'has learned to separate emotion from perception without denying '
-        'either. She is the figure in the tarot who can hold your hand '
-        'and tell you the truth at the same time.',
+        'Her right hand raises the weapon vertically and the hilt rests '
+        'on an arm of her royal chair the left hand is extended, the arm '
+        'raised her countenance is severe but chastened; it suggests '
+        'familiarity with sorrow. It does not represent mercy, and, her '
+        'sword notwithstanding, she is scarcely a symbol of power.',
     elementMeaning:
         'Air is crisp, high-altitude, and bracing — the rarefied '
         'atmosphere above the cloud line where vision extends for miles. '
@@ -603,15 +449,10 @@ const swordsGuides = <CardGuide>[
         'nurtures by refusing to lie, by maintaining boundaries, and by '
         'demonstrating that honest perception is itself an act of love.',
     uprightMeaning:
-        'Clear boundaries, honest perception, and independent thinking. '
-        'The Queen of Swords calls you to speak your truth with grace '
-        'and to see situations as they are rather than as you wish them '
-        'to be. Let compassion sharpen your honesty, not dull it.',
+        'Widowhood, female sadness and embarrassment, absence, sterility, '
+        'mourning, privation, separation.',
     reversedMeaning:
-        'Coldness, bitterness, or using intellect to keep others at a '
-        'distance. Reversed, the Queen\'s clarity may harden into '
-        'cynicism. You may be so guarded that you mistake isolation for '
-        'independence, or wield truth as a weapon rather than a gift.',
+        'Malice, bigotry, artifice, prudery, bale, deceit.',
     reflectionQuestions: [
       'Where do you need to set a clearer boundary, even if it disappoints someone?',
       'Are you using your intellect to connect with others or to keep them away?',
@@ -623,19 +464,10 @@ const swordsGuides = <CardGuide>[
   CardGuide(
     cardId: 'swords_king',
     description:
-        'A king sits upon a throne adorned with butterflies and crescent '
-        'moons, holding a long sword in his right hand, tilted slightly '
-        'to the side. His expression is stern but just, and his purple '
-        'cloak speaks of spiritual authority layered over intellectual '
-        'power. Behind him, the sky is clear and the trees are still — '
-        'the storms that rage through lower Swords cards have been '
-        'mastered here.\n\n'
-        'The King of Swords represents the highest expression of mental '
-        'authority in the tarot. In the Rider-Waite-Smith tradition, he '
-        'is the judge, the lawgiver, and the ethical thinker — a figure '
-        'who has integrated intellect with principle. His sword is not '
-        'raised in aggression but held with the steady assurance of one '
-        'who knows that true power lies in fair and reasoned judgment.',
+        'He sits in judgment, holding the unsheathed sign of his suit. He '
+        'recalls, of course, the conventional Symbol of justice in the '
+        'Trumps Major, and he may represent this virtue, but he is rather '
+        'the power of life and death, in virtue of his office.',
     elementMeaning:
         'Air is perfectly still and commanding — the calm centre of a '
         'vast sky. The mind has achieved mastery not through force but '
@@ -652,15 +484,11 @@ const swordsGuides = <CardGuide>[
         'establishes order through clear thinking, ethical standards, and '
         'the willingness to make difficult decisions impartially.',
     uprightMeaning:
-        'Intellectual authority, moral clarity, and principled leadership. '
-        'The King of Swords calls you to lead with your mind and your '
-        'ethics. Make decisions based on reason and fairness, and hold '
-        'yourself to the standards you expect of others.',
+        'Whatsoever arises out of the idea of judgment and all its '
+        'connexions-power, command, authority, militant intelligence, '
+        'law, offices of the crown, and so forth.',
     reversedMeaning:
-        'Tyranny of intellect, cold judgment, or abuse of authority. '
-        'Reversed, the King may represent a person — or a part of '
-        'yourself — who uses logic to control, dismiss emotions, or '
-        'justify cruelty under the guise of rationality.',
+        'Cruelty, perversity, barbarity, perfidy, evil intention.',
     reflectionQuestions: [
       'Where in your life are you being asked to lead with fairness and clear thinking?',
       'Are your standards for others consistent with the standards you hold for yourself?',
