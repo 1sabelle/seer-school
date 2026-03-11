@@ -243,7 +243,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
                   // Attribution footer
                   Text(
-                    'Illustrations by Pamela Colman Smith, 1909',
+                    'Illustrations by Pamela Colman Smith, 1909\n'
+                    'Card descriptions from The Pictorial Key to the Tarot by A. E. Waite, 1911',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color:
                               AppColors.agedInkBlue.withValues(alpha: 0.4),
