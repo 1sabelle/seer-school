@@ -35,7 +35,7 @@ class CardDetailScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(isUnlocked ? card.name : '???')),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.fromLTRB(20, 20, 20, MediaQuery.of(context).padding.bottom + 96),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -175,7 +175,6 @@ class CardDetailScreen extends ConsumerWidget {
               ),
             ],
 
-            const SizedBox(height: 40),
           ],
         ),
       ),
