@@ -8,6 +8,7 @@ import '../../providers/card_providers.dart';
 import '../../providers/deck_providers.dart';
 import '../../providers/guide_providers.dart';
 import '../../providers/statistics_providers.dart';
+import '../../providers/symbol_providers.dart';
 import '../practice/widgets/card_image_widget.dart';
 
 class CardDetailScreen extends ConsumerWidget {
@@ -150,6 +151,19 @@ class CardDetailScreen extends ConsumerWidget {
                     onPressed: () => context.go('/browse/$cardId/guide'),
                     icon: const Icon(Icons.menu_book_rounded, size: 20),
                     label: const Text('Read Full Guide'),
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
+
+              // Symbol explorer button
+              if (ref.watch(symbolDataProvider(cardId)) != null) ...[
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton.icon(
+                    onPressed: () => context.go('/browse/$cardId/symbols'),
+                    icon: const Icon(Icons.search_rounded, size: 20),
+                    label: const Text('Explore Symbols'),
                   ),
                 ),
                 const SizedBox(height: 10),

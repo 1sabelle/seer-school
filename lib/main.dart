@@ -12,6 +12,7 @@ void main() async {
   Hive.registerAdapter(CardStatisticAdapter());
   await Hive.openBox<CardStatistic>('card_statistics');
   await Hive.openBox('app_settings');
+  await Hive.openBox<List<dynamic>>('symbol_discoveries');
 
   runApp(
     const ProviderScope(
