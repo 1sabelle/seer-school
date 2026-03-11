@@ -8,7 +8,7 @@ const swordsGuides = <CardGuide>[
         'A hand issues from a cloud, grasping a sword, the point of which '
         'is encircled by a crown.',
     elementMeaning:
-        'Air in the Ace is at its purest and most concentrated — a single, '
+        'Air in the Ace is at its purest and most concentrated, a single, '
         'decisive gust that clears the fog. It is the first breath of '
         'reason, the flash of insight before thought becomes language.',
     suitMeaning:
@@ -18,7 +18,7 @@ const swordsGuides = <CardGuide>[
         'the power to discern truth and the responsibility that comes '
         'with wielding it.',
     numerologyMeaning:
-        'Aces carry the energy of potential — the number one as origin '
+        'Aces carry the energy of potential, the number one as origin '
         'point and seed. Here, that potential is mental: a breakthrough '
         'thought, a new perspective, or a commitment to truth that has '
         'not yet been tested by experience.',
@@ -44,7 +44,7 @@ const swordsGuides = <CardGuide>[
         'A hoodwinked female figure balances two swords upon her '
         'shoulders.',
     elementMeaning:
-        'Air here is still and stagnant — thought suspended in a holding '
+        'Air here is still and stagnant, thought suspended in a holding '
         'pattern. The mind circles the same question endlessly, generating '
         'analysis without resolution, like wind trapped in a closed room.',
     suitMeaning:
@@ -54,7 +54,7 @@ const swordsGuides = <CardGuide>[
         'promises remains blocked behind a self-imposed blindfold.',
     numerologyMeaning:
         'Two is the number of duality, balance, and choice. In the Swords '
-        'suit, this duality becomes a painful fork in the road — two '
+        'suit, this duality becomes a painful fork in the road: two '
         'truths, two paths, two loyalties that seem impossible to '
         'reconcile without loss.',
     uprightMeaning:
@@ -80,7 +80,7 @@ const swordsGuides = <CardGuide>[
         'Three swords piercing a heart; cloud and rain behind.',
     elementMeaning:
         'Air becomes the cold wind that carries hard truths. Here, the '
-        'element of intellect intersects with raw emotion — the mind '
+        'element of intellect intersects with raw emotion, and the mind '
         'understands what has happened even as the heart struggles to '
         'accept it.',
     suitMeaning:
@@ -89,7 +89,7 @@ const swordsGuides = <CardGuide>[
         'inherent in this suit has cut through denial, leaving heartbreak '
         'as the price of honesty.',
     numerologyMeaning:
-        'Three is the number of embodiment and expression — the point '
+        'Three is the number of embodiment and expression, the point '
         'where an abstract idea takes tangible form. In the Swords suit, '
         'what takes form is sorrow: the moment when an intellectual '
         'understanding of loss becomes a felt, embodied experience.',
@@ -119,13 +119,13 @@ const swordsGuides = <CardGuide>[
         'that stillness, clarity can slowly return without force.',
     suitMeaning:
         'The mental intensity of the Swords suit demands periodic rest. '
-        'This card acknowledges that relentless thinking — analysis, '
-        'worry, strategizing — eventually depletes rather than empowers. '
+        'This card acknowledges that relentless thinking (analysis, '
+        'worry, strategizing) eventually depletes rather than empowers. '
         'True intellectual strength requires knowing when to stop.',
     numerologyMeaning:
         'Four is the number of stability, structure, and stillness. '
         'Applied to the restless Swords suit, the four imposes a '
-        'necessary pause — a firm foundation of rest upon which the '
+        'necessary pause, a firm foundation of rest upon which the '
         'mind can rebuild its strength.',
     uprightMeaning:
         'Vigilance, retreat, solitude, hermit\'s repose, exile, tomb and '
@@ -149,7 +149,7 @@ const swordsGuides = <CardGuide>[
         'left shoulder, and a third sword is in his right hand, point to '
         'earth. He is the master in possession of the field.',
     elementMeaning:
-        'Air here is cutting and bitter — the sharp wind after a storm '
+        'Air here is cutting and bitter, the sharp wind after a storm '
         'that stings rather than refreshes. Intellect has been used not '
         'to seek truth but to dominate, and the atmosphere is thick with '
         'resentment.',
@@ -185,7 +185,7 @@ const swordsGuides = <CardGuide>[
     elementMeaning:
         'Air becomes a steady, guiding wind that fills the sail of '
         'transition. The mind has made its painful calculation and chosen '
-        'departure — thought now serves as navigator, steering toward '
+        'departure, and thought now serves as navigator, steering toward '
         'calmer waters.',
     suitMeaning:
         'The intellectual clarity of Swords here manifests as the hard '
@@ -195,7 +195,7 @@ const swordsGuides = <CardGuide>[
     numerologyMeaning:
         'Six is the number of transition, harmony, and adjustment. In the '
         'Swords suit, it marks the passage from active conflict to '
-        'tentative peace — not yet arrival, but the crucial turning point '
+        'tentative peace. It is not yet arrival, but the crucial turning point '
         'where healing becomes possible.',
     uprightMeaning:
         'journey by water, route, way, envoy, commissionary, expedient.',
@@ -217,7 +217,7 @@ const swordsGuides = <CardGuide>[
         'others of the card remain stuck in the ground. A camp is close '
         'at hand.',
     elementMeaning:
-        'Air is sly and shifting here — the kind of breeze that changes '
+        'Air is sly and shifting here, the kind of breeze that changes '
         'direction without warning. The intellect is being used for '
         'stealth and calculation, darting between shadows rather than '
         'standing in the open.',
@@ -229,7 +229,7 @@ const swordsGuides = <CardGuide>[
     numerologyMeaning:
         'Seven is the number of discernment, inner work, and assessment. '
         'In the Swords suit, this introspection reveals the ethical '
-        'dimension of strategy — the private moment when you must decide '
+        'dimension of strategy, the private moment when you must decide '
         'whether the clever plan is also the right one.',
     uprightMeaning:
         'Design, attempt, wish, hope, confidence; also quarrelling, a '
@@ -240,7 +240,7 @@ const swordsGuides = <CardGuide>[
         'Good advice, counsel, instruction, slander, babbling.',
     reflectionQuestions: [
       'Where in your life are you relying on cleverness instead of honesty?',
-      'Is there something you are trying to get away with — and at what cost?',
+      'Is there something you are trying to get away with, and at what cost?',
       'What would happen if you chose the direct path instead of the shortcut?',
     ],
   ),
@@ -260,7 +260,7 @@ const swordsGuides = <CardGuide>[
     suitMeaning:
         'The Swords suit\'s dominion over thought and perception is on '
         'full display in its shadow form. Mental clarity has given way to '
-        'mental captivity — the same intellect that can cut through '
+        'mental captivity, and the same intellect that can cut through '
         'illusion now maintains it, convinced that escape is impossible.',
     numerologyMeaning:
         'Eight is the number of power, transformation, and mastery. In '
@@ -288,7 +288,7 @@ const swordsGuides = <CardGuide>[
         'her. She is as one who knows no sorrow which is like unto hers. '
         'It is a card of utter desolation.',
     elementMeaning:
-        'Air is turbulent and relentless here — a howling wind inside the '
+        'Air is turbulent and relentless here, a howling wind inside the '
         'skull that will not quiet. The mind\'s capacity for thought has '
         'become a liability, generating nightmare scenarios faster than '
         'reason can dispel them.',
@@ -299,7 +299,7 @@ const swordsGuides = <CardGuide>[
         'magnified, and replayed. This is the shadow side of a sharp mind.',
     numerologyMeaning:
         'Nine is the number of near-completion and culmination. In the '
-        'Swords suit, what culminates is anxiety itself — the accumulated '
+        'Swords suit, what culminates is anxiety itself: the accumulated '
         'weight of every worry, regret, and fear brought to a breaking '
         'point just before dawn.',
     uprightMeaning:
@@ -329,10 +329,10 @@ const swordsGuides = <CardGuide>[
         'The Swords suit\'s cycle of conflict and truth reaches its '
         'absolute conclusion. Every mental battle has been fought and '
         'lost. But in this completion, the Swords\' deeper promise '
-        'emerges — once illusion is fully destroyed, only truth remains, '
+        'emerges: once illusion is fully destroyed, only truth remains, '
         'and truth is the foundation for rebuilding.',
     numerologyMeaning:
-        'Ten is the number of completion — the end of a cycle that '
+        'Ten is the number of completion, the end of a cycle that '
         'simultaneously contains the seed of the next. In the Swords '
         'suit, this completion is a total mental reckoning: rock bottom, '
         'yes, but also the solid ground from which you can only rise.',
@@ -360,7 +360,7 @@ const swordsGuides = <CardGuide>[
         'alert and lithe, looking this way and that, as if an expected '
         'enemy might appear at any moment.',
     elementMeaning:
-        'Air is gusty and unpredictable here — the restless breeze of a '
+        'Air is gusty and unpredictable here, the restless breeze of a '
         'mind that wants to know everything at once. Thoughts come fast '
         'and scatter easily, full of potential but not yet disciplined.',
     suitMeaning:
@@ -370,7 +370,7 @@ const swordsGuides = <CardGuide>[
         'and the desire for truth sometimes outpaces the wisdom to handle '
         'it.',
     courtPersonaMeaning:
-        'The Page is the Messenger archetype — the student, the spy, the '
+        'The Page is the Messenger archetype: the student, the spy, the '
         'bearer of news. Through Swords, this messenger carries '
         'intellectual discoveries, sharp observations, and sometimes '
         'uncomfortable truths that others have missed or avoided.',
@@ -396,7 +396,7 @@ const swordsGuides = <CardGuide>[
         'He might almost be Galahad, whose sword is swift and sure '
         'because he is clean of heart.',
     elementMeaning:
-        'Air is a gale-force wind here — powerful, directed, and '
+        'Air is a gale-force wind here, powerful, directed, and '
         'impossible to ignore. The mind is fully committed to its course, '
         'cutting through resistance with the force of total certainty.',
     suitMeaning:
@@ -406,7 +406,7 @@ const swordsGuides = <CardGuide>[
         'and the relentless pursuit of an idea regardless of collateral '
         'damage.',
     courtPersonaMeaning:
-        'The Knight is the Adventurer archetype — the champion who acts '
+        'The Knight is the Adventurer archetype: the champion who acts '
         'on conviction. Through Swords, this adventurer charges into '
         'intellectual battles and ideological crusades, driven by the '
         'belief that the truth must be defended at any speed.',
@@ -434,7 +434,7 @@ const swordsGuides = <CardGuide>[
         'familiarity with sorrow. It does not represent mercy, and, her '
         'sword notwithstanding, she is scarcely a symbol of power.',
     elementMeaning:
-        'Air is crisp, high-altitude, and bracing — the rarefied '
+        'Air is crisp, high-altitude, and bracing, the rarefied '
         'atmosphere above the cloud line where vision extends for miles. '
         'The mind has risen above confusion into a place of hard-won '
         'clarity.',
@@ -444,7 +444,7 @@ const swordsGuides = <CardGuide>[
         'precision rather than recklessness, understanding that the '
         'sharpest truths require the steadiest hand.',
     courtPersonaMeaning:
-        'The Queen is the Nurturer archetype — the protector who cares '
+        'The Queen is the Nurturer archetype: the protector who cares '
         'through clarity rather than comfort. Through Swords, she '
         'nurtures by refusing to lie, by maintaining boundaries, and by '
         'demonstrating that honest perception is itself an act of love.',
@@ -469,7 +469,7 @@ const swordsGuides = <CardGuide>[
         'Trumps Major, and he may represent this virtue, but he is rather '
         'the power of life and death, in virtue of his office.',
     elementMeaning:
-        'Air is perfectly still and commanding — the calm centre of a '
+        'Air is perfectly still and commanding, the calm centre of a '
         'vast sky. The mind has achieved mastery not through force but '
         'through discipline, and thought now serves justice rather than '
         'ambition.',
@@ -479,7 +479,7 @@ const swordsGuides = <CardGuide>[
         'mental battle the suit offers and emerged with moral clarity. '
         'He wields truth not as a weapon but as a responsibility.',
     courtPersonaMeaning:
-        'The King is the Leader archetype — the authority who governs '
+        'The King is the Leader archetype: the authority who governs '
         'through wisdom rather than force. Through Swords, this leader '
         'establishes order through clear thinking, ethical standards, and '
         'the willingness to make difficult decisions impartially.',

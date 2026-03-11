@@ -12,7 +12,7 @@ const cupsGuides = <CardGuide>[
         'dew of water is falling on all sides. It is an intimation of '
         'that which may lie behind the Lesser Arcana.',
     elementMeaning:
-        'Water here is at its purest and most abundant — the first rush of '
+        'Water here is at its purest and most abundant, the first rush of '
         'emotion before it has been shaped by experience. It represents the '
         'boundless wellspring of feeling that exists within, waiting to be '
         'tapped.',
@@ -22,7 +22,7 @@ const cupsGuides = <CardGuide>[
         'form: raw potential for love, compassion, and deep connection that '
         'has not yet been directed toward any particular person or purpose.',
     numerologyMeaning:
-        'The Ace carries the energy of one — the singular point of origin, '
+        'The Ace carries the energy of one, the singular point of origin, '
         'the seed from which everything else grows. In the Cups suit, this '
         'potential is emotional and intuitive, a divine spark of feeling '
         'asking you to receive before you act.',
@@ -55,7 +55,7 @@ const cupsGuides = <CardGuide>[
         'feelings resonate with and reflect another\'s.',
     suitMeaning:
         'The Cups themes of relationship and emotional intimacy are at '
-        'the forefront. This card embodies the suit\'s highest ideal — '
+        'the forefront. This card embodies the suit\'s highest ideal: '
         'that genuine connection arises when two people meet each other '
         'with open hearts, vulnerability, and mutual respect.',
     numerologyMeaning:
@@ -95,7 +95,7 @@ const cupsGuides = <CardGuide>[
     numerologyMeaning:
         'Three is the number of creation, expression, and embodiment. '
         'In the emotional realm of Cups, it represents feelings that '
-        'have found outward form — joy that is not kept inside but '
+        'have found outward form. Joy that is not kept inside but '
         'shared, spoken, and danced into being.',
     uprightMeaning:
         'The conclusion of any matter in plenty, perfection and '
@@ -121,8 +121,8 @@ const cupsGuides = <CardGuide>[
         'discontent with his environment.',
     elementMeaning:
         'Water has become still and stagnant beneath the tree. The '
-        'element reflects an inner stillness that has gone quiet — '
-        'not the calm of peace, but the flatness of apathy or '
+        'element reflects an inner stillness that has gone quiet, '
+        'not the calm of peace but the flatness of apathy or '
         'disillusionment that comes when feelings are suppressed.',
     suitMeaning:
         'The Cups suit\'s gift of emotional richness is temporarily '
@@ -133,7 +133,7 @@ const cupsGuides = <CardGuide>[
     numerologyMeaning:
         'Four is the number of stability and structure, but also of '
         'stagnation. In the emotional world of Cups, it can indicate a '
-        'period of emotional rest that risks becoming apathy — a '
+        'period of emotional rest that risks becoming apathy, a '
         'foundation that has hardened into a cage.',
     uprightMeaning:
         'Weariness, disgust, aversion, imaginary vexations, as if the '
@@ -157,20 +157,20 @@ const cupsGuides = <CardGuide>[
         'two others stand upright behind him; a bridge is in the '
         'background, leading to a small keep or holding.',
     elementMeaning:
-        'Water has been spilled — emotion that once flowed freely is '
+        'Water has been spilled. Emotion that once flowed freely is '
         'now lost to the ground. The element here carries the pain of '
         'emotional investment that did not yield what was hoped, and the '
         'slow process of letting grief run its course.',
     suitMeaning:
         'The Cups suit\'s deep capacity for feeling is turned toward '
-        'loss. This card shows the shadow side of emotional sensitivity — '
+        'loss. This card shows the shadow side of emotional sensitivity: '
         'when the heart that loves deeply also grieves deeply, and the '
         'challenge becomes learning when to turn from what is lost toward '
         'what endures.',
     numerologyMeaning:
         'Five is the number of disruption, challenge, and necessary '
         'change. In the emotional world of Cups, it represents a '
-        'crisis of the heart — a loss that shakes your emotional '
+        'crisis of the heart, a loss that shakes your emotional '
         'foundations and demands that you find a new way to carry your '
         'feelings.',
     uprightMeaning:
@@ -184,7 +184,7 @@ const cupsGuides = <CardGuide>[
         'false projects.',
     reflectionQuestions: [
       'What loss are you still mourning, and what might you be overlooking because of it?',
-      'Is there a bridge in your life — a path forward — that you have not yet been willing to cross?',
+      'Is there a bridge in your life, a path forward, that you have not yet been willing to cross?',
       'How can you honour your grief without letting it define your entire inner life?',
     ],
   ),
@@ -196,7 +196,7 @@ const cupsGuides = <CardGuide>[
         'Children in an old garden, their cups filled with flowers.',
     elementMeaning:
         'Water here flows gently through the channels of memory. The '
-        'element represents the emotional residue of past experiences — '
+        'element represents the emotional residue of past experiences, '
         'feelings that have softened with time into something warm, '
         'golden, and nourishing rather than raw or urgent.',
     suitMeaning:
@@ -207,7 +207,7 @@ const cupsGuides = <CardGuide>[
     numerologyMeaning:
         'Six is the number of harmony, transition, and generosity. In '
         'the emotional realm of Cups, it represents a passage between '
-        'past and present — the gentle act of integrating who you were '
+        'past and present, the gentle act of integrating who you were '
         'with who you are becoming.',
     uprightMeaning:
         'A card of the past and of memories, looking back, as--for '
@@ -232,13 +232,13 @@ const cupsGuides = <CardGuide>[
         'Strange chalices of vision, but the images are more especially '
         'those of the fantastic spirit.',
     elementMeaning:
-        'Water has evaporated into mist and cloud — emotion unmoored '
+        'Water has evaporated into mist and cloud, emotion unmoored '
         'from reality. The element here represents the imaginative '
         'power of the unconscious when it is not grounded, producing '
         'beautiful but insubstantial visions that drift beyond reach.',
     suitMeaning:
         'The Cups suit\'s gift of intuition and imagination is pushed '
-        'to its limit. This card reveals the danger of emotional excess — '
+        'to its limit. This card reveals the danger of emotional excess: '
         'when the heart\'s capacity to dream becomes escapism, and the '
         'richness of inner life substitutes for engagement with the '
         'outer world.',
@@ -309,7 +309,7 @@ const cupsGuides = <CardGuide>[
         'picture offers the material side only, but there are other '
         'aspects.',
     elementMeaning:
-        'Water here is calm, deep, and luminous — a still lake that '
+        'Water here is calm, deep, and luminous, a still lake that '
         'reflects the abundance above it. The element represents '
         'emotions that have been tended with care and have blossomed '
         'into genuine, grounded satisfaction.',
@@ -317,12 +317,12 @@ const cupsGuides = <CardGuide>[
         'The Cups suit\'s promise of emotional fulfillment is '
         'approaching its zenith. This card shows what becomes possible '
         'when the heart\'s desires are honoured and pursued with '
-        'sincerity — a state of deep contentment that radiates outward '
+        'sincerity, a state of deep contentment that radiates outward '
         'into every area of life.',
     numerologyMeaning:
         'Nine is the number of attainment, near-completion, and '
         'personal fulfillment. In the emotional world of Cups, it '
-        'represents the penultimate reward — the moment just before '
+        'represents the penultimate reward, the moment just before '
         'total completion when you can feel how far you have come.',
     uprightMeaning:
         'Concord, contentment, physical bien-etre; also victory, '
@@ -351,17 +351,17 @@ const cupsGuides = <CardGuide>[
     elementMeaning:
         'Water flows in harmony through a lush, abundant landscape. The '
         'element represents emotions that have reached their fullest, '
-        'most integrated expression — feeling that nourishes not only '
+        'most integrated expression, feeling that nourishes not only '
         'the individual but the entire community around them.',
     suitMeaning:
         'The Cups suit\'s journey through the spectrum of emotion '
         'culminates here. Every lesson of love, loss, longing, and '
         'reconnection has led to this moment of complete emotional '
-        'harmony — the suit\'s ultimate promise fulfilled.',
+        'harmony, the suit\'s ultimate promise fulfilled.',
     numerologyMeaning:
         'Ten is the number of completion, wholeness, and the end of a '
         'cycle. In the realm of Cups, it signifies that emotional '
-        'growth has reached its full expression — a state of lasting '
+        'growth has reached its full expression, a state of lasting '
         'fulfillment that becomes the foundation for whatever comes next.',
     uprightMeaning:
         'Contentment, repose of the entire heart; the perfection of '
@@ -386,18 +386,18 @@ const cupsGuides = <CardGuide>[
         'intent aspect, contemplates a fish rising from a cup to look '
         'at him. It is the pictures of the mind taking form.',
     elementMeaning:
-        'Water is playful and shallow here — a tidal pool where '
+        'Water is playful and shallow here, a tidal pool where '
         'mysteries reveal themselves to anyone willing to look closely '
         'with childlike attention. The element represents emotion in '
         'its most unguarded, receptive state.',
     suitMeaning:
         'The Cups suit\'s emotional sensitivity is expressed through '
         'fresh eyes. This card shows the beginning of emotional '
-        'awareness — the moment when intuition first whispers, when '
+        'awareness, the moment when intuition first whispers, when '
         'a creative impulse surfaces, or when the heart opens to '
         'feeling something entirely new.',
     courtPersonaMeaning:
-        'The Page is the Messenger archetype — a student of the heart '
+        'The Page is the Messenger archetype, a student of the heart '
         'who arrives bearing news from the emotional depths. Through '
         'the lens of Cups, this persona embodies gentle curiosity, '
         'artistic sensitivity, and the willingness to be moved by '
@@ -426,7 +426,7 @@ const cupsGuides = <CardGuide>[
         'which sometimes characterize this card. He too is a dreamer, '
         'but the images of the side of sense haunt him in his vision.',
     elementMeaning:
-        'Water carries this knight forward like a current — smooth, '
+        'Water carries this knight forward like a current, smooth, '
         'purposeful, and impossible to resist. The element represents '
         'the forward motion of emotion channelled into romantic or '
         'creative pursuit, feelings that have found a direction and '
@@ -434,11 +434,11 @@ const cupsGuides = <CardGuide>[
     suitMeaning:
         'The Cups suit\'s themes of love and intuition are expressed '
         'through action and pursuit. This card shows what happens when '
-        'emotional depth becomes a quest — the active, outward '
+        'emotional depth becomes a quest, the active, outward '
         'expression of following one\'s heart toward a person, a '
         'vision, or a calling.',
     courtPersonaMeaning:
-        'The Knight is the Adventurer archetype — the one who rides '
+        'The Knight is the Adventurer archetype, the one who rides '
         'forth in pursuit of the heart\'s desire. Through the lens of '
         'Cups, this persona embodies romantic idealism, artistic '
         'passion, and the charm of someone who believes wholeheartedly '
@@ -463,7 +463,7 @@ const cupsGuides = <CardGuide>[
         'This is, however, only one of her aspects; she sees, but she '
         'also acts, and her activity feeds her dream.',
     elementMeaning:
-        'Water surrounds the Queen completely — she is immersed in the '
+        'Water surrounds the Queen completely. She is immersed in the '
         'emotional element yet remains seated and composed. The element '
         'represents the full depth of feeling that comes from a '
         'lifetime of listening to the inner voice without flinching.',
@@ -474,7 +474,7 @@ const cupsGuides = <CardGuide>[
         'emotions while maintaining the boundaries necessary to '
         'protect one\'s own inner world.',
     courtPersonaMeaning:
-        'The Queen is the Nurturer archetype — the one who creates '
+        'The Queen is the Nurturer archetype, the one who creates '
         'emotional safety and holds space for healing. Through the '
         'lens of Cups, this persona embodies compassionate intuition, '
         'psychic sensitivity, and the quiet strength of someone who '
@@ -506,8 +506,8 @@ const cupsGuides = <CardGuide>[
         'appears in all the court cards.',
     elementMeaning:
         'Water rages around the King yet he remains perfectly balanced. '
-        'The element represents the full spectrum of human emotion — '
-        'turbulent, unpredictable, and powerful — held with the steady '
+        'The element represents the full spectrum of human emotion, '
+        'turbulent, unpredictable, and powerful, held with the steady '
         'hand of someone who has earned mastery through experience.',
     suitMeaning:
         'The Cups suit\'s journey through every shade of emotion '
@@ -516,7 +516,7 @@ const cupsGuides = <CardGuide>[
         'of feeling but the ability to feel deeply while acting wisely '
         'and compassionately.',
     courtPersonaMeaning:
-        'The King is the Leader archetype — the one who governs with '
+        'The King is the Leader archetype, the one who governs with '
         'wisdom born of emotional experience. Through the lens of Cups, '
         'this persona embodies diplomatic grace, emotional resilience, '
         'and the capacity to guide others through turbulent waters '
@@ -530,7 +530,7 @@ const cupsGuides = <CardGuide>[
         'Dishonest, double-dealing man; roguery, exaction, injustice, '
         'vice, scandal, pillage, considerable loss.',
     reflectionQuestions: [
-      'How do you navigate strong emotions — do you ride the waves or fight against them?',
+      'How do you navigate strong emotions: do you ride the waves or fight against them?',
       'Where in your life could you bring more emotional maturity and diplomatic grace?',
       'Are you truly at peace with your feelings, or just performing composure?',
     ],

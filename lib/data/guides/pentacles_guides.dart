@@ -8,8 +8,8 @@ const pentaclesGuides = <CardGuide>[
         'A hand--issuing, as usual, from a cloud--holds up a pentacle.',
     elementMeaning:
         'Earth here is fertile soil awaiting the first planting. It '
-        'represents the raw material potential of the physical world — '
-        'the body, the land, the currency — ready to be shaped by '
+        'represents the raw material potential of the physical world: '
+        'the body, the land, the currency, all ready to be shaped by '
         'intention and honest effort.',
     suitMeaning:
         'Pentacles govern wealth, resources, and the tangible fruits of '
@@ -19,7 +19,7 @@ const pentaclesGuides = <CardGuide>[
     numerologyMeaning:
         'One is the number of beginnings and undivided potential. In the '
         'Ace of Pentacles, it signals the singular moment when an earthly '
-        'opportunity presents itself — a seed that, once planted, can grow '
+        'opportunity presents itself, a seed that, once planted, can grow '
         'into enduring abundance.',
     uprightMeaning:
         'Perfect contentment, felicity, ecstasy; also speedy intelligence; gold.',
@@ -31,7 +31,7 @@ const pentaclesGuides = <CardGuide>[
     reflectionQuestions: [
       'What new material opportunity is presenting itself in your life right now?',
       'Are you willing to invest the steady effort this seed requires to flourish?',
-      'What does true abundance — beyond money — look like for you?',
+      'What does true abundance, beyond money, look like for you?',
     ],
   ),
 
@@ -43,7 +43,7 @@ const pentaclesGuides = <CardGuide>[
         'hand, and they are joined by that endless cord which is like '
         'the number 8 reversed.',
     elementMeaning:
-        'Earth in motion is an unusual image — yet here the ground itself '
+        'Earth in motion is an unusual image, yet here the ground itself '
         'seems to sway. This card shows that even material stability '
         'requires flexibility, and that practical life is never truly '
         'static.',
@@ -54,8 +54,8 @@ const pentaclesGuides = <CardGuide>[
         'hands-on form.',
     numerologyMeaning:
         'Two is the number of duality and choice. In Pentacles, it asks '
-        'you to find harmony between competing material priorities — to '
-        'honour both sides of the equation without dropping either coin.',
+        'you to find harmony between competing material priorities, '
+        'honouring both sides of the equation without dropping either coin.',
     uprightMeaning:
         'On the one hand it is represented as a card of gaiety, recreation '
         'and its connexions, which is the subject of the design; but it is '
@@ -80,13 +80,13 @@ const pentaclesGuides = <CardGuide>[
         'therein has received his reward and is now at work in earnest.',
     elementMeaning:
         'Earth takes the form of stone, mortar, and the physical act of '
-        'building. Here the element is craftsmanship — the patient '
+        'building. Here the element is craftsmanship, the patient '
         'shaping of raw material into enduring structure through practiced '
         'skill.',
     suitMeaning:
         'Pentacles\' material focus shows up as the tangible output of '
         'collaborative labour. This is wealth created through expertise, '
-        'planning, and shared effort — the kind of value that can be seen '
+        'planning, and shared effort, the kind of value that can be seen '
         'and touched.',
     numerologyMeaning:
         'Three is the number of creation and synthesis. In the Pentacles '
@@ -123,7 +123,7 @@ const pentaclesGuides = <CardGuide>[
         'your freedom and generosity.',
     numerologyMeaning:
         'Four is the number of structure, foundations, and stability. In '
-        'Pentacles it becomes the fortress mentality — solid and secure, '
+        'Pentacles it becomes the fortress mentality, solid and secure, '
         'yet potentially so closed that nothing new can enter or leave.',
     uprightMeaning:
         'The surety of possessions, cleaving to that which one has, gift, '
@@ -133,7 +133,7 @@ const pentaclesGuides = <CardGuide>[
     reflectionQuestions: [
       'What are you holding onto so tightly that it has begun to hold you?',
       'Is your desire for security preventing you from experiencing joy or connection?',
-      'What would it feel like to loosen your grip — even slightly — on one thing you guard?',
+      'What would it feel like to loosen your grip, even slightly, on one thing you guard?',
     ],
   ),
 
@@ -143,7 +143,7 @@ const pentaclesGuides = <CardGuide>[
     description:
         'Two mendicants in a snow-storm pass a lighted casement.',
     elementMeaning:
-        'Earth in winter — frozen, barren, and unforgiving. The element '
+        'Earth in winter: frozen, barren, and unforgiving. The element '
         'here reflects a period when the material world withdraws its '
         'comfort, leaving you exposed to scarcity and forcing a deeper '
         'reckoning with what truly sustains you.',
@@ -154,7 +154,7 @@ const pentaclesGuides = <CardGuide>[
         'remains when outer resources are stripped away.',
     numerologyMeaning:
         'Five is the number of disruption and challenge. In the Pentacles '
-        'suit, it manifests as a material crisis — a necessary but '
+        'suit, it manifests as a material crisis, a necessary but '
         'difficult passage that breaks old structures so new ones can '
         'eventually form.',
     uprightMeaning:
@@ -188,7 +188,7 @@ const pentaclesGuides = <CardGuide>[
     suitMeaning:
         'Pentacles\' focus on wealth becomes a meditation on how money '
         'and resources flow between people. This card highlights '
-        'philanthropy, fair wages, and the ethics of material power — '
+        'philanthropy, fair wages, and the ethics of material power: '
         'who gives, who receives, and on what terms.',
     numerologyMeaning:
         'Six is the number of harmony, reciprocity, and adjustment after '
@@ -250,13 +250,13 @@ const pentaclesGuides = <CardGuide>[
         'of trophies.',
     elementMeaning:
         'Earth is shaped by patient, skilled hands. The element here is '
-        'clay on the wheel — responsive to effort, rewarding to those '
+        'clay on the wheel, responsive to effort, rewarding to those '
         'who are willing to learn through doing and refine through '
         'repetition.',
     suitMeaning:
         'Pentacles\' material focus is channelled into the development of '
         'practical skill and employable craft. This is wealth built '
-        'through competence — the kind of value that lives in your hands '
+        'through competence, the kind of value that lives in your hands '
         'and cannot be taken from you.',
     numerologyMeaning:
         'Eight is the number of mastery, power, and transformation '
@@ -287,7 +287,7 @@ const pentaclesGuides = <CardGuide>[
         'is her own possession and testifies to material well-being.',
     elementMeaning:
         'Earth at its most bountiful and cultivated. The element appears '
-        'as a garden in full bloom — nature refined by human care, '
+        'as a garden in full bloom, nature refined by human care, '
         'producing beauty and sustenance in equal measure through years '
         'of tending.',
     suitMeaning:
@@ -298,7 +298,7 @@ const pentaclesGuides = <CardGuide>[
     numerologyMeaning:
         'Nine is the number of near-completion and fulfilment. In '
         'Pentacles, it represents the moment just before the final '
-        'harvest — a time to savour what you have cultivated and '
+        'harvest, a time to savour what you have cultivated and '
         'appreciate how far you have come.',
     uprightMeaning:
         'Prudence, safety, success, accomplishment, certitude, discernment.',
@@ -320,7 +320,7 @@ const pentaclesGuides = <CardGuide>[
         'curiously at two dogs accosting an ancient personage seated in '
         'the foreground. The child\'s hand is on one of them.',
     elementMeaning:
-        'Earth as ancestral ground — the land your family has tended for '
+        'Earth as ancestral ground, the land your family has tended for '
         'generations. The element here carries the weight of heritage, '
         'permanence, and the understanding that true material success is '
         'measured across lifetimes, not moments.',
@@ -331,8 +331,8 @@ const pentaclesGuides = <CardGuide>[
         'security for those who come after you.',
     numerologyMeaning:
         'Ten is the number of completion and the fulfilment of a cycle. '
-        'In Pentacles, it represents the culmination of material effort '
-        '— wealth so abundant it overflows into the next generation and '
+        'In Pentacles, it represents the culmination of material effort: '
+        'wealth so abundant it overflows into the next generation and '
         'becomes a living legacy.',
     uprightMeaning:
         'Gain, riches; family matters, archives, extraction, the abode '
@@ -341,7 +341,7 @@ const pentaclesGuides = <CardGuide>[
         'Chance, fatality, loss, robbery, games of hazard; sometimes '
         'gift, dowry, pension.',
     reflectionQuestions: [
-      'What legacy — material, emotional, or spiritual — are you building for those who come after?',
+      'What legacy, whether material, emotional, or spiritual, are you building for those who come after?',
       'How have the traditions and resources of your family shaped your sense of security?',
       'Is there an inherited pattern around money or belonging that you need to examine?',
     ],
@@ -356,7 +356,7 @@ const pentaclesGuides = <CardGuide>[
         'that which is about him.',
     elementMeaning:
         'Earth meets the fresh energy of discovery. The element here is '
-        'soil turned for the first time — rich with nutrients, full of '
+        'soil turned for the first time, rich with nutrients, full of '
         'promise, and eager to receive the seeds of practical ambition.',
     suitMeaning:
         'Pentacles\' material themes appear as studious fascination with '
@@ -364,7 +364,7 @@ const pentaclesGuides = <CardGuide>[
         'how wealth is built, how bodies are nourished, and how skills '
         'are developed from the ground up.',
     courtPersonaMeaning:
-        'The Page is the Messenger archetype — a bearer of news and the '
+        'The Page is the Messenger archetype, a bearer of news and the '
         'embodiment of youthful curiosity. In Pentacles, the Page brings '
         'word of a practical opportunity or a call to begin learning a '
         'new skill with dedication and humility.',
@@ -388,7 +388,7 @@ const pentaclesGuides = <CardGuide>[
         'He rides a slow, enduring, heavy horse, to which his own aspect '
         'corresponds. He exhibits his symbol, but does not look therein.',
     elementMeaning:
-        'Earth doubled — the grounded knight on grounded terrain. The '
+        'Earth doubled: the grounded knight on grounded terrain. The '
         'element here is bedrock, immovable and enduring. It provides '
         'the unshakeable foundation from which all steady progress is '
         'made.',
@@ -398,7 +398,7 @@ const pentaclesGuides = <CardGuide>[
         'methodical accumulation of wealth, skill, and trust through '
         'sheer consistency.',
     courtPersonaMeaning:
-        'The Knight is the Adventurer archetype — but in Pentacles, the '
+        'The Knight is the Adventurer archetype, but in Pentacles, the '
         'adventure is one of endurance rather than speed. This Knight '
         'quests through routine, discipline, and unwavering commitment, '
         'proving that persistence is its own form of courage.',
@@ -424,7 +424,7 @@ const pentaclesGuides = <CardGuide>[
         'serious cast of intelligence; she contemplates her symbol and '
         'may see worlds therein.',
     elementMeaning:
-        'Earth as a living garden — cultivated, generous, and teeming '
+        'Earth as a living garden, cultivated, generous, and teeming '
         'with life. The element here nurtures rather than hoards, '
         'offering its abundance freely while maintaining the practical '
         'wisdom to ensure the soil stays fertile.',
@@ -434,7 +434,7 @@ const pentaclesGuides = <CardGuide>[
         'the art of turning financial stability into genuine comfort '
         'and using practical skill to nourish others.',
     courtPersonaMeaning:
-        'The Queen is the Nurturer archetype — the one who holds space '
+        'The Queen is the Nurturer archetype, the one who holds space '
         'and provides sustenance. In Pentacles, she nurtures through '
         'tangible acts of care: home-cooked meals, financial planning, '
         'and the quiet maintenance of a secure, beautiful environment.',
@@ -467,16 +467,16 @@ const pentaclesGuides = <CardGuide>[
         'not happen to deal especially with questions of money.',
     elementMeaning:
         'Earth at its most sovereign and cultivated. The element here is '
-        'the well-managed estate — land that produces, structures that '
+        'the well-managed estate: land that produces, structures that '
         'endure, and resources stewarded with both confidence and '
         'responsibility.',
     suitMeaning:
         'Pentacles\' fullest expression of material mastery lives in '
-        'this card. The King represents wealth not just accumulated but '
-        'wisely deployed — businesses that thrive, investments that '
+        'this card. The King represents wealth accumulated and '
+        'wisely deployed: businesses that thrive, investments that '
         'mature, and a standard of living built to last.',
     courtPersonaMeaning:
-        'The King is the Leader archetype — the one who commands through '
+        'The King is the Leader archetype, the one who commands through '
         'competence and earned authority. In Pentacles, he leads by '
         'creating prosperity for all around him, demonstrating that true '
         'power lies in the ability to build, sustain, and share material '

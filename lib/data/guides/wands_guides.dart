@@ -7,7 +7,7 @@ const wandsGuides = <CardGuide>[
     description:
         'A hand issuing from a cloud grasps a stout wand or club.',
     elementMeaning:
-        'Fire here is at its most primal — the initial flash of '
+        'Fire here is at its most primal, the initial flash of '
         'ignition before the flame has found its fuel. It is pure '
         'creative force, unbounded enthusiasm, and the warmth of a '
         'possibility that has just been born.',
@@ -17,7 +17,7 @@ const wandsGuides = <CardGuide>[
         'concentrated potential. It is the moment before the journey '
         'begins, when all paths are still open.',
     numerologyMeaning:
-        'The Ace represents the number one — origin, singularity, and '
+        'The Ace represents the number one: origin, singularity, and '
         'undivided potential. In the Wands suit, this unity manifests as '
         'a single, electrifying bolt of inspiration that has not yet '
         'been divided into plans or actions.',
@@ -48,7 +48,7 @@ const wandsGuides = <CardGuide>[
     elementMeaning:
         'Fire takes the form of restless ambition here, a flame that has '
         'found its first fuel and now hungers for more. It is the heat '
-        'of anticipation — the burning desire to expand beyond present '
+        'of anticipation, the burning desire to expand beyond present '
         'boundaries.',
     suitMeaning:
         'The Wands themes of willpower and vision are channelled into '
@@ -57,7 +57,7 @@ const wandsGuides = <CardGuide>[
     numerologyMeaning:
         'Two is the number of duality, choice, and partnership. In the '
         'Wands suit, this duality appears as the tension between '
-        'comfort and adventure — the known world behind and the unknown '
+        'comfort and adventure: the known world behind and the unknown '
         'world ahead.',
     uprightMeaning:
         'Between the alternative readings there is no marriage possible; '
@@ -95,7 +95,7 @@ const wandsGuides = <CardGuide>[
         'Three is the number of synthesis, growth, and first '
         'manifestation. In the Wands suit, it signals that the spark '
         '(Ace) and the plan (Two) have borne their first tangible '
-        'fruit — expansion is underway.',
+        'fruit, and expansion is underway.',
     uprightMeaning:
         'He symbolizes established strength, enterprise, effort, trade, '
         'commerce, discovery; those are his ships, bearing his '
@@ -122,7 +122,7 @@ const wandsGuides = <CardGuide>[
         'at their side is a bridge over a moat, leading to an old '
         'manorial house.',
     elementMeaning:
-        'Fire here becomes the warmth of hearth and home — a contained, '
+        'Fire here becomes the warmth of hearth and home, a contained, '
         'sustaining flame rather than a wild blaze. It is the joyful '
         'heat of shared celebration and communal spirit.',
     suitMeaning:
@@ -132,7 +132,7 @@ const wandsGuides = <CardGuide>[
         'fire can also build lasting bonds.',
     numerologyMeaning:
         'Four is the number of structure, stability, and rest. In the '
-        'Wands suit, this stability takes the form of a joyful pause — '
+        'Wands suit, this stability takes the form of a joyful pause, '
         'a secure platform from which the next phase of creative growth '
         'can spring.',
     uprightMeaning:
@@ -157,7 +157,7 @@ const wandsGuides = <CardGuide>[
         'A posse of youths, who are brandishing staves, as if in sport '
         'or strife. It is mimic warfare, and hereto correspond the',
     elementMeaning:
-        'Fire here is uncoordinated and competitive — multiple flames '
+        'Fire here is uncoordinated and competitive, with multiple flames '
         'fighting for the same fuel. It is the heat of argument, '
         'rivalry, and the friction that arises when passionate people '
         'collide without a shared direction.',
@@ -169,7 +169,7 @@ const wandsGuides = <CardGuide>[
     numerologyMeaning:
         'Five is the number of challenge, disruption, and change. In '
         'the Wands suit, this disruption manifests as clashing egos '
-        'and competing visions — the growing pains that force '
+        'and competing visions, the growing pains that force '
         'creativity to evolve.',
     uprightMeaning:
         'Imitation, as, for example, sham fight, but also the strenuous '
@@ -193,7 +193,7 @@ const wandsGuides = <CardGuide>[
         'A laurelled horseman bears one staff adorned with a laurel '
         'crown; footmen with staves are at his side.',
     elementMeaning:
-        'Fire here blazes in the spotlight — a beacon visible to all. '
+        'Fire here blazes in the spotlight, a beacon visible to all. '
         'It is the radiant heat of achievement recognised, the kind of '
         'flame that inspires others to light their own.',
     suitMeaning:
@@ -204,7 +204,7 @@ const wandsGuides = <CardGuide>[
     numerologyMeaning:
         'Six is the number of harmony, balance, and transition after '
         'conflict. In the Wands suit, this balance arrives as '
-        'well-earned recognition — the resolution that follows the '
+        'well-earned recognition, the resolution that follows the '
         'struggle of the Five.',
     uprightMeaning:
         'The card has been so designed that it can cover several '
@@ -217,7 +217,7 @@ const wandsGuides = <CardGuide>[
         'treachery, disloyalty, as of gates being opened to the enemy; '
         'also indefinite delay.',
     reflectionQuestions: [
-      'How do you handle recognition — do you receive it gracefully or deflect it?',
+      'How do you handle recognition? Do you receive it gracefully or deflect it?',
       'Is your sense of success dependent on external validation?',
       'What victory in your life deserves to be acknowledged, even if only by yourself?',
     ],
@@ -230,7 +230,7 @@ const wandsGuides = <CardGuide>[
         'A young man on a craggy eminence brandishing a staff; six '
         'other staves are raised towards him from below.',
     elementMeaning:
-        'Fire here is defensive and fierce — a ring of flame around '
+        'Fire here is defensive and fierce, a ring of flame around '
         'something precious. It is the burning conviction that what '
         'you have built or believe is worth protecting, no matter the '
         'pressure.',
@@ -270,7 +270,7 @@ const wandsGuides = <CardGuide>[
         'their course. That which they signify is at hand; it may be '
         'even on the threshold.',
     elementMeaning:
-        'Fire here becomes a swift, directed blaze — a wildfire racing '
+        'Fire here becomes a swift, directed blaze, a wildfire racing '
         'across open ground. It is speed, urgency, and the exhilarating '
         'rush of energy finally unleashed without obstruction.',
     suitMeaning:
@@ -281,7 +281,7 @@ const wandsGuides = <CardGuide>[
     numerologyMeaning:
         'Eight is the number of movement, power, and transformation. '
         'In the Wands suit, this transformation is rapid and airborne '
-        '— the moment when accumulated energy converts into swift, '
+        'and marks the moment when accumulated energy converts into swift, '
         'decisive action.',
     uprightMeaning:
         'Activity in undertakings, the path of such activity, '
@@ -307,13 +307,13 @@ const wandsGuides = <CardGuide>[
         'if awaiting an enemy. Behind are eight other staves--erect, in '
         'orderly disposition, like a palisade.',
     elementMeaning:
-        'Fire here is the ember that refuses to die — a low, stubborn '
+        'Fire here is the ember that refuses to die, a low, stubborn '
         'glow beneath the ash. It is the inner heat of determination '
         'that persists long after the initial blaze has faded.',
     suitMeaning:
         'The Wands themes of willpower and spirit are tested to their '
         'limit. Passion has been refined by hardship into something '
-        'tougher — a guarded but unbreakable creative resolve.',
+        'tougher: a guarded but unbreakable creative resolve.',
     numerologyMeaning:
         'Nine is the number of near-completion, wisdom, and endurance. '
         'In the Wands suit, this fulfillment is hard-won; the fire has '
@@ -352,7 +352,7 @@ const wandsGuides = <CardGuide>[
     numerologyMeaning:
         'Ten is the number of completion, excess, and the threshold '
         'of a new cycle. In the Wands suit, this completion is '
-        'bittersweet — the journey is nearly done, but the final '
+        'bittersweet. The journey is nearly done, but the final '
         'steps are the heaviest.',
     uprightMeaning:
         'A card of many significances, and some of the readings cannot '
@@ -381,7 +381,7 @@ const wandsGuides = <CardGuide>[
         'act of proclamation. He is unknown but faithful, and his '
         'tidings are strange.',
     elementMeaning:
-        'Fire here is young and curious — a flickering flame dancing '
+        'Fire here is young and curious, a flickering flame dancing '
         'in every direction, fascinated by its own light. It is the '
         'warmth of pure enthusiasm before experience tempers it.',
     suitMeaning:
@@ -390,7 +390,7 @@ const wandsGuides = <CardGuide>[
         'willpower of the suit expresses itself as an eagerness to '
         'learn and discover.',
     courtPersonaMeaning:
-        'The Page is the Messenger archetype — a student and explorer '
+        'The Page is the Messenger archetype, a student and explorer '
         'who arrives bearing news of creative opportunity. Through '
         'Wands, this messenger brings the spark of inspiration, an '
         'invitation to play, and the courage to try something new '
@@ -421,7 +421,7 @@ const wandsGuides = <CardGuide>[
         'character of its rider, and suggests the precipitate mood, or '
         'things connected therewith.',
     elementMeaning:
-        'Fire here is fierce and fast — a wildfire that leaps from '
+        'Fire here is fierce and fast, a wildfire that leaps from '
         'ridge to ridge without pause. It is the blazing energy of '
         'someone who runs on passion and refuses to be contained.',
     suitMeaning:
@@ -430,7 +430,7 @@ const wandsGuides = <CardGuide>[
         'spirit of the suit rides out to meet the world head-on '
         'without hesitation.',
     courtPersonaMeaning:
-        'The Knight is the Adventurer archetype — a quester who '
+        'The Knight is the Adventurer archetype, a quester who '
         'charges into the unknown driven by conviction and desire. '
         'Through Wands, this adventurer is fuelled by creative '
         'passion and an irrepressible need to act, explore, and '
@@ -456,7 +456,7 @@ const wandsGuides = <CardGuide>[
         'Queen\'s personality corresponds to that of the King, but is '
         'more magnetic.',
     elementMeaning:
-        'Fire here is radiant and self-sustaining — the steady blaze '
+        'Fire here is radiant and self-sustaining, the steady blaze '
         'of a hearth that warms everyone nearby. It is the luminous '
         'energy of someone who has learned to shine without consuming '
         'themselves.',
@@ -466,7 +466,7 @@ const wandsGuides = <CardGuide>[
         'willpower of the suit is expressed not as force but as '
         'an irresistible, nurturing vitality.',
     courtPersonaMeaning:
-        'The Queen is the Nurturer archetype — a sovereign who '
+        'The Queen is the Nurturer archetype, a sovereign who '
         'cultivates growth in herself and those around her. Through '
         'Wands, this nurturing takes the form of encouragement, '
         'creative inspiration, and the fierce protection of those '
@@ -501,7 +501,7 @@ const wandsGuides = <CardGuide>[
         'symbol of the lion, which is emblazoned on the back of his '
         'throne.',
     elementMeaning:
-        'Fire here is sovereign and controlled — a forge fire that '
+        'Fire here is sovereign and controlled, a forge fire that '
         'shapes iron into tools and weapons. It is the disciplined '
         'heat of a leader who has learned to direct passion toward '
         'lasting achievement.',
@@ -511,7 +511,7 @@ const wandsGuides = <CardGuide>[
         'and passion is channelled into leadership that inspires '
         'and empowers others.',
     courtPersonaMeaning:
-        'The King is the Leader archetype — a visionary who commands '
+        'The King is the Leader archetype, a visionary who commands '
         'through earned authority and bold decision-making. Through '
         'Wands, this leader is charismatic, entrepreneurial, and '
         'unafraid to take creative risks that others would shy '

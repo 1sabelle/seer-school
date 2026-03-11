@@ -88,7 +88,7 @@ const majorArcanaGuides = <CardGuide>[
         'According to Martinism, 8 is the number of Christ.',
     elementMeaning:
         'Air governs communication and intellect. The Magician\'s air is '
-        'focused thought — the mental clarity required to turn an idea '
+        'focused thought, the mental clarity required to turn an idea '
         'into reality.',
     uprightMeaning:
         'Skill, diplomacy, address, subtlety; sickness, pain, loss, '
@@ -187,7 +187,7 @@ const majorArcanaGuides = <CardGuide>[
         'Divine Nature, the Triad, and so forth.',
     elementMeaning:
         'Earth grounds The Empress in the physical, sensory world. Her '
-        'earth energy is fertile and generative — the soil in which seeds '
+        'earth energy is fertile and generative, the soil in which seeds '
         'of intention take root and grow into tangible abundance.',
     uprightMeaning:
         'Fruitfulness, action, initiative, length of days; the unknown, '
@@ -230,7 +230,7 @@ const majorArcanaGuides = <CardGuide>[
         'virtualities contained in the Absolute Being--but this is fantasy.',
     elementMeaning:
         'Fire here represents the driving will to build and protect. The '
-        'Emperor\'s fire is not wild but controlled — a forge that shapes '
+        'Emperor\'s fire is not wild but controlled, a forge that shapes '
         'raw ambition into lasting structure.',
     uprightMeaning:
         'Stability, power, protection, realization; a great person; aid, '
@@ -241,7 +241,7 @@ const majorArcanaGuides = <CardGuide>[
     reflectionQuestions: [
       'Where do you need more structure or discipline in your life?',
       'Are your boundaries protecting you or isolating you?',
-      'How do you relate to authority — your own and others\'?',
+      'How do you relate to authority, both your own and others\'?',
     ],
   ),
 
@@ -368,7 +368,7 @@ const majorArcanaGuides = <CardGuide>[
         'Tora, nor if she questioned him could he answer. He is not '
         'hereditary royalty and he is not priesthood.',
     elementMeaning:
-        'Water here is surprising — it reveals that The Chariot\'s '
+        'Water here is surprising. It reveals that The Chariot\'s '
         'victory is emotional as much as physical. True determination '
         'requires mastering your inner tides: fear, doubt, and desire.',
     uprightMeaning:
@@ -415,7 +415,7 @@ const majorArcanaGuides = <CardGuide>[
         'the basilisk and has trodden down the lion and the dragon.',
     elementMeaning:
         'Fire represents the raw passion and primal energy of the lion. '
-        'Strength\'s lesson is that fire need not be extinguished — it '
+        'Strength\'s lesson is that fire need not be extinguished. It '
         'can be gently channelled through patience and inner fortitude.',
     uprightMeaning:
         'Power, energy, action, courage, magnanimity; also complete '
@@ -507,7 +507,7 @@ const majorArcanaGuides = <CardGuide>[
     elementMeaning:
         'Fire here represents the dynamic, ever-turning energy of fate. '
         'The Wheel\'s fire is not something you control but something you '
-        'ride — the spark of destiny that ignites change.',
+        'ride, the spark of destiny that ignites change.',
     uprightMeaning:
         'Destiny, fortune, success, elevation, luck, felicity.',
     reversedMeaning:
@@ -546,7 +546,7 @@ const majorArcanaGuides = <CardGuide>[
         'pillars of the High Priestess into another.',
     elementMeaning:
         'Air brings the sharp clarity of thought and impartial reasoning. '
-        'Justice\'s air is the clean edge of truth — it cuts through '
+        'Justice\'s air is the clean edge of truth, cutting through '
         'rationalisation and self-deception to reveal what is fair.',
     uprightMeaning:
         'Equity, rightness, probity, executive; triumph of the deserving '
@@ -629,7 +629,7 @@ const majorArcanaGuides = <CardGuide>[
         'usual, rebirth, creation, destination, renewal, and the rest.',
     elementMeaning:
         'Water represents the emotional depth of this transition. '
-        'Death\'s water is the river of grief and release — the tears '
+        'Death\'s water is the river of grief and release: the tears '
         'that cleanse and the current that carries you to a new shore.',
     uprightMeaning:
         'End, mortality, destruction, corruption also, for a man, the loss '
@@ -641,7 +641,7 @@ const majorArcanaGuides = <CardGuide>[
     reflectionQuestions: [
       'What in your life has already ended that you haven\'t released?',
       'What needs to die so something new can be born?',
-      'How do you typically respond to endings — with grief, denial, or relief?',
+      'How do you typically respond to endings: with grief, denial, or relief?',
     ],
   ),
 
@@ -671,7 +671,7 @@ const majorArcanaGuides = <CardGuide>[
         'know in our rational part something of whence we came and whither '
         'we are going.',
     elementMeaning:
-        'Fire here is transmutative — the alchemical fire that refines '
+        'Fire here is transmutative, the alchemical fire that refines '
         'without destroying. Temperance\'s fire gently heats and blends '
         'disparate elements into gold.',
     uprightMeaning:
@@ -768,7 +768,7 @@ const majorArcanaGuides = <CardGuide>[
         'also the end of a dispensation, but there is no possibility here '
         'for the consideration of this involved question.',
     elementMeaning:
-        'Fire is the bolt of lightning itself — sudden, illuminating, '
+        'Fire is the bolt of lightning itself: sudden, illuminating, '
         'and impossible to ignore. The Tower\'s fire is the kind of '
         'truth that burns away everything false.',
     uprightMeaning:
@@ -811,7 +811,7 @@ const majorArcanaGuides = <CardGuide>[
         'Understanding, who communicates to the Sephiroth that are below '
         'in the measure that they can receive her influx.',
     elementMeaning:
-        'Air here is expansive and clarifying — the first clear breath '
+        'Air here is expansive and clarifying, the first clear breath '
         'after a storm. The Star\'s air carries hope, vision, and the '
         'quiet certainty that the worst has passed.',
     uprightMeaning:
@@ -853,7 +853,7 @@ const majorArcanaGuides = <CardGuide>[
         'form.',
     elementMeaning:
         'Water is at its deepest and most mysterious here. The Moon\'s '
-        'water is the ocean of the unconscious — teeming with life, '
+        'water is the ocean of the unconscious, teeming with life, '
         'dreams, and fears that surface only at night.',
     uprightMeaning:
         'Hidden enemies, danger, calumny, darkness, terror, deception, '
@@ -894,7 +894,7 @@ const majorArcanaGuides = <CardGuide>[
         'animal nature in a state of perfect conformity.',
     elementMeaning:
         'Fire is at its most generous and life-giving here. The Sun\'s '
-        'fire does not burn — it warms, illuminates, and makes things '
+        'fire does not burn. It warms, illuminates, and makes things '
         'grow. It is the creative spark expressed as pure joy.',
     uprightMeaning:
         'Material happiness, fortunate marriage, contentment.',
@@ -937,7 +937,7 @@ const majorArcanaGuides = <CardGuide>[
         'may be compared with that which passes under the name of '
         'Temperance.',
     elementMeaning:
-        'Fire here is the purifying fire of rebirth — the phoenix '
+        'Fire here is the purifying fire of rebirth, the phoenix '
         'flame that calls the dead to rise. Judgement\'s fire purifies '
         'and renews, burning away the last vestiges of the old self.',
     uprightMeaning:
