@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../theme.dart';
 
 /// Full-screen card image preview overlay.
 ///
@@ -14,7 +15,7 @@ void showCardPreview(
     context: context,
     barrierDismissible: true,
     barrierLabel: 'Close card preview',
-    barrierColor: AppColors.parchment.withValues(alpha: 0.92),
+    barrierColor: AppColors.night.withValues(alpha: 0.92),
     transitionDuration: const Duration(milliseconds: 300),
     pageBuilder: (context, animation, secondaryAnimation) {
       return _CardPreviewOverlay(
@@ -47,7 +48,9 @@ class _CardPreviewOverlay extends StatelessWidget {
     final availableHeight =
         screenSize.height - padding.top - padding.bottom - 120;
     final availableWidth = (screenSize.width - 80).clamp(0.0, 360.0);
-    const aspectRatio = 384.0 / 240.0;
+    // The shape of the card images (500 by 864 pixels), so the whole card
+    // shows rather than a crop of it.
+    const aspectRatio = 864.0 / 500.0;
 
     var cardWidth = availableWidth;
     var cardHeight = cardWidth * aspectRatio;
@@ -61,23 +64,23 @@ class _CardPreviewOverlay extends StatelessWidget {
       height: cardHeight,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: AppColors.mutedGold,
-          width: 2,
-        ),
+        border: Border.all(color: AppColors.lilac.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: AppColors.darkBrown.withValues(alpha: 0.15),
-            blurRadius: 16,
-            offset: const Offset(0, 8),
+            color: AppColors.lilac.withValues(alpha: 0.25),
+            blurRadius: 40,
+            spreadRadius: 4,
           ),
         ],
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
-        child: Image.asset(
-          assetPath,
-          fit: BoxFit.cover,
+        child: ColoredBox(
+          color: AppColors.cardMargin,
+          child: Image.asset(
+            assetPath,
+            fit: BoxFit.contain,
+          ),
         ),
       ),
     );
@@ -98,11 +101,7 @@ class _CardPreviewOverlay extends StatelessWidget {
               const SizedBox(height: 16),
               Text(
                 cardName,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: AppColors.darkBrown,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.5,
-                    ),
+                style: AppTheme.display(fontSize: 26),
                 textAlign: TextAlign.center,
               ),
             ],

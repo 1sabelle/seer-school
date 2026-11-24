@@ -60,9 +60,9 @@ class _FreeTextHintWidgetState extends State<FreeTextHintWidget> {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-              color: AppColors.lightParchment,
+              color: AppColors.navy,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: AppColors.warmBeige, width: 1.5),
+              border: Border.all(color: AppColors.border, width: 1.5),
             ),
             child: TextField(
               controller: _controller,
@@ -70,18 +70,18 @@ class _FreeTextHintWidgetState extends State<FreeTextHintWidget> {
               textInputAction: TextInputAction.done,
               onSubmitted: (_) => _submit(),
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: AppColors.darkBrown,
+                    color: AppColors.text,
                   ),
               decoration: InputDecoration(
                 hintText: 'Type a number...',
                 hintStyle: TextStyle(
-                  color: AppColors.agedInkBlue.withValues(alpha: 0.4),
+                  color: AppColors.muted.withValues(alpha: 0.4),
                 ),
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 border: InputBorder.none,
               ),
-              cursorColor: AppColors.deepBurgundy,
+              cursorColor: AppColors.periwinkle,
             ),
           ),
         ),
@@ -91,13 +91,13 @@ class _FreeTextHintWidgetState extends State<FreeTextHintWidget> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             decoration: BoxDecoration(
-              color: AppColors.deepBurgundy,
+              color: AppColors.periwinkle,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
               'Submit',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.parchment,
+                    color: AppColors.onPeriwinkle,
                     fontWeight: FontWeight.w600,
                   ),
             ),
@@ -108,7 +108,7 @@ class _FreeTextHintWidgetState extends State<FreeTextHintWidget> {
   }
 
   Widget _buildRevealedState(BuildContext context) {
-    final color = widget.isCorrect ? AppColors.sageGreen : AppColors.dustyRose;
+    final color = widget.isCorrect ? AppColors.teal : AppColors.rose;
     final icon = widget.isCorrect ? Icons.check_rounded : Icons.close_rounded;
 
     return Container(

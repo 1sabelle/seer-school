@@ -1,128 +1,142 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
+import 'widgets/night_sky.dart';
 
+/// belle.fyi's look: Lora for headings and names, Figtree for the text, both
+/// on the night sky.
 class AppTheme {
+  static TextStyle display({
+    double? fontSize,
+    FontWeight fontWeight = FontWeight.w400,
+    Color color = AppColors.cream,
+  }) =>
+      GoogleFonts.lora(fontSize: fontSize, fontWeight: fontWeight, color: color);
+
+  static TextStyle body({
+    double? fontSize,
+    FontWeight? fontWeight,
+    Color color = AppColors.text,
+  }) =>
+      GoogleFonts.figtree(fontSize: fontSize, fontWeight: fontWeight, color: color);
+
   static ThemeData get theme {
-    final baseTextTheme = GoogleFonts.cormorantGaramondTextTheme();
+    final bodyTextTheme = GoogleFonts.figtreeTextTheme(
+      ThemeData.dark().textTheme,
+    ).apply(bodyColor: AppColors.text, displayColor: AppColors.cream);
+
+    TextStyle? heading(TextStyle? base) => base?.merge(display());
 
     return ThemeData(
       useMaterial3: true,
-      scaffoldBackgroundColor: AppColors.parchment,
-      colorScheme: const ColorScheme.light(
-        primary: AppColors.deepBurgundy,
-        secondary: AppColors.mutedGold,
-        surface: AppColors.parchment,
-        onPrimary: AppColors.parchment,
-        onSecondary: AppColors.darkBrown,
-        onSurface: AppColors.darkBrown,
-        error: AppColors.dustyRose,
+      brightness: Brightness.dark,
+      // Every page paints its own night sky (see NightSky), so pages stay
+      // see-through and the stars show behind them.
+      scaffoldBackgroundColor: Colors.transparent,
+      pageTransitionsTheme: PageTransitionsTheme(
+        builders: {
+          for (final platform in TargetPlatform.values)
+            platform: const NightSkyPageTransitionsBuilder(),
+        },
+      ),
+      colorScheme: const ColorScheme.dark(
+        primary: AppColors.periwinkle,
+        onPrimary: AppColors.onPeriwinkle,
+        secondary: AppColors.lilac,
+        onSecondary: AppColors.night,
+        surface: AppColors.navy,
+        onSurface: AppColors.text,
+        outline: AppColors.border,
+        error: AppColors.rose,
+      ),
+      textTheme: bodyTextTheme.copyWith(
+        displayLarge: heading(bodyTextTheme.displayLarge),
+        displayMedium: heading(bodyTextTheme.displayMedium),
+        displaySmall: heading(bodyTextTheme.displaySmall),
+        headlineLarge: heading(bodyTextTheme.headlineLarge),
+        headlineMedium: heading(bodyTextTheme.headlineMedium),
+        headlineSmall: heading(bodyTextTheme.headlineSmall),
+        titleLarge: heading(bodyTextTheme.titleLarge),
+        bodyLarge: bodyTextTheme.bodyLarge?.copyWith(fontSize: 16, height: 1.45),
+        bodyMedium: bodyTextTheme.bodyMedium?.copyWith(fontSize: 15, height: 1.45),
+        bodySmall: bodyTextTheme.bodySmall?.copyWith(color: AppColors.muted),
+        labelLarge: bodyTextTheme.labelLarge?.copyWith(
+          fontSize: 13,
+          fontWeight: FontWeight.w500,
+          letterSpacing: 0.5,
+        ),
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.parchment,
-        foregroundColor: AppColors.darkBrown,
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        foregroundColor: AppColors.cream,
         elevation: 0,
+        scrolledUnderElevation: 0,
         centerTitle: true,
-        titleTextStyle: GoogleFonts.cormorantGaramond(
-          fontSize: 24,
-          fontWeight: FontWeight.w600,
-          color: AppColors.darkBrown,
+        titleTextStyle: display(fontSize: 24),
+      ),
+      iconTheme: const IconThemeData(color: AppColors.periwinkle),
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: AppColors.periwinkle,
+        linearTrackColor: AppColors.border,
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: AppColors.periwinkle,
+        selectionColor: AppColors.periwinkle.withValues(alpha: 0.3),
+        selectionHandleColor: AppColors.periwinkle,
+      ),
+      tooltipTheme: TooltipThemeData(
+        textStyle: body(fontSize: 12, color: AppColors.cream),
+        decoration: BoxDecoration(
+          color: AppColors.navy,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: AppColors.border),
         ),
       ),
-      textTheme: baseTextTheme.copyWith(
-        displayLarge: baseTextTheme.displayLarge?.copyWith(
-          color: AppColors.darkBrown,
-          fontWeight: FontWeight.w700,
-        ),
-        headlineLarge: baseTextTheme.headlineLarge?.copyWith(
-          color: AppColors.darkBrown,
-          fontWeight: FontWeight.w600,
-        ),
-        headlineMedium: baseTextTheme.headlineMedium?.copyWith(
-          color: AppColors.darkBrown,
-          fontWeight: FontWeight.w600,
-        ),
-        titleLarge: baseTextTheme.titleLarge?.copyWith(
-          color: AppColors.darkBrown,
-          fontWeight: FontWeight.w600,
-        ),
-        titleMedium: baseTextTheme.titleMedium?.copyWith(
-          color: AppColors.darkBrown,
-          fontWeight: FontWeight.w500,
-        ),
-        bodyLarge: baseTextTheme.bodyLarge?.copyWith(
-          color: AppColors.darkBrown,
-          fontSize: 18,
-        ),
-        bodyMedium: baseTextTheme.bodyMedium?.copyWith(
-          color: AppColors.darkBrown,
-          fontSize: 16,
-        ),
-        labelLarge: baseTextTheme.labelLarge?.copyWith(
-          color: AppColors.darkBrown,
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-        ),
+      chipTheme: ChipThemeData(
+        backgroundColor: Colors.transparent,
+        labelStyle: body(fontSize: 13),
+        side: const BorderSide(color: AppColors.border),
+        shape: const StadiumBorder(),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.deepBurgundy,
-          foregroundColor: AppColors.parchment,
-          textStyle: GoogleFonts.cormorantGaramond(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
+          backgroundColor: AppColors.periwinkle,
+          foregroundColor: AppColors.onPeriwinkle,
+          disabledBackgroundColor: AppColors.border,
+          disabledForegroundColor: AppColors.muted,
+          elevation: 0,
+          textStyle: body(fontSize: 16, fontWeight: FontWeight.w600),
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.deepBurgundy,
-          side: const BorderSide(color: AppColors.mutedGold),
-          textStyle: GoogleFonts.cormorantGaramond(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          foregroundColor: AppColors.periwinkle,
+          backgroundColor: AppColors.raised,
+          side: const BorderSide(color: AppColors.border),
+          textStyle: body(fontSize: 16, fontWeight: FontWeight.w500),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
       ),
-      cardTheme: CardThemeData(
-        color: AppColors.lightParchment,
-        elevation: 2,
-        shadowColor: AppColors.darkBrown.withValues(alpha: 0.15),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: AppColors.muted,
+          textStyle: body(fontSize: 14, fontWeight: FontWeight.w500),
         ),
       ),
-      navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: AppColors.deepBurgundy,
-        height: 72,
-        indicatorColor: AppColors.mutedGold.withValues(alpha: 0.25),
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        labelTextStyle: WidgetStateProperty.resolveWith((states) {
-          final base = GoogleFonts.cormorantGaramond(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-          );
-          if (states.contains(WidgetState.selected)) {
-            return base.copyWith(color: AppColors.mutedGold);
-          }
-          return base.copyWith(
-              color: AppColors.parchment.withValues(alpha: 0.6));
-        }),
-        iconTheme: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return const IconThemeData(color: AppColors.mutedGold, size: 24);
-          }
-          return IconThemeData(
-              color: AppColors.parchment.withValues(alpha: 0.6), size: 24);
-        }),
+      tabBarTheme: TabBarThemeData(
+        labelColor: AppColors.cream,
+        unselectedLabelColor: AppColors.muted,
+        indicatorColor: AppColors.lilac,
+        dividerColor: AppColors.border,
+        overlayColor: WidgetStatePropertyAll(AppColors.raised),
       ),
     );
   }

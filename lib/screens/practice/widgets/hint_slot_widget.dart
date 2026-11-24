@@ -62,9 +62,9 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
   Widget build(BuildContext context) {
     final borderColor = widget.hint.isRevealed
         ? (widget.hint.isCorrect
-            ? AppColors.sageGreen.withValues(alpha: 0.5)
-            : AppColors.dustyRose.withValues(alpha: 0.5))
-        : AppColors.warmBeige;
+            ? AppColors.teal.withValues(alpha: 0.5)
+            : AppColors.rose.withValues(alpha: 0.5))
+        : AppColors.border;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -73,8 +73,8 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            AppColors.lightParchment,
-            Color.lerp(AppColors.lightParchment, AppColors.parchment, 0.15)!,
+            AppColors.navy,
+            Color.lerp(AppColors.navy, AppColors.night, 0.15)!,
           ],
         ),
         borderRadius: BorderRadius.circular(12),
@@ -84,7 +84,7 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
         ),
         boxShadow: [
           BoxShadow(
-            color: AppColors.darkBrown.withValues(alpha: 0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -115,7 +115,7 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
                             .titleMedium
                             ?.copyWith(
                               fontWeight: FontWeight.w600,
-                              color: AppColors.agedInkBlue,
+                              color: AppColors.muted,
                               letterSpacing: 0.8,
                               fontFeatures: [FontFeature.enable('smcp')],
                             ),
@@ -129,7 +129,7 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
                         duration: const Duration(milliseconds: 200),
                         child: const Icon(
                           Icons.expand_more,
-                          color: AppColors.agedInkBlue,
+                          color: AppColors.muted,
                         ),
                       ),
                     ],
@@ -146,7 +146,7 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const OrnamentalDivider(color: AppColors.warmBeige),
+                    const OrnamentalDivider(color: AppColors.border),
                     const SizedBox(height: 6),
                     HintPickerWidget(
                       options: widget.hint.options,
@@ -167,7 +167,7 @@ class _HintSlotWidgetState extends State<HintSlotWidget>
                 child: Text(
                   'Correct: ${_getCorrectDisplayLabel()}',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.sageGreen,
+                        color: AppColors.teal,
                         fontWeight: FontWeight.w600,
                         fontStyle: FontStyle.italic,
                       ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
 import '../../core/widgets/card_preview_overlay.dart';
+import '../../core/widgets/sparkle.dart';
+import '../../core/widgets/sparkle_text.dart';
 import '../../providers/card_providers.dart';
 import '../../providers/guide_providers.dart';
 import '../practice/widgets/card_image_widget.dart';
@@ -63,7 +65,7 @@ class CardGuideScreen extends ConsumerWidget {
               child: Text(
                 card.theme,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppColors.agedInkBlue,
+                      color: AppColors.muted,
                       fontStyle: FontStyle.italic,
                     ),
                 textAlign: TextAlign.center,
@@ -126,7 +128,7 @@ class CardGuideScreen extends ConsumerWidget {
             _InterpretationSection(
               title: 'Upright',
               text: guide.uprightMeaning,
-              color: AppColors.sageGreen,
+              color: AppColors.teal,
             ),
             const SizedBox(height: 16),
 
@@ -135,7 +137,7 @@ class CardGuideScreen extends ConsumerWidget {
               _InterpretationSection(
                 title: 'Reversed',
                 text: guide.reversedMeaning,
-                color: AppColors.dustyRose,
+                color: AppColors.rose,
               ),
             const SizedBox(height: 24),
 
@@ -149,12 +151,8 @@ class CardGuideScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(top: 3),
-                      child: Icon(
-                        Icons.auto_awesome,
-                        size: 16,
-                        color: AppColors.mutedGold,
-                      ),
+                      padding: EdgeInsets.only(top: 5),
+                      child: Sparkle(size: 14),
                     ),
                     const SizedBox(width: 10),
                     Expanded(
@@ -164,7 +162,7 @@ class CardGuideScreen extends ConsumerWidget {
                             Theme.of(context).textTheme.bodyLarge?.copyWith(
                                   fontStyle: FontStyle.italic,
                                   height: 1.5,
-                                  color: AppColors.agedInkBlue,
+                                  color: AppColors.muted,
                                 ),
                       ),
                     ),
@@ -187,12 +185,7 @@ class _SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            color: AppColors.deepBurgundy,
-          ),
-    );
+    return SectionHeading(text);
   }
 }
 
@@ -213,22 +206,21 @@ class _MeaningCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.mutedGold.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(10),
-        border:
-            Border.all(color: AppColors.mutedGold.withValues(alpha: 0.2)),
+        color: AppColors.navy,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Icon(icon, size: 18, color: AppColors.mutedGold),
+              Icon(icon, size: 18, color: AppColors.lilac),
               const SizedBox(width: 8),
               Text(
                 label,
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                      color: AppColors.agedInkBlue,
+                      color: AppColors.muted,
                     ),
               ),
             ],
@@ -264,7 +256,7 @@ class _InterpretationSection extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
         border: Border.all(color: color.withValues(alpha: 0.25)),
       ),
       child: Column(

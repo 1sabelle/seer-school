@@ -12,11 +12,11 @@ class ResultIndicator extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: isCorrect
-            ? AppColors.sageGreen.withValues(alpha: 0.2)
-            : AppColors.dustyRose.withValues(alpha: 0.2),
+            ? AppColors.teal.withValues(alpha: 0.2)
+            : AppColors.rose.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: isCorrect ? AppColors.sageGreen : AppColors.dustyRose,
+          color: isCorrect ? AppColors.teal : AppColors.rose,
           width: 1.5,
         ),
       ),
@@ -26,13 +26,13 @@ class ResultIndicator extends StatelessWidget {
           Icon(
             isCorrect ? Icons.check_rounded : Icons.close_rounded,
             size: 18,
-            color: isCorrect ? AppColors.sageGreen : AppColors.dustyRose,
+            color: isCorrect ? AppColors.teal : AppColors.rose,
           ),
           const SizedBox(width: 4),
           Text(
             isCorrect ? 'Correct' : 'Incorrect',
             style: TextStyle(
-              color: isCorrect ? AppColors.sageGreen : AppColors.dustyRose,
+              color: isCorrect ? AppColors.teal : AppColors.rose,
               fontWeight: FontWeight.w600,
               fontSize: 14,
             ),

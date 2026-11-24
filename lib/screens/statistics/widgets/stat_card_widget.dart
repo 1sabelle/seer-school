@@ -17,21 +17,14 @@ class StatCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent = accentColor ?? AppColors.mutedGold;
+    final accent = accentColor ?? AppColors.lilac;
 
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.lightParchment,
+        color: AppColors.navy,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.warmBeige),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.darkBrown.withValues(alpha: 0.05),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        border: Border.all(color: AppColors.border),
       ),
       child: Column(
         children: [
@@ -41,14 +34,13 @@ class StatCardWidget extends StatelessWidget {
             value,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: accent,
-                  fontWeight: FontWeight.w700,
                 ),
           ),
           const SizedBox(height: 4),
           Text(
             label,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.agedInkBlue,
+                  color: AppColors.muted,
                 ),
             textAlign: TextAlign.center,
           ),

@@ -19,7 +19,7 @@ class CardImageWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: AppColors.darkBrown.withValues(alpha: 0.2),
+            color: Colors.black.withValues(alpha: 0.2),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -53,10 +53,10 @@ class _PlaceholderCard extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [AppColors.agedInkBlue, AppColors.deepBurgundy],
+          colors: [AppColors.muted, AppColors.periwinkle],
         ),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.mutedGold, width: 2),
+        border: Border.all(color: AppColors.lilac, width: 2),
       ),
       child: Center(
         child: Padding(
@@ -65,7 +65,7 @@ class _PlaceholderCard extends StatelessWidget {
             cardName,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: AppColors.parchment,
+                  color: AppColors.cream,
                   fontWeight: FontWeight.w700,
                 ),
           ),

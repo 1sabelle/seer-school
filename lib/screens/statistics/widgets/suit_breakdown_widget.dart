@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants.dart';
+import '../../../core/widgets/sparkle_text.dart';
 import '../../../models/hint_category.dart';
 
 class CategoryBreakdownWidget extends StatelessWidget {
@@ -20,12 +21,7 @@ class CategoryBreakdownWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'By Category',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
-        ),
+        const SectionHeading('By Category'),
         const SizedBox(height: 12),
         ...entries.map((entry) {
           String displayLabel = entry.key;
@@ -64,7 +60,7 @@ class CategoryBreakdownWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                   child: LinearProgressIndicator(
                     value: entry.value,
-                    backgroundColor: AppColors.warmBeige,
+                    backgroundColor: AppColors.border,
                     valueColor: AlwaysStoppedAnimation(_accuracyColor(entry.value)),
                     minHeight: 10,
                   ),
@@ -78,8 +74,8 @@ class CategoryBreakdownWidget extends StatelessWidget {
   }
 
   Color _accuracyColor(double accuracy) {
-    if (accuracy >= 0.8) return AppColors.sageGreen;
-    if (accuracy >= 0.5) return AppColors.mutedGold;
-    return AppColors.dustyRose;
+    if (accuracy >= 0.8) return AppColors.teal;
+    if (accuracy >= 0.5) return AppColors.periwinkle;
+    return AppColors.rose;
   }
 }

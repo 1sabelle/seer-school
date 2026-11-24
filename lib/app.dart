@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'core/theme.dart';
+import 'core/widgets/page_column.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/practice/practice_screen.dart';
 import 'screens/browse/browse_screen.dart';
@@ -35,7 +36,8 @@ final GoRouter _router = GoRouter(
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: '/onboarding',
-      builder: (context, state) => const OnboardingScreen(),
+      builder: (context, state) =>
+          const PageColumn(child: OnboardingScreen()),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =>
@@ -55,13 +57,14 @@ final GoRouter _router = GoRouter(
           routes: [
             GoRoute(
               path: '/practice',
-              builder: (context, state) => const PracticeScreen(),
+              builder: (context, state) =>
+                  const PageColumn(child: PracticeScreen()),
               routes: [
                 GoRoute(
                   path: ':cardId',
                   builder: (context, state) {
                     final cardId = state.pathParameters['cardId']!;
-                    return PracticeScreen(cardId: cardId);
+                    return PageColumn(child: PracticeScreen(cardId: cardId));
                   },
                 ),
               ],
@@ -73,20 +76,21 @@ final GoRouter _router = GoRouter(
           routes: [
             GoRoute(
               path: '/browse',
-              builder: (context, state) => const BrowseScreen(),
+              builder: (context, state) =>
+                  const PageColumn(child: BrowseScreen()),
               routes: [
                 GoRoute(
                   path: ':cardId',
                   builder: (context, state) {
                     final cardId = state.pathParameters['cardId']!;
-                    return CardDetailScreen(cardId: cardId);
+                    return PageColumn(child: CardDetailScreen(cardId: cardId));
                   },
                   routes: [
                     GoRoute(
                       path: 'guide',
                       builder: (context, state) {
                         final cardId = state.pathParameters['cardId']!;
-                        return CardGuideScreen(cardId: cardId);
+                        return PageColumn(child: CardGuideScreen(cardId: cardId));
                       },
                     ),
                   ],
@@ -100,7 +104,8 @@ final GoRouter _router = GoRouter(
           routes: [
             GoRoute(
               path: '/statistics',
-              builder: (context, state) => const StatisticsScreen(),
+              builder: (context, state) =>
+                  const PageColumn(child: StatisticsScreen()),
             ),
           ],
         ),

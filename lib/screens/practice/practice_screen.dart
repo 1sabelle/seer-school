@@ -3,7 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants.dart';
+import '../../core/theme.dart';
 import '../../core/widgets/card_preview_overlay.dart';
+import '../../core/widgets/shooting_star.dart';
+import '../../core/widgets/sparkle.dart';
+import '../../core/widgets/sparkle_text.dart';
 import '../../models/hint_category.dart';
 import '../../providers/guide_providers.dart';
 import '../../providers/practice_providers.dart';
@@ -30,6 +34,23 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
 
   /// Tracks which hint indices the user has peeked at the answer for.
   final Set<int> _peekedHints = {};
+
+  /// Where the user last touched, so a correct answer's shooting star can
+  /// start from the answer they picked.
+  Offset? _lastTouch;
+
+  /// Correct hints whose shooting star is still on its way to their step.
+  final Set<int> _starsInFlight = {};
+
+  /// Correct hints whose shooting star has landed, so their step bursts.
+  final Set<int> _starsLanded = {};
+
+  /// Per card as well as per step: while one card's page fades out under the
+  /// next, both show their steps at once.
+  final Map<(String, int), GlobalKey> _stepKeys = {};
+
+  GlobalKey _stepKeyFor(String cardId, int hintIndex) =>
+      _stepKeys.putIfAbsent((cardId, hintIndex), GlobalKey.new);
 
   @override
   void initState() {
@@ -77,9 +98,39 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     }
   }
 
+  /// Sends a shooting star from where the answer was given to its step, when
+  /// the answer was right.
+  void _celebrateIfCorrect(int hintIndex) {
+    final hint = ref.read(drawSessionProvider)?.hints[hintIndex];
+    final from = _lastTouch;
+    final cardId = _lastCardId;
+    if (hint == null || !hint.isCorrect || from == null || cardId == null) {
+      return;
+    }
+    final step =
+        _stepKeyFor(cardId, hintIndex).currentContext?.findRenderObject();
+    if (step is! RenderBox) return;
+
+    final to = step.localToGlobal(step.size.center(Offset.zero));
+    setState(() => _starsInFlight.add(hintIndex));
+    flyShootingStar(
+      context,
+      from: from,
+      to: to,
+      onLanded: () {
+        if (!mounted || cardId != _lastCardId) return;
+        setState(() {
+          _starsInFlight.remove(hintIndex);
+          _starsLanded.add(hintIndex);
+        });
+      },
+    );
+  }
+
   void _onAnswerSelected(DrawSession session, int hintIndex, String key) {
     HapticFeedback.mediumImpact();
     ref.read(drawSessionProvider.notifier).selectAndReveal(hintIndex, key);
+    _celebrateIfCorrect(hintIndex);
 
     // Keep the revealed picker visible briefly (green/red highlight), then advance
     Future.delayed(const Duration(milliseconds: 400), () {
@@ -120,6 +171,8 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
       _lastCardId = session.card.id;
       _currentHintIndex = 0;
       _peekedHints.clear();
+      _starsInFlight.clear();
+      _starsLanded.clear();
     }
 
     return _buildPracticeScaffold(session, queue);
@@ -127,43 +180,14 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
 
   Widget _buildEmptyScreen(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                Icons.auto_awesome,
-                size: 48,
-                color: AppColors.mutedGold.withValues(alpha: 0.6),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                'Draw your first card',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      letterSpacing: 0.5,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                'Draw a card from the deck to unlock\nit for practice.',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.agedInkBlue,
-                      height: 1.5,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 32),
-              ElevatedButton(
-                onPressed: () {
-                  StatefulNavigationShell.of(context).goBranch(0);
-                },
-                child: const Text('Go to Deck'),
-              ),
-            ],
-          ),
+      body: StarryEmptyState(
+        title: 'Draw your first card',
+        body: 'Draw a card from the deck to unlock\nit for practice.',
+        action: ElevatedButton(
+          onPressed: () {
+            StatefulNavigationShell.of(context).goBranch(0);
+          },
+          child: const Text('Go to Deck'),
         ),
       ),
     );
@@ -171,44 +195,16 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
 
   Widget _buildAllDoneScreen(BuildContext context, PracticeQueueState queue) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                Icons.celebration_rounded,
-                size: 56,
-                color: AppColors.mutedGold.withValues(alpha: 0.8),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                'All Done!',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      letterSpacing: 0.5,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                'You practiced ${queue.completedCount} ${queue.completedCount == 1 ? 'card' : 'cards'} this session.',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.agedInkBlue,
-                      height: 1.5,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 32),
-              ElevatedButton.icon(
-                onPressed: () {
-                  ref.read(practiceQueueProvider.notifier).reset();
-                },
-                icon: const Icon(Icons.refresh_rounded, size: 20),
-                label: const Text('Practice Again'),
-              ),
-            ],
-          ),
+      body: StarryEmptyState(
+        title: 'All Done!',
+        body:
+            'You practiced ${queue.completedCount} ${queue.completedCount == 1 ? 'card' : 'cards'} this session.',
+        action: ElevatedButton.icon(
+          onPressed: () {
+            ref.read(practiceQueueProvider.notifier).reset();
+          },
+          icon: const Icon(Icons.refresh_rounded, size: 20),
+          label: const Text('Practice Again'),
         ),
       ),
     );
@@ -238,7 +234,11 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                   ],
                 );
               },
-              child: _buildPracticeBody(session),
+              child: Listener(
+                key: ValueKey(session.card.id),
+                onPointerDown: (event) => _lastTouch = event.position,
+                child: _buildPracticeBody(session),
+              ),
             ),
           ),
         ],
@@ -261,7 +261,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
               Text(
                 '$current of $total',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: AppColors.agedInkBlue,
+                      color: AppColors.muted,
                       fontWeight: FontWeight.w600,
                     ),
               ),
@@ -272,9 +272,9 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
             borderRadius: BorderRadius.circular(4),
             child: LinearProgressIndicator(
               value: total > 0 ? current / total : 0,
-              backgroundColor: AppColors.warmBeige,
+              backgroundColor: AppColors.border,
               valueColor:
-                  const AlwaysStoppedAnimation<Color>(AppColors.mutedGold),
+                  const AlwaysStoppedAnimation<Color>(AppColors.periwinkle),
               minHeight: 6,
             ),
           ),
@@ -321,9 +321,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                 const SizedBox(height: 6),
                 Text(
                   session.card.name,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                  style: AppTheme.display(fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -384,52 +382,24 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
       children: List.generate(session.hints.length, (i) {
         final h = session.hints[i];
         final isCurrent = i == _currentHintIndex && !session.allRevealed;
+        // A correct step stays unlit until its shooting star arrives.
+        final isAnswered = h.isRevealed && !_starsInFlight.contains(i);
 
-        final bool isFilled = h.isRevealed;
-        final Color fillColor =
-            h.isRevealed ? (h.isCorrect ? AppColors.sageGreen : AppColors.dustyRose) : Colors.transparent;
-        final Color borderColor = isCurrent
-            ? AppColors.mutedGold
-            : isFilled
-                ? fillColor
-                : AppColors.warmBeige;
-
-        final circle = AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          margin: const EdgeInsets.symmetric(horizontal: 5),
-          width: 14,
-          height: 14,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: fillColor,
-            border: Border.all(color: borderColor, width: 2),
-          ),
-          child: isFilled
-              ? Center(
-                  child: Icon(
-                    h.isCorrect ? Icons.check_rounded : Icons.close_rounded,
-                    size: 9,
-                    color: Colors.white,
-                  ),
-                )
-              : null,
+        final step = _StepStar(
+          key: _stepKeyFor(session.card.id, i),
+          isCurrent: isCurrent,
+          isAnswered: isAnswered,
+          isCorrect: h.isCorrect,
+          hasLanded: _starsLanded.contains(i),
         );
 
-        if (!isFilled) return circle;
+        if (!h.isRevealed) return step;
 
         return Tooltip(
           message: _getAnswerSummary(h),
           preferBelow: true,
           triggerMode: TooltipTriggerMode.tap,
-          textStyle: const TextStyle(
-            color: AppColors.parchment,
-            fontSize: 12,
-          ),
-          decoration: BoxDecoration(
-            color: AppColors.darkBrown.withValues(alpha: 0.9),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: circle,
+          child: step,
         );
       }),
     );
@@ -460,6 +430,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
             ref
                 .read(drawSessionProvider.notifier)
                 .submitFreeText(_currentHintIndex, answer);
+            _celebrateIfCorrect(_currentHintIndex);
             Future.delayed(const Duration(milliseconds: 400), () {
               if (!mounted) return;
               setState(() {
@@ -487,6 +458,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
             ref
                 .read(drawSessionProvider.notifier)
                 .confirmMultiSelect(_currentHintIndex);
+            _celebrateIfCorrect(_currentHintIndex);
             Future.delayed(const Duration(milliseconds: 400), () {
               if (!mounted) return;
               setState(() {
@@ -517,11 +489,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
         children: [
           Text(
             _promptText(hint),
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.agedInkBlue,
-                  letterSpacing: 0.5,
-                ),
+            style: AppTheme.display(fontSize: 22),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 24),
@@ -575,7 +543,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
         ),
         child: Text(
           label,
-          style: TextStyle(
+          style: AppTheme.body(
             color: color,
             fontSize: 12,
             fontWeight: FontWeight.w600,
@@ -598,14 +566,14 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
             final hint = session.hints[i];
             final isCorrect = hint.isCorrect;
             final hasPeeked = _peekedHints.contains(i);
-            final color = isCorrect ? AppColors.sageGreen : AppColors.dustyRose;
+            final color = isCorrect ? AppColors.teal : AppColors.rose;
 
             return Container(
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.06),
-                borderRadius: BorderRadius.circular(8),
+                color: color.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   color: color.withValues(alpha: 0.3),
                   width: 1,
@@ -626,7 +594,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                         Text(
                           hint.category.displayLabel,
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: AppColors.agedInkBlue,
+                                color: AppColors.text,
                                 fontWeight: FontWeight.w600,
                               ),
                         ),
@@ -637,7 +605,7 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                                 .textTheme
                                 .bodySmall
                                 ?.copyWith(
-                                  color: AppColors.sageGreen,
+                                  color: AppColors.teal,
                                   fontStyle: FontStyle.italic,
                                 ),
                           ),
@@ -647,13 +615,13 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                   if (!isCorrect && !hasPeeked) ...[
                     _buildSummaryAction(
                       label: 'Reveal',
-                      color: AppColors.mutedGold,
+                      color: AppColors.lilac,
                       onTap: () => setState(() => _peekedHints.add(i)),
                     ),
                     const SizedBox(width: 6),
                     _buildSummaryAction(
                       label: 'Retry',
-                      color: AppColors.deepBurgundy,
+                      color: AppColors.periwinkle,
                       onTap: () => _retryHint(i),
                     ),
                   ],
@@ -692,27 +660,28 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
   Widget _buildScoreRow(DrawSession session) {
     final correct = session.hints.where((h) => h.isCorrect).length;
     final total = session.hints.length;
+    final isPerfect = correct == total;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
       decoration: BoxDecoration(
-        color: AppColors.mutedGold.withValues(alpha: 0.1),
+        color: AppColors.navy,
         borderRadius: BorderRadius.circular(12),
-        border:
-            Border.all(color: AppColors.mutedGold.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.border),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Stack(
+        alignment: Alignment.center,
+        clipBehavior: Clip.none,
         children: [
-          const Icon(Icons.star_rounded,
-              color: AppColors.mutedGold, size: 24),
-          const SizedBox(width: 8),
-          Text(
-            '$correct / $total correct',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: AppColors.mutedGold,
-                  fontWeight: FontWeight.w700,
-                ),
+          if (isPerfect)
+            const Positioned.fill(
+              child: SparkleBurst(count: 10, fromRadius: 20, toRadius: 90),
+            ),
+          TwinkleFramed(
+            child: Text(
+              '$correct / $total correct',
+              style: AppTheme.display(fontSize: 22),
+            ),
           ),
         ],
       ),
@@ -720,3 +689,68 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
   }
 }
 
+/// One step of a card's practice, drawn as a star: dim until reached,
+/// twinkling lilac while current, teal once answered right (bursting as its
+/// shooting star lands) and a small rose star when answered wrong.
+class _StepStar extends StatelessWidget {
+  final bool isCurrent;
+  final bool isAnswered;
+  final bool isCorrect;
+  final bool hasLanded;
+
+  const _StepStar({
+    super.key,
+    required this.isCurrent,
+    required this.isAnswered,
+    required this.isCorrect,
+    required this.hasLanded,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final Widget star;
+    if (isAnswered && isCorrect) {
+      star = const Sparkle(size: 18, color: AppColors.teal);
+    } else if (isAnswered) {
+      star = const Sparkle(size: 12, color: AppColors.rose);
+    } else if (isCurrent) {
+      star = const TwinklingSparkle(size: 18);
+    } else {
+      star = const Sparkle(size: 10, color: AppColors.border);
+    }
+
+    return SizedBox(
+      width: 26,
+      height: 26,
+      child: Stack(
+        alignment: Alignment.center,
+        clipBehavior: Clip.none,
+        children: [
+          if (hasLanded)
+            const Positioned(
+              left: -27,
+              top: -27,
+              width: 80,
+              height: 80,
+              child: SparkleBurst(
+                count: 6,
+                fromRadius: 6,
+                toRadius: 28,
+                sparkleSize: 8,
+              ),
+            ),
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 450),
+            switchInCurve: twirlCurve,
+            transitionBuilder: (child, animation) =>
+                ScaleTransition(scale: animation, child: child),
+            child: KeyedSubtree(
+              key: ValueKey((isAnswered, isCorrect, isCurrent)),
+              child: star,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

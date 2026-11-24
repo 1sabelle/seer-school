@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../../core/constants.dart';
+import '../../core/widgets/rise_in.dart';
+import '../../core/widgets/sparkle.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -60,16 +62,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(_pages.length, (i) {
-                return AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  width: _currentPage == i ? 24 : 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: _currentPage == i
-                        ? AppColors.mutedGold
-                        : AppColors.warmBeige,
-                    borderRadius: BorderRadius.circular(4),
+                final isCurrent = _currentPage == i;
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 450),
+                    switchInCurve: twirlCurve,
+                    transitionBuilder: (child, animation) =>
+                        ScaleTransition(scale: animation, child: child),
+                    child: isCurrent
+                        ? const TwinklingSparkle(
+                            key: ValueKey('current'),
+                            size: 16,
+                          )
+                        : const SizedBox.square(
+                            key: ValueKey('other'),
+                            dimension: 16,
+                            child: Sparkle(size: 9, color: AppColors.border),
+                          ),
                   ),
                 );
               }),
@@ -103,7 +113,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 onPressed: _complete,
                 child: Text(
                   'Skip',
-                  style: TextStyle(color: AppColors.agedInkBlue),
+                  style: TextStyle(color: AppColors.muted),
                 ),
               )
             else
@@ -135,21 +145,27 @@ class _OnboardingPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 72, color: AppColors.mutedGold),
+          RiseIn(child: Icon(icon, size: 72, color: AppColors.lilac)),
           const SizedBox(height: 32),
-          Text(
-            title,
-            style: Theme.of(context).textTheme.headlineMedium,
-            textAlign: TextAlign.center,
+          RiseIn(
+            delay: const Duration(milliseconds: 150),
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.headlineMedium,
+              textAlign: TextAlign.center,
+            ),
           ),
           const SizedBox(height: 16),
-          Text(
-            body,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: AppColors.agedInkBlue,
-                  height: 1.5,
-                ),
-            textAlign: TextAlign.center,
+          RiseIn(
+            delay: const Duration(milliseconds: 300),
+            child: Text(
+              body,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: AppColors.muted,
+                    height: 1.5,
+                  ),
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
       ),

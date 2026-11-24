@@ -39,33 +39,33 @@ class MultiSelectHintWidget extends StatelessWidget {
             if (isRevealed) {
               if (isCorrectOption && isSelected) {
                 // Correctly selected
-                borderColor = AppColors.sageGreen;
-                bgColor = AppColors.sageGreen.withValues(alpha: 0.15);
-                textColor = AppColors.sageGreen;
+                borderColor = AppColors.teal;
+                bgColor = AppColors.teal.withValues(alpha: 0.15);
+                textColor = AppColors.teal;
               } else if (isCorrectOption && !isSelected) {
                 // Missed — should have been selected
-                borderColor = AppColors.mutedGold;
-                bgColor = AppColors.mutedGold.withValues(alpha: 0.1);
-                textColor = AppColors.mutedGold;
+                borderColor = AppColors.lilac;
+                bgColor = AppColors.lilac.withValues(alpha: 0.1);
+                textColor = AppColors.lilac;
               } else if (!isCorrectOption && isSelected) {
                 // Wrong — intruder selected
-                borderColor = AppColors.dustyRose;
-                bgColor = AppColors.dustyRose.withValues(alpha: 0.15);
-                textColor = AppColors.dustyRose;
+                borderColor = AppColors.rose;
+                bgColor = AppColors.rose.withValues(alpha: 0.15);
+                textColor = AppColors.rose;
               } else {
                 // Correctly avoided intruder
-                borderColor = AppColors.warmBeige;
-                bgColor = AppColors.lightParchment;
-                textColor = AppColors.agedInkBlue.withValues(alpha: 0.4);
+                borderColor = AppColors.border;
+                bgColor = AppColors.navy;
+                textColor = AppColors.muted.withValues(alpha: 0.4);
               }
             } else if (isSelected) {
-              borderColor = AppColors.mutedGold;
-              bgColor = AppColors.mutedGold.withValues(alpha: 0.12);
-              textColor = AppColors.darkBrown;
+              borderColor = AppColors.lilac;
+              bgColor = AppColors.lilac.withValues(alpha: 0.12);
+              textColor = AppColors.text;
             } else {
-              borderColor = AppColors.warmBeige;
-              bgColor = AppColors.lightParchment;
-              textColor = AppColors.darkBrown;
+              borderColor = AppColors.border;
+              bgColor = AppColors.navy;
+              textColor = AppColors.text;
             }
 
             return GestureDetector(
@@ -86,13 +86,13 @@ class MultiSelectHintWidget extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(right: 4),
                         child: Icon(Icons.check_rounded,
-                            size: 14, color: AppColors.sageGreen),
+                            size: 14, color: AppColors.teal),
                       ),
                     if (isRevealed && !isCorrectOption && isSelected)
                       const Padding(
                         padding: EdgeInsets.only(right: 4),
                         child: Icon(Icons.close_rounded,
-                            size: 14, color: AppColors.dustyRose),
+                            size: 14, color: AppColors.rose),
                       ),
                     Text(
                       option.displayLabel,
@@ -118,8 +118,8 @@ class MultiSelectHintWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 12),
               decoration: BoxDecoration(
                 color: selectedKeys.isEmpty
-                    ? AppColors.warmBeige
-                    : AppColors.deepBurgundy,
+                    ? AppColors.border
+                    : AppColors.periwinkle,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Center(
@@ -127,8 +127,8 @@ class MultiSelectHintWidget extends StatelessWidget {
                   'Confirm',
                   style: TextStyle(
                     color: selectedKeys.isEmpty
-                        ? AppColors.agedInkBlue.withValues(alpha: 0.4)
-                        : AppColors.parchment,
+                        ? AppColors.muted.withValues(alpha: 0.4)
+                        : AppColors.onPeriwinkle,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),

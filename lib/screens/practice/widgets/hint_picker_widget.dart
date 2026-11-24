@@ -37,29 +37,29 @@ class HintPickerWidget extends StatelessWidget {
         final isSelected = selectedKey == option.key;
         final isCorrectAnswer = option.key == correctAnswer;
 
-        Color borderColor = AppColors.warmBeige;
-        Color bgColor = AppColors.lightParchment;
+        Color borderColor = AppColors.border;
+        Color bgColor = AppColors.navy;
 
         if (isRevealed) {
           if (isCorrectAnswer) {
-            borderColor = AppColors.sageGreen;
-            bgColor = AppColors.sageGreen.withValues(alpha: 0.1);
+            borderColor = AppColors.teal;
+            bgColor = AppColors.teal.withValues(alpha: 0.1);
           } else if (isSelected && !isCorrectAnswer) {
-            borderColor = AppColors.dustyRose;
-            bgColor = AppColors.dustyRose.withValues(alpha: 0.1);
+            borderColor = AppColors.rose;
+            bgColor = AppColors.rose.withValues(alpha: 0.1);
           }
         } else if (isSelected) {
-          borderColor = AppColors.mutedGold;
-          bgColor = AppColors.mutedGold.withValues(alpha: 0.1);
+          borderColor = AppColors.lilac;
+          bgColor = AppColors.lilac.withValues(alpha: 0.1);
         }
 
         final iconColor = isRevealed && isCorrectAnswer
-            ? AppColors.sageGreen
+            ? AppColors.teal
             : isRevealed && isSelected
-                ? AppColors.dustyRose
+                ? AppColors.rose
                 : isSelected
-                    ? AppColors.mutedGold
-                    : AppColors.agedInkBlue;
+                    ? AppColors.lilac
+                    : AppColors.muted;
 
         return GestureDetector(
           onTap: isRevealed ? null : () => onSelect(option.key),
@@ -101,7 +101,7 @@ class HintPickerWidget extends StatelessWidget {
                     child: Text(
                       option.displayLabel,
                       style: TextStyle(
-                        color: AppColors.darkBrown,
+                        color: AppColors.text,
                         fontSize: 12,
                       ),
                     ),
@@ -119,20 +119,20 @@ class HintPickerWidget extends StatelessWidget {
         final isSelected = selectedKey == option.key;
         final isCorrectAnswer = option.key == correctAnswer;
 
-        Color borderColor = AppColors.warmBeige;
-        Color bgColor = AppColors.lightParchment;
+        Color borderColor = AppColors.border;
+        Color bgColor = AppColors.navy;
 
         if (isRevealed) {
           if (isCorrectAnswer) {
-            borderColor = AppColors.sageGreen;
-            bgColor = AppColors.sageGreen.withValues(alpha: 0.1);
+            borderColor = AppColors.teal;
+            bgColor = AppColors.teal.withValues(alpha: 0.1);
           } else if (isSelected && !isCorrectAnswer) {
-            borderColor = AppColors.dustyRose;
-            bgColor = AppColors.dustyRose.withValues(alpha: 0.1);
+            borderColor = AppColors.rose;
+            bgColor = AppColors.rose.withValues(alpha: 0.1);
           }
         } else if (isSelected) {
-          borderColor = AppColors.mutedGold;
-          bgColor = AppColors.mutedGold.withValues(alpha: 0.1);
+          borderColor = AppColors.lilac;
+          bgColor = AppColors.lilac.withValues(alpha: 0.1);
         }
 
         return Padding(
@@ -160,10 +160,10 @@ class HintPickerWidget extends StatelessWidget {
                   ),
                   if (isRevealed && isCorrectAnswer)
                     const Icon(Icons.check_rounded,
-                        color: AppColors.sageGreen, size: 20),
+                        color: AppColors.teal, size: 20),
                   if (isRevealed && isSelected && !isCorrectAnswer)
                     const Icon(Icons.close_rounded,
-                        color: AppColors.dustyRose, size: 20),
+                        color: AppColors.rose, size: 20),
                 ],
               ),
             ),

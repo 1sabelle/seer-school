@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../core/constants.dart';
+import '../../core/theme.dart';
+import '../../core/widgets/sparkle.dart';
+import '../../core/widgets/sparkle_text.dart';
 import '../../models/tarot_card.dart';
 import '../../providers/deck_providers.dart';
 import '../../providers/practice_providers.dart';
@@ -25,13 +27,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
   late final AnimationController _shuffleController;
   late final AnimationController _hintPulseController;
   late final AnimationController _expandController;
-  late final AnimationController _sunburstController;
+  late final AnimationController _glowController;
 
   _DeckState _deckState = _DeckState.idle;
   TarotCardDefinition? _drawnCard;
 
   // Key for measuring the deck card position on screen
   final GlobalKey _deckCardKey = GlobalKey();
+
+  /// Where the deck's top card sits on screen, so the reveal grows out of
+  /// it and shrinks back into it.
+  Rect? _deckCardRect;
 
   @override
   void initState() {
@@ -68,7 +74,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
         }
       });
 
-    _sunburstController = AnimationController(
+    _glowController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 800),
     );
@@ -80,14 +86,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     _shuffleController.dispose();
     _hintPulseController.dispose();
     _expandController.dispose();
-    _sunburstController.dispose();
+    _glowController.dispose();
     super.dispose();
   }
 
   void _startExpand() {
-    setState(() => _deckState = _DeckState.expanding);
+    setState(() {
+      _deckState = _DeckState.expanding;
+      _deckCardRect = _findDeckCardRect();
+    });
     _expandController.forward(from: 0);
-    _sunburstController.forward(from: 0);
+    _glowController.forward(from: 0);
   }
 
   void _finishCollapse() {
@@ -96,7 +105,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     });
     _flipController.reset();
     _expandController.reset();
-    _sunburstController.reset();
+    _glowController.reset();
   }
 
   void _onDeckTap() {
@@ -147,7 +156,31 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
   void _collapseOverlay() {
     setState(() => _deckState = _DeckState.collapsing);
     _expandController.reverse();
-    _sunburstController.reverse();
+    _glowController.reverse();
+    // Saving the draw can change what sits beneath the card (its name in
+    // place of Shuffle), so measure again once that has been laid out.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) setState(() => _deckCardRect = _findDeckCardRect());
+    });
+  }
+
+  Rect? _findDeckCardRect() {
+    final deckBox =
+        _deckCardKey.currentContext?.findRenderObject() as RenderBox?;
+    final screenBox = context.findRenderObject() as RenderBox?;
+    if (deckBox == null || screenBox == null || !deckBox.attached) return null;
+    final deckRect = MatrixUtils.transformRect(
+      deckBox.getTransformTo(screenBox),
+      Offset.zero & deckBox.size,
+    );
+    // The deck may be shrunk to fit, and leaves room around the card for
+    // the shuffle; the card itself is centred in it.
+    final scale = deckRect.width / deckBox.size.width;
+    return Rect.fromCenter(
+      center: deckRect.center,
+      width: _DeckCardWidget._cardWidth * scale,
+      height: _DeckCardWidget._cardHeight * scale,
+    );
   }
 
   void _persistDailyDraw() {
@@ -175,7 +208,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     });
     _flipController.reset();
     _expandController.reset();
-    _sunburstController.reset();
+    _glowController.reset();
   }
 
   @override
@@ -194,60 +227,65 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
               padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Column(
                 children: [
-                  const Spacer(flex: 1),
-
-                  const Spacer(flex: 2),
-
-                  // Deck card visual
-                  _DeckCardWidget(
-                    key: _deckCardKey,
-                    flipController: _flipController,
-                    shuffleController: _shuffleController,
-                    deckState: _deckState,
-                    drawnCard: _drawnCard,
-                    dailyCard: dailyCard,
-                    onTap: _onDeckTap,
-                  ),
-
-                  // Card name beneath the card when drawn
-                  if (hasDailyDraw && dailyCard != null)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        dailyCard.name,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: AppColors.mutedGold,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 0.5,
+                  // The card and its name, centred above the footer and
+                  // shrunk together on screens too short for them
+                  Expanded(
+                    child: Center(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            _DeckCardWidget(
+                              key: _deckCardKey,
+                              flipController: _flipController,
+                              shuffleController: _shuffleController,
+                              deckState: _deckState,
+                              drawnCard: _drawnCard,
+                              dailyCard: dailyCard,
+                              onTap: _onDeckTap,
                             ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
 
-                  // Shuffle directly beneath the card
-                  if (!hasDailyDraw)
-                    TextButton.icon(
-                      onPressed: _onShuffle,
-                      icon: const Icon(Icons.shuffle_rounded, size: 18),
-                      label: const Text('Shuffle'),
-                      style: TextButton.styleFrom(
-                        foregroundColor: AppColors.mutedGold,
-                        textStyle: GoogleFonts.cormorantGaramond(
-                          fontSize: 13,
-                          letterSpacing: 0.5,
+                            // Card name beneath the card when drawn
+                            if (hasDailyDraw && dailyCard != null)
+                              Padding(
+                                padding: const EdgeInsets.only(top: 12),
+                                child: TwinkleFramed(
+                                  child: Text(
+                                    dailyCard.name,
+                                    style: AppTheme.display(fontSize: 22),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+
+                            // Shuffle directly beneath the card
+                            if (!hasDailyDraw)
+                              TextButton.icon(
+                                onPressed: _onShuffle,
+                                icon: const Icon(
+                                  Icons.shuffle_rounded,
+                                  size: 18,
+                                ),
+                                label: const Text('Shuffle'),
+                                style: TextButton.styleFrom(
+                                  foregroundColor: AppColors.lilac,
+                                  textStyle: AppTheme.body(fontSize: 13)
+                                      .copyWith(letterSpacing: 0.5),
+                                ),
+                              ),
+                          ],
                         ),
                       ),
                     ),
-
-                  const Spacer(flex: 1),
+                  ),
 
                   // Attribution footer
                   Text(
                     'Illustrations by Pamela Colman Smith, 1909\n'
                     'Card descriptions from The Pictorial Key to the Tarot by A. E. Waite, 1911',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color:
-                              AppColors.agedInkBlue.withValues(alpha: 0.4),
+                          color: AppColors.muted.withValues(alpha: 0.7),
                           fontSize: 11,
                           letterSpacing: 0.3,
                         ),
@@ -265,10 +303,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
               _deckState == _DeckState.collapsing)
             _FullScreenRevealOverlay(
               expandController: _expandController,
-              sunburstController: _sunburstController,
+              glowController: _glowController,
               hintPulseController: _hintPulseController,
               deckState: _deckState,
               drawnCard: _drawnCard,
+              deckCardRect: _deckCardRect,
               onCardTap: _onDeckTap,
               onDismiss: _onDismissReveal,
             ),
@@ -284,22 +323,27 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
 class _FullScreenRevealOverlay extends StatelessWidget {
   final AnimationController expandController;
-  final AnimationController sunburstController;
+  final AnimationController glowController;
   final AnimationController hintPulseController;
   final _DeckState deckState;
   final TarotCardDefinition? drawnCard;
+
+  /// Where the card starts from and returns to; the middle of the screen
+  /// when it couldn't be measured.
+  final Rect? deckCardRect;
   final VoidCallback onCardTap;
   final VoidCallback onDismiss;
 
-  static const _deckCardWidth = 240.0;
-  static const _deckCardHeight = 384.0;
+  static const _deckCardWidth = _DeckCardWidget._cardWidth;
+  static const _deckCardHeight = _DeckCardWidget._cardHeight;
 
   const _FullScreenRevealOverlay({
     required this.expandController,
-    required this.sunburstController,
+    required this.glowController,
     required this.hintPulseController,
     required this.deckState,
     required this.drawnCard,
+    required this.deckCardRect,
     required this.onCardTap,
     required this.onDismiss,
   });
@@ -308,7 +352,7 @@ class _FullScreenRevealOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
-    final availableHeight = screenSize.height - padding.top - padding.bottom - 120; // room for text below
+    final availableHeight = screenSize.height - padding.top - padding.bottom - 160; // room for the hint above and the name below
     final availableWidth = (screenSize.width - 80).clamp(0.0, 360.0); // max 360 wide
     const aspectRatio = _deckCardHeight / _deckCardWidth;
 
@@ -320,133 +364,163 @@ class _FullScreenRevealOverlay extends StatelessWidget {
       maxCardWidth = maxCardHeight / aspectRatio;
     }
 
+    final screenCentre = Offset(
+      screenSize.width / 2,
+      (padding.top + screenSize.height - padding.bottom) / 2,
+    );
+    final revealedRect = Rect.fromCenter(
+      center: screenCentre,
+      width: maxCardWidth,
+      height: maxCardHeight,
+    );
+    final startRect = deckCardRect ??
+        Rect.fromCenter(
+          center: screenCentre,
+          width: _deckCardWidth,
+          height: _deckCardHeight,
+        );
+
     return AnimatedBuilder(
-      animation: Listenable.merge([expandController, sunburstController]),
+      animation: Listenable.merge([expandController, glowController]),
       builder: (context, child) {
         final t = Curves.easeOut.transform(expandController.value);
-        final scrimOpacity = t * 0.75;
-        final cardWidth = _deckCardWidth + (maxCardWidth - _deckCardWidth) * t;
-        final cardHeight = _deckCardHeight + (maxCardHeight - _deckCardHeight) * t;
-        final sunburstOpacity = Curves.easeIn.transform(
-          sunburstController.value.clamp(0.0, 1.0),
+        final scrimOpacity = t * 0.94;
+        final cardRect = Rect.lerp(startRect, revealedRect, t)!;
+        final glowOpacity = Curves.easeIn.transform(
+          glowController.value.clamp(0.0, 1.0),
         );
 
         return Stack(
           children: [
-            // Dark scrim
+            // Night scrim
             Positioned.fill(
               child: IgnorePointer(
                 ignoring: false,
                 child: GestureDetector(
                   onTap: deckState == _DeckState.revealed ? onDismiss : null,
                   child: ColoredBox(
-                    color: Colors.black.withValues(alpha: scrimOpacity),
+                    color: AppColors.night.withValues(alpha: scrimOpacity),
                   ),
                 ),
               ),
             ),
 
-            // Sunburst rays
-            if (sunburstOpacity > 0)
+            // A soft lilac glow behind the card
+            if (glowOpacity > 0)
               Positioned.fill(
                 child: IgnorePointer(
                   child: Opacity(
-                    opacity: sunburstOpacity,
-                    child: CustomPaint(
-                      painter: _SunburstPainter(
-                        rotation: sunburstController.value * 0.26, // ~15 degrees
-                        color: AppColors.mutedGold,
+                    opacity: glowOpacity,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: RadialGradient(
+                          radius: 0.6,
+                          colors: [
+                            AppColors.lilac.withValues(alpha: 0.22),
+                            AppColors.periwinkle.withValues(alpha: 0.06),
+                            Colors.transparent,
+                          ],
+                          stops: const [0, 0.5, 1],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
 
-            // Card + text centered
-            Positioned.fill(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Card
-                  GestureDetector(
-                    onTap: deckState == _DeckState.revealed ? onCardTap : null,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: cardWidth,
-                        maxHeight: cardHeight,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: AppColors.mutedGold,
-                            width: 2,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.mutedGold.withValues(alpha: 0.3 * t),
-                              blurRadius: 32 * t,
-                              spreadRadius: 8 * t,
-                            ),
-                            BoxShadow(
-                              color: AppColors.darkBrown.withValues(alpha: 0.4),
-                              blurRadius: 16,
-                              offset: const Offset(0, 8),
-                            ),
-                          ],
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: drawnCard != null
-                              ? Image.asset(
-                                  drawnCard!.assetPath,
-                                )
-                              : const SizedBox.shrink(),
-                        ),
+            // Sparkles flying out from the card once it has grown
+            if (deckState == _DeckState.revealed)
+              Positioned.fill(
+                child: SparkleBurst(
+                  count: 12,
+                  fromRadius: maxCardWidth * 0.4,
+                  toRadius: maxCardWidth * 0.9,
+                  sparkleSize: 16,
+                  duration: const Duration(milliseconds: 1400),
+                ),
+              ),
+
+            // "Tap to practice" hint just above the card
+            if (deckState == _DeckState.revealed)
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: screenSize.height - cardRect.top + 16,
+                child: Center(
+                  child: FadeTransition(
+                    opacity: Tween<double>(begin: 0.3, end: 0.9)
+                        .animate(hintPulseController),
+                    child: TwinkleFramed(
+                      sparkleSize: 9,
+                      child: Text(
+                        'Tap card to practice',
+                        style: AppTheme.body(fontSize: 13)
+                            .copyWith(letterSpacing: 1),
                       ),
                     ),
                   ),
+                ),
+              ),
 
-                  // Card name — fades in when fully expanded
-                  const SizedBox(height: 16),
-                  Opacity(
-                    opacity: deckState == _DeckState.revealed ? 1.0 : t * 0.5,
-                    child: Text(
-                      drawnCard?.name ?? '',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: AppColors.mutedGold,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.5,
-                            shadows: [
-                              Shadow(
-                                color: Colors.black.withValues(alpha: 0.5),
-                                blurRadius: 8,
-                              ),
-                            ],
-                          ),
-                      textAlign: TextAlign.center,
+            // Card, growing out of the deck card's place
+            Positioned.fromRect(
+              rect: cardRect,
+              child: GestureDetector(
+                onTap: deckState == _DeckState.revealed ? onCardTap : null,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: AppColors.lilac.withValues(alpha: 0.5),
                     ),
-                  ),
-
-                  // "Tap to practice" hint
-                  if (deckState == _DeckState.revealed)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: FadeTransition(
-                        opacity: Tween<double>(begin: 0.3, end: 0.9)
-                            .animate(hintPulseController),
-                        child: Text(
-                          'Tap card to practice',
-                          style:
-                              Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    color: AppColors.parchment
-                                        .withValues(alpha: 0.8),
-                                    letterSpacing: 1,
-                                  ),
-                        ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.lilac.withValues(alpha: 0.35 * t),
+                        blurRadius: 40 * t,
+                        spreadRadius: 4 * t,
                       ),
-                    ),
-                ],
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.4),
+                        blurRadius: 16,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: drawnCard != null
+                        ? ColoredBox(
+                            color: AppColors.cardMargin,
+                            child: Image.asset(
+                              drawnCard!.assetPath,
+                              fit: BoxFit.contain,
+                            ),
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+                ),
+              ),
+            ),
+
+            // Card name beneath the card, fading in as it grows
+            Positioned(
+              left: 0,
+              right: 0,
+              top: cardRect.bottom + 16,
+              child: Opacity(
+                opacity: deckState == _DeckState.revealed ? 1.0 : t * 0.5,
+                child: Text(
+                  drawnCard?.name ?? '',
+                  style: AppTheme.display(fontSize: 28).copyWith(
+                    shadows: [
+                      Shadow(
+                        color: AppColors.lilac.withValues(alpha: 0.5),
+                        blurRadius: 16,
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
 
@@ -462,11 +536,12 @@ class _FullScreenRevealOverlay extends StatelessWidget {
                     height: 40,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.black.withValues(alpha: 0.4),
+                      color: AppColors.navy,
+                      border: Border.all(color: AppColors.border),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.close_rounded,
-                      color: AppColors.parchment.withValues(alpha: 0.8),
+                      color: AppColors.text,
                       size: 22,
                     ),
                   ),
@@ -477,51 +552,6 @@ class _FullScreenRevealOverlay extends StatelessWidget {
       },
     );
   }
-}
-
-// ---------------------------------------------------------------------------
-// Sunburst CustomPainter
-// ---------------------------------------------------------------------------
-
-class _SunburstPainter extends CustomPainter {
-  final double rotation; // in radians-ish (we multiply by 2*pi)
-  final Color color;
-
-  _SunburstPainter({required this.rotation, required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    final maxRadius =
-        math.sqrt(size.width * size.width + size.height * size.height) / 2;
-    const rayCount = 12;
-    const rayAngle = (2 * math.pi) / rayCount;
-    final rotationRad = rotation * 2 * math.pi;
-
-    for (var i = 0; i < rayCount; i++) {
-      final startAngle = rotationRad + i * rayAngle;
-      final opacity = i.isEven ? 0.15 : 0.08;
-      final paint = Paint()..color = color.withValues(alpha: opacity);
-
-      final path = Path()
-        ..moveTo(center.dx, center.dy)
-        ..lineTo(
-          center.dx + math.cos(startAngle) * maxRadius,
-          center.dy + math.sin(startAngle) * maxRadius,
-        )
-        ..lineTo(
-          center.dx + math.cos(startAngle + rayAngle * 0.5) * maxRadius,
-          center.dy + math.sin(startAngle + rayAngle * 0.5) * maxRadius,
-        )
-        ..close();
-
-      canvas.drawPath(path, paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(_SunburstPainter oldDelegate) =>
-      rotation != oldDelegate.rotation || color != oldDelegate.color;
 }
 
 // ---------------------------------------------------------------------------
@@ -536,8 +566,11 @@ class _DeckCardWidget extends StatelessWidget {
   final TarotCardDefinition? dailyCard;
   final VoidCallback onTap;
 
-  static const _cardWidth = 240.0;
-  static const _cardHeight = 384.0;
+  static const _cardWidth = 260.0;
+
+  /// The shape of the card images (500 by 864 pixels), so the whole card
+  /// shows rather than a crop of it.
+  static const _cardHeight = _cardWidth * 864 / 500;
 
   // Staggered timing windows for each card peeling from back to front.
   static const _shuffleCards = [
@@ -685,10 +718,10 @@ class _DeckCardWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.mutedGold, width: 2),
+        border: Border.all(color: AppColors.lilac.withValues(alpha: 0.35)),
         boxShadow: [
           BoxShadow(
-            color: AppColors.darkBrown.withValues(alpha: shadowOpacity),
+            color: Colors.black.withValues(alpha: shadowOpacity),
             blurRadius: 16,
             offset: const Offset(0, 8),
           ),
@@ -710,10 +743,14 @@ class _DeckCardWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.mutedGold, width: 2),
+        border: Border.all(color: AppColors.lilac.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: AppColors.darkBrown.withValues(alpha: 0.3),
+            color: AppColors.lilac.withValues(alpha: 0.2),
+            blurRadius: 28,
+          ),
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 16,
             offset: const Offset(0, 8),
           ),
@@ -721,12 +758,14 @@ class _DeckCardWidget extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
-        child: Image.asset(
-          card.assetPath,
-          fit: BoxFit.cover,
+        child: ColoredBox(
+          color: AppColors.cardMargin,
+          child: Image.asset(
+            card.assetPath,
+            fit: BoxFit.contain,
+          ),
         ),
       ),
     );
   }
 }
-

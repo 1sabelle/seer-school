@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants.dart';
 import '../../core/widgets/card_preview_overlay.dart';
+import '../../core/widgets/sparkle_text.dart';
 import '../../models/hint_category.dart';
 import '../../providers/card_providers.dart';
 import '../../providers/deck_providers.dart';
@@ -84,9 +85,9 @@ class CardDetailScreen extends ConsumerWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: AppColors.mutedGold.withValues(alpha: 0.08),
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: AppColors.mutedGold.withValues(alpha: 0.2)),
+                  color: AppColors.navy,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: AppColors.border),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,7 +95,7 @@ class CardDetailScreen extends ConsumerWidget {
                     Text(
                       'Theme',
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: AppColors.agedInkBlue,
+                            color: AppColors.muted,
                           ),
                     ),
                     const SizedBox(height: 4),
@@ -113,23 +114,14 @@ class CardDetailScreen extends ConsumerWidget {
                 spacing: 8,
                 runSpacing: 8,
                 children: card.keywords
-                    .map((k) => Chip(
-                          label: Text(k),
-                          backgroundColor: AppColors.warmBeige,
-                          side: BorderSide.none,
-                        ))
+                    .map((k) => Chip(label: Text(k)))
                     .toList(),
               ),
 
               // Statistics
               if (cardStats.isNotEmpty) ...[
                 const SizedBox(height: 24),
-                Text(
-                  'Your Performance',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
-                ),
+                const SectionHeading('Your Performance'),
                 const SizedBox(height: 12),
                 ...cardStats.map((stat) {
                   return _StatRow(
@@ -169,7 +161,7 @@ class CardDetailScreen extends ConsumerWidget {
               Text(
                 'Draw this card in your daily practice to unlock its secrets.',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppColors.agedInkBlue,
+                      color: AppColors.muted,
                     ),
                 textAlign: TextAlign.center,
               ),
@@ -198,7 +190,7 @@ class _InfoRow extends StatelessWidget {
           Text(
             '$label: ',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.agedInkBlue,
+                  color: AppColors.muted,
                 ),
           ),
           Text(
@@ -252,13 +244,13 @@ class _StatRow extends StatelessWidget {
               borderRadius: BorderRadius.circular(4),
               child: LinearProgressIndicator(
                 value: accuracy,
-                backgroundColor: AppColors.warmBeige,
+                backgroundColor: AppColors.border,
                 valueColor: AlwaysStoppedAnimation(
                   accuracy >= 0.8
-                      ? AppColors.sageGreen
+                      ? AppColors.teal
                       : accuracy >= 0.5
-                          ? AppColors.mutedGold
-                          : AppColors.dustyRose,
+                          ? AppColors.periwinkle
+                          : AppColors.rose,
                 ),
                 minHeight: 8,
               ),
@@ -275,7 +267,7 @@ class _StatRow extends StatelessWidget {
           Text(
             '($attempts)',
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.agedInkBlue,
+                  color: AppColors.muted,
                   fontSize: 11,
                 ),
           ),
